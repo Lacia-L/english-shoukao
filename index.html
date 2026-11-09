@@ -420,6 +420,15 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
 .gopt.wrong{border-color:var(--red);background:#FBEDEB;color:var(--red)}
 .gopt:disabled{cursor:default}
 .gwhy{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.65}
+
+.packrow{width:100%;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;padding:11px 12px;background:#fff;border:1px solid var(--rule);border-radius:2px;margin-bottom:6px;cursor:pointer;text-align:left;font-family:inherit}
+.packrow .pn{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--rule);padding:2px 5px;border-radius:2px}
+.packrow .pw b{display:block;font-size:13.5px;color:var(--ink);font-weight:700;line-height:1.4}
+.packrow .pw i{display:block;font-style:normal;font-size:11.5px;color:var(--muted);margin-top:2px}
+.packrow .pb{width:44px;height:4px;background:var(--rule);position:relative;border-radius:2px;overflow:hidden}
+.packrow .pb i{position:absolute;left:0;top:0;height:100%;background:var(--green);display:block}
+.packrow svg{color:var(--muted)}
+.packrow:active{background:var(--paper2)}
 </style>
 </head>
 <body>
@@ -572,6 +581,7 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
       <h2 class="sec" style="margin:0">40 天逐日表</h2>
       <span class="mono" id="planProg" style="color:var(--muted)">0 / 120</span>
     </div>
+    <p class="lead" style="margin:6px 0 0;font-size:12.5px">上面一排方格是 40 天，点哪一天就跳到那一天。下面三件事，做完点右上角的勾。</p>
     <div id="focusBar"></div>
     <div class="stages" id="stages"></div>
     <div id="todayCard"></div>
@@ -586,11 +596,18 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
 <!-- ===== 视图：词汇 ===== -->
 <section class="view" data-view="words">
   <div class="wrap">
-    <h2 class="sec">高频词包</h2>
-    <div class="packs" id="packs"></div>
-    <input class="wsearch" id="wSearch" type="search" placeholder="搜词或搜中文意思" autocomplete="off">
-    <div class="wgrid" id="wgrid"></div>
-    <div id="myWords"></div>
+    <div id="wList">
+      <h2 class="sec">选词包</h2>
+      <p class="lead" style="margin:0 0 12px;font-size:13px">考纲 3874 个词，按 40 词一包切成 97 包。点任意一包进去，里面就是这 40 个词；会了的点勾，不会的点星。</p>
+      <div id="packs"></div>
+    </div>
+    <div id="wDetail" style="display:none">
+      <button class="btn small ghost" id="wBack" style="margin-bottom:10px">← 返回词包列表</button>
+      <h2 class="sec" id="wTitle">词包</h2>
+      <div class="wgrid" id="wgrid"></div>
+      <div id="myWords"></div>
+    </div>
+    <input class="wsearch" id="wSearch" type="search" placeholder="也可以直接搜词或搜中文意思" autocomplete="off">
     <div style="height:30px"></div>
   </div>
 </section>
@@ -603,6 +620,7 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
     <button class="atab" data-at="listen">听力精练</button>
     <button class="atab" data-at="skill">考场动作</button>
   </div>
+  <p class="lead" style="margin:12px 16px 0;font-size:12.5px">四个板块：语法急救（每张卡 4 道当堂练）、写作弹药（模板句库）、听力精练（8 套语音题）、考场动作。</p>
   <div class="wrap" id="arsenalBody"></div>
 </section>
 
@@ -1265,18 +1283,51 @@ document.addEventListener("click", e=>{
 let curPack = 0;
 function allWords(){ return PACKS.flatMap((p,pi)=> p.w.map(w=> ({pi, w:w[0], pos:w[1], cn:w[2]}))); }
 
+let packOpen = false;
+
 function renderWords(){
-  const packs = document.getElementById("packs");
-  packs.innerHTML = PACKS.map((p,i)=> '<button class="pack'+(i===curPack?' on':'')+'" data-pack="'+i+'">P'+p.n+'<span class="pg">'+p.t+'</span></button>').join("");
   const q = (document.getElementById("wSearch").value||"").trim().toLowerCase();
-  let list = q ? allWords().filter(x=> x.w.toLowerCase().includes(q) || x.cn.includes(q)) : PACKS[curPack].w.map(w=> ({w:w[0],pos:w[1],cn:w[2],pi:curPack}));
+  const listBox = document.getElementById("wList"), detail = document.getElementById("wDetail");
   const grid = document.getElementById("wgrid");
-  if(!list.length){ grid.innerHTML = '<div class="empty">这个词库里没有，换一个试试。</div>'; }
+
+  if(q || packOpen){
+    listBox.style.display = "none";
+    detail.style.display = "block";
+  }else{
+    listBox.style.display = "block";
+    detail.style.display = "none";
+    grid.innerHTML = "";
+  }
+
+  /* 词包列表 */
+  const packs = document.getElementById("packs");
+  if(packs){
+    packs.innerHTML = PACKS.map((p,i)=>{
+      const got = p.w.filter(w=> S.learned.includes(w[0])).length;
+      const pct = Math.round(got/p.w.length*100);
+      return '<button class="packrow" data-pack="'+i+'">'+
+        '<span class="pn">P'+p.n+'</span>'+
+        '<span class="pw"><b>'+p.w[0][0]+' — '+p.w[p.w.length-1][0]+'</b><i>'+p.w.length+' 词 · 已掌握 '+got+'</i></span>'+
+        '<span class="pb"><i style="width:'+pct+'%"></i></span>'+
+        '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg>'+
+      '</button>';
+    }).join("");
+  }
+
+  if(!q && !packOpen) return;
+
+  const p = PACKS[curPack];
+  if(!q){
+    document.getElementById("wTitle").innerHTML = 'P'+p.n+' · '+p.w.length+' 词 <span class="mono" style="font-size:11px;color:var(--muted);margin-left:6px">'+p.t+'</span>';
+  }else{
+    document.getElementById("wTitle").innerHTML = '搜索「'+q+'」';
+  }
+
+  const list = q ? allWords().filter(x=> x.w.toLowerCase().includes(q) || x.cn.includes(q)) : p.w.map(w=> ({w:w[0],pos:w[1],cn:w[2],pi:curPack}));
+  if(!list.length){ grid.innerHTML = '<div class="empty">词库里没有这个词，换个拼写试试。</div>'; }
   else{
     grid.innerHTML = list.map(x=>{
-      const key = x.w;
-      const learned = S.learned.includes(key);
-      const starred = S.star.includes(key);
+      const learned = S.learned.includes(x.w), starred = S.star.includes(x.w);
       return '<div class="wcard"><div class="l"><div class="w">'+x.w+'<span class="pos">'+x.pos+'</span></div><div class="cn">'+x.cn+'</div></div>'+
         '<div class="acts">'+
         '<button class="iconbtn" data-say="'+x.w+'" title="发音"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8c2 2 2 6 0 8"/></svg></button>'+
@@ -1285,15 +1336,16 @@ function renderWords(){
         '</div></div>';
     }).join("");
   }
-  const p = PACKS[curPack];
+
   const got = p.w.filter(w=> S.learned.includes(w[0])).length;
-  document.getElementById("myWords").innerHTML =
-    '<h2 class="sec">本包进度 · P'+p.n+'</h2><div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div><b style="font-size:15px">'+got+' / '+p.w.length+' 已掌握</b><div style="font-size:12.5px;color:var(--muted);margin-top:2px">'+p.t+'</div></div><button class="btn small" data-go="log">看生词本</button></div>';
+  document.getElementById("myWords").innerHTML = q ? '' :
+    '<div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px"><div><b style="font-size:15px">'+got+' / '+p.w.length+' 已掌握</b><div style="font-size:12.5px;color:var(--muted);margin-top:2px">不会的已经进生词本，去「战绩」能查</div></div><button class="btn small" data-go="log">看生词本</button></div>';
 }
 
 document.addEventListener("click", e=>{
   const pk = e.target.closest("[data-pack]");
-  if(pk){ curPack = +pk.dataset.pack; document.getElementById("wSearch").value=""; renderWords(); return; }
+  if(pk){ curPack = +pk.dataset.pack; packOpen = true; document.getElementById("wSearch").value=""; renderWords(); return; }
+  if(e.target.closest("#wBack")){ packOpen = false; document.getElementById("wSearch").value=""; renderWords(); return; }
   const say = e.target.closest("[data-say]");
   if(say){
     const w = say.dataset.say;
@@ -1321,7 +1373,7 @@ document.addEventListener("click", e=>{
     if(i<0){
       const p = PACKS[curPack];
       const got = p.w.filter(x=> S.learned.includes(x[0])).length;
-      toast(got===p.w.length ? "整包拿下。这个词包可以放掉了。" : "记住了。本包 "+got+"/15。", true);
+      toast(got===p.w.length ? "整包拿下。这个词包可以放掉了。" : "记住了。本包 "+got+"/"+p.w.length+"。", true);
     }
     return;
   }
