@@ -409,6 +409,17 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
 }
+
+.gquiz{margin-top:12px;border-top:1px dashed var(--rule);padding-top:10px}
+.gk{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+.gq{margin:10px 0 12px}
+.qt{font-size:13.5px;line-height:1.7;color:var(--ink)}
+.gopts{display:grid;grid-template-columns:1fr;gap:6px;margin-top:6px}
+.gopt{text-align:left;font-family:inherit;font-size:13px;padding:9px 11px;border:1px solid var(--rule);background:#fff;border-radius:2px;cursor:pointer;color:var(--ink2);min-height:40px;transition:none}
+.gopt.right{border-color:var(--green);background:#EDF3EE;color:var(--green);font-weight:600}
+.gopt.wrong{border-color:var(--red);background:#FBEDEB;color:var(--red)}
+.gopt:disabled{cursor:default}
+.gwhy{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.65}
 </style>
 </head>
 <body>
@@ -778,25 +789,25 @@ const PACKS = [
 /* ================= 语法急救卡 ================= */
 const GRAM = [
 {t:"01 · 非谓语", s:"doing / done / to do", body:"第一步永远不是背规则，是找逻辑主语。主语自己主动做 → doing；主语被做 → done；表目的、或将要做 → to do。",
- ex:"Seen from the hill, the town looks like a carpet.（town 被看 → Seen）", warn:"主语和分词之间是「被动关系」却写了 Seeing，是最常见的失分。"},
+ ex:"Seen from the hill, the town looks like a carpet.（town 被看 → Seen）", warn:"主语和分词之间是「被动关系」却写了 Seeing，是最常见的失分。", qs:[{q:"____ from the hill, the town looks like a carpet.", o:["Seeing","Seen","To see","See"], a:1, why:"town 被看 → Seen"},{q:"The girl ____ beside the window is my sister.", o:["sat","sitting","to sit","sit"], a:1, why:"girl 主动坐 → sitting"},{q:"He hurried to the station, only ____ the train had left.", o:["finding","found","to find","find"], a:2, why:"only to do 表意外结果"},{q:"____ the report, he went home.", o:["Finished","Having finished","Finish","To finish"], a:1, why:"先完成再看 → Having finished"}]},
 {t:"02 · 定语从句", s:"that / which / where / whose", body:"先判断从句里缺什么成分。缺主语或宾语 → that / which；句子完整只缺地点状语 → where = in which；缺「谁的」 → whose。",
- ex:"This is the village where I grew up.（grew up 后不缺成分）", warn:"先行词是地点不等于用 where，从句缺宾语照样用 that / which。"},
+ ex:"This is the village where I grew up.（grew up 后不缺成分）", warn:"先行词是地点不等于用 where，从句缺宾语照样用 that / which。", qs:[{q:"This is the village ____ I grew up.", o:["which","that","where","what"], a:2, why:"从句不缺成分 → where = in which"},{q:"The book ____ you lent me is great.", o:["who","what","where","which"], a:3, why:"缺宾语 → which / that"},{q:"I know a boy ____ father is a doctor.", o:["who","whose","which","that"], a:1, why:"表「谁的」→ whose"},{q:"This is the reason ____ he was late.", o:["which","why","what","where"], a:1, why:"先行词 reason → why"}]},
 {t:"03 · 名词性从句", s:"that / what / whether / if", body:"从句意思完整用 that；从句缺主语或宾语，用 what；表示「是否」，主语从句、介词后、句首一律用 whether。",
- ex:"What surprised us was his calmness.（从句缺主语）", warn:"that 在名词性从句里不作成分，别写成 That he said was true 之外的错位结构。"},
+ ex:"What surprised us was his calmness.（从句缺主语）", warn:"that 在名词性从句里不作成分，别写成 That he said was true 之外的错位结构。", qs:[{q:"____ he said surprised everyone.", o:["That","What","Whether","Which"], a:1, why:"从句缺宾语 → what"},{q:"I don't know ____ he will come.", o:["what","that","whether","which"], a:2, why:"表「是否」→ whether"},{q:"____ she passed the exam made her parents happy.", o:["That","What","Which","If"], a:0, why:"句首主语从句、意思完整 → That"},{q:"It depends on ____ we have enough time.", o:["that","whether","what","if"], a:1, why:"介词后用 whether，不用 if"}]},
 {t:"04 · 状语从句", s:"连词 + 主将从现", body:"时间、条件状语从句里，主句用将来时，从句用一般现在时。before / when / unless / as long as 都是信号词。",
- ex:"I will call you as soon as I arrive.", warn:"从句里写 will arrive 就错了，这是语法填空的高频考点。"},
+ ex:"I will call you as soon as I arrive.", warn:"从句里写 will arrive 就错了，这是语法填空的高频考点。", qs:[{q:"I will call you as soon as I ____ there.", o:["will get","get","got","am getting"], a:1, why:"主将从现 → get"},{q:"____ you work hard, you will fail.", o:["If","Unless","Although","Because"], a:1, why:"unless = 除非"},{q:"We won't start ____ everyone arrives.", o:["until","while","since","as"], a:0, why:"not … until"},{q:"He kept reading ____ he fell asleep.", o:["until","while","as soon as","in case"], a:0, why:"一直读到睡着 → until"}]},
 {t:"05 · 时态", s:"现在完成 vs 一般过去", body:"有具体过去时间点（last year / in 2019）只能一般过去；没有时间点、强调对现在的影响，用现在完成；by the time + 将来 → 将来完成。",
- ex:"He has lived here since 2015. / He moved here in 2015.", warn:"since 后面接时间点，主句必须现在完成，两个要成对出现。"},
+ ex:"He has lived here since 2015. / He moved here in 2015.", warn:"since 后面接时间点，主句必须现在完成，两个要成对出现。", qs:[{q:"He ____ here since 2015.", o:["lives","lived","has lived","is living"], a:2, why:"since + 时间点 → 现在完成"},{q:"I ____ him last night.", o:["have seen","saw","see","had seen"], a:1, why:"有具体过去时间 → 一般过去"},{q:"By next June, he ____ in China for ten years.", o:["will live","will have lived","has lived","lives"], a:1, why:"by + 将来 → 将来完成"},{q:"When I got home, my mother ____ dinner.", o:["cooks","cooked","was cooking","has cooked"], a:2, why:"过去某刻正在进行 → 过去进行"}]},
 {t:"06 · 虚拟语气", s:"三种时间 + 一个 should", body:"与现在相反：did / were；与过去相反：had done，主句 would have done；与将来相反：were to do / should do。建议、要求类动词后的从句用 (should) do。",
- ex:"If I had known, I would have told you.", warn:"主句和从句的时间可以不一致，看清各自的时间标志再定形式。"},
+ ex:"If I had known, I would have told you.", warn:"主句和从句的时间可以不一致，看清各自的时间标志再定形式。", qs:[{q:"If I ____ you, I would apologize.", o:["am","was","were","be"], a:2, why:"与现在相反 → were"},{q:"If he had studied harder, he ____ the exam.", o:["would pass","would have passed","passed","will pass"], a:1, why:"与过去相反 → would have done"},{q:"The teacher suggested that he ____ earlier.", o:["comes","came","come","will come"], a:2, why:"建议类动词后 (should) do"},{q:"I wish I ____ more time yesterday.", o:["had","have","had had","would have"], a:2, why:"wish 与过去相反 → had done"}]},
 {t:"07 · 倒装", s:"否定词提前 / Only + 状语", body:"Not until / Never / Hardly / Little 放句首，主句部分倒装；Only + 状语放句首，同样倒装。",
- ex:"Not until he left did I realize the truth.", warn:"倒装只倒主句，Not until 引导的从句本身保持陈述语序。"},
+ ex:"Not until he left did I realize the truth.", warn:"倒装只倒主句，Not until 引导的从句本身保持陈述语序。", qs:[{q:"Never ____ such a beautiful sunset.", o:["I have seen","have I seen","I saw","did I saw"], a:1, why:"Never 置首 → 部分倒装"},{q:"Not until he left ____ the truth.", o:["I realized","did I realize","I did realize","realized I"], a:1, why:"只倒主句"},{q:"Only then ____ how much he mattered.", o:["he understood","did he understand","he did understand","understood he"], a:1, why:"Only + 状语置首 → 倒装"},{q:"Hardly ____ when the phone rang.", o:["had he sat down","he had sat down","did he sit down","he sat down"], a:0, why:"Hardly … when → had done 倒装"}]},
 {t:"08 · 主谓一致", s:"看中心词，不看修饰语", body:"the number of 谓语用单数，a number of 用复数；each / every / neither 用单数；there be 就近一致。",
- ex:"The number of applicants is rising.", warn:"分数、百分数作主语，谓语跟着 of 后面的名词走。"},
+ ex:"The number of applicants is rising.", warn:"分数、百分数作主语，谓语跟着 of 后面的名词走。", qs:[{q:"The number of students ____ rising.", o:["are","is","were","have been"], a:1, why:"the number of → 单数"},{q:"A number of books ____ on the desk.", o:["is","was","are","has been"], a:2, why:"a number of → 复数"},{q:"Each of the boys ____ a prize.", o:["get","gets","have got","are getting"], a:1, why:"each → 单数"},{q:"There ____ a pen and two books on the table.", o:["are","is","were","have"], a:1, why:"there be 就近一致 → a pen"}]},
 {t:"09 · 情态动词", s:"must / may / can + have done", body:"must have done 肯定的推测；can't have done 否定的推测；may have done 不确定；should have done 本该做却没做。",
- ex:"You should have told me earlier.", warn:"情态动词后一律接动词原形，语法填空里常把 have 写成 has。"},
+ ex:"You should have told me earlier.", warn:"情态动词后一律接动词原形，语法填空里常把 have 写成 has。", qs:[{q:"You ____ have told me earlier; I could have helped.", o:["must","should","can","may"], a:1, why:"should have done 本该做"},{q:"He ____ have finished the work; the light is still on.", o:["must","can't","should","need"], a:1, why:"灯还亮 → 否定推测 can't"},{q:"She ____ be at home; I saw her in the library.", o:["must","can't","may","should"], a:1, why:"在图书馆 → can't"},{q:"The ground is wet. It ____ have rained.", o:["can't","must","should","need"], a:1, why:"地面湿 → 肯定推测 must"}]},
 {t:"10 · 介词与搭配", s:"高频 12 组", body:"be responsible for / be addicted to / be aware of / be curious about / be familiar with / be similar to / depend on / result in / result from / consist of / insist on / object to。",
- ex:"The noise resulted in a complaint. / The complaint resulted from the noise.", warn:"result in 后接结果，result from 后接原因，方向别写反。"}
+ ex:"The noise resulted in a complaint. / The complaint resulted from the noise.", warn:"result in 后接结果，result from 后接原因，方向别写反。", qs:[{q:"He is responsible ____ the project.", o:["to","for","of","with"], a:1, why:"responsible for"},{q:"She is addicted ____ online games.", o:["with","in","to","for"], a:2, why:"addicted to"},{q:"The accident resulted ____ three injuries.", o:["from","in","of","to"], a:1, why:"result in + 结果"},{q:"The team consists ____ six members.", o:["in","of","with","from"], a:1, why:"consist of"}]}
 ];
 
 /* ================= 写作弹药 ================= */
@@ -1215,7 +1226,7 @@ function renderPlan(){
   for(let d=1; d<=TOTAL; d++){
     const allDone = tasksOf(d).every((t,i)=> S.done["d"+d+"-"+i]);
     cells += '<button class="dcell'+(allDone?' done':'')+(d===todayIdx?' today':'')+'" data-day="'+d+'">'+
-      '<span class="dn">'+d+'</span><span class="dd">'+dateOf(d).getDate()+'日</span></button>';
+      '<span class="dn">'+d+'</span><span class="dd">'+(dateOf(d).getMonth()+1)+'.'+dateOf(d).getDate()+'</span></button>';
   }
   cells += '<button class="dcell exam" data-day="61"><span class="dn">首考</span><span class="dd">1.8</span></button>';
   dg.innerHTML = cells;
@@ -1331,12 +1342,31 @@ document.getElementById("wSearch").addEventListener("input", ()=> renderWords())
 
 /* ================= 兵器库 ================= */
 let atab = "gram";
+function gramQuiz(i){
+  const g = GRAM[i], st = S.gq || {};
+  return '<div class="gquiz"><div class="gk">当堂练 · 4 题</div>'+
+    g.qs.map((q,qi)=>{
+      const key = i+"-"+qi, ans = st[key];
+      let opts = q.o.map((o,oi)=>{
+        let cls = "gopt";
+        if(ans!==undefined){ if(oi===q.a) cls += " right"; else if(oi===ans) cls += " wrong"; }
+        return '<button class="'+cls+'" data-g="'+key+'" data-o="'+oi+'"'+(ans!==undefined?" disabled":"")+'>'+String.fromCharCode(65+oi)+'. '+o+'</button>';
+      }).join("");
+      let why = "";
+      if(ans!==undefined){
+        const ok = ans===q.a;
+        why = '<div class="gwhy">'+(ok?"":"正确答案 "+String.fromCharCode(65+q.a)+"。")+q.why+'</div>';
+      }
+      return '<div class="gq"><div class="qt">'+(qi+1)+'. '+q.q+'</div><div class="gopts">'+opts+'</div>'+why+'</div>';
+    }).join("")+'</div>';
+}
+
 function renderArsenal(){
   document.querySelectorAll(".atab").forEach(t=> t.classList.toggle("on", t.dataset.at===atab));
   const body = document.getElementById("arsenalBody");
   if(atab==="gram"){
     body.innerHTML = '<h2 class="sec">10 张急救卡</h2>' + GRAM.map((g,i)=>
-      '<details class="acc"'+(i===0?' open':'')+'><summary><b>'+g.t+'</b><span class="mono">'+g.s+'</span></summary><div class="body"><p class="rule-line">'+g.body+'</p><div class="ex">'+g.ex+'</div><div class="warnfont">易错：'+g.warn+'</div></div></details>').join("");
+      '<details class="acc"'+(i===0?' open':'')+'><summary><b>'+g.t+'</b><span class="mono">'+g.s+'</span></summary><div class="body"><p class="rule-line">'+g.body+'</p><div class="ex">'+g.ex+'</div><div class="warnfont">易错：'+g.warn+'</div>'+gramQuiz(i)+'</div></details>').join("");
   }else if(atab==="write"){
     body.innerHTML = '<h2 class="sec">模板与句库</h2><div class="card">' + WRITE.map(b=>
       '<div class="sent-block"><div class="bk">'+b.k+'</div>'+ b.body.map(x=> '<p>'+x[1]+'</p><span>'+(x[0]==="开头"||x[0]==="主体"||x[0]==="结尾"?"用途：":"")+x[0]+'</span>').join("") +'</div>').join("") + '</div>';
@@ -1346,6 +1376,27 @@ function renderArsenal(){
   }
   document.querySelectorAll(".atab").forEach(t=> t.onclick = ()=>{ atab = t.dataset.at; renderArsenal(); });
 }
+
+document.addEventListener("click", e=>{
+  const b = e.target.closest("[data-g]");
+  if(!b) return;
+  const parts = b.dataset.g.split("-"), ci = +parts[0], qi = +parts[1];
+  S.gq = S.gq || {};
+  if(S.gq[b.dataset.g] !== undefined) return;
+  S.gq[b.dataset.g] = +b.dataset.o; save();
+  const q = GRAM[ci].qs[qi], ok = (+b.dataset.o === q.a), box = b.closest(".gq");
+  box.querySelectorAll(".gopt").forEach((el,idx)=>{
+    el.disabled = true;
+    if(idx === q.a) el.classList.add("right");
+    else if(idx === +b.dataset.o) el.classList.add("wrong");
+  });
+  const why = document.createElement("div");
+  why.className = "gwhy";
+  why.textContent = (ok ? "" : "正确答案 "+String.fromCharCode(65+q.a)+"。") + q.why;
+  box.appendChild(why);
+  toast(ok ? pickPraise() : COMFORT[Math.floor(Math.random()*COMFORT.length)], ok);
+});
+
 
 /* ================= 战绩 ================= */
 function renderLog(){
