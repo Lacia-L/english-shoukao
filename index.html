@@ -600,6 +600,7 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
   <div class="arsenal-tabs" id="atabs">
     <button class="atab on" data-at="gram">语法急救</button>
     <button class="atab" data-at="write">写作弹药</button>
+    <button class="atab" data-at="listen">听力精练</button>
     <button class="atab" data-at="skill">考场动作</button>
   </div>
   <div class="wrap" id="arsenalBody"></div>
@@ -841,6 +842,53 @@ const GRAM = [
 ["whisper","v.","低声说"],["glance","v.","瞥一眼"],["tremble","v.","发抖"],["sigh","v.","叹气"],["frown","v.","皱眉"],
 ["grin","v.","咧嘴笑"],["freeze","v.","僵住"],["clutch","v.","紧握"],["relief","n.","宽慰"],["panic","n./v.","恐慌"],
 ["courage","n.","勇气"],["hesitate","v.","犹豫"],["stare","v.","凝视"],["gasp","v.","倒吸一口气"],["mutter","v.","嘟囔"]]}
+];
+
+/* ================= 听力：8 套 ================= */
+const LIS = [
+{t:"第 1 套 · 数字与时间", n:"考点：时间、价格、人数听不清就记数字",
+ l:[["W","Excuse me, when does the library close on weekdays?"],["M","At nine. But on Friday it closes an hour earlier."],
+    ["W","So I still have two hours to return these books."],["M","Right. And the reading room closes at half past nine."]],
+ q:[["对话发生在什么时候？",["早上","中午","下午","晚上"],2,"return these books、还有两小时 → 傍晚"],
+    ["周五图书馆几点关门？",["8:00","9:00","9:30","10:00"],0,"closes an hour earlier than nine → 8 点"]]},
+{t:"第 2 套 · 订位与改约", n:"考点：地点、改期，注意转折词",
+ l:[["M","I'd like to book a table for four this Saturday."],["W","I'm afraid Saturday is fully booked. Sunday evening is available."],
+    ["M","Then Sunday, seven o'clock. Can we sit by the window?"],["W","Sure. May I have your name and phone number?"]],
+ q:[["他最后订的是什么时候？",["周六中午","周六晚上","周日七点","周日八点"],2,"Saturday is fully booked → 改周日七点"],
+    ["他提出的额外要求是什么？",["靠窗的位子","包间","加一把椅子","停车位"],0,"Can we sit by the window"]]},
+{t:"第 3 套 · 选课与作业", n:"考点：建议、理由",
+ l:[["W","Have you decided which course to take this term?"],["M","I want the writing course, but the reading one fits my schedule better."],
+    ["W","Take the reading one. It's the same teacher who gave us feedback last term."],["M","Good point. I'll register tonight."]],
+ q:[["他最后决定选哪门课？",["写作课","阅读课","两门都选","都不选"],1,"fits my schedule better、对方附和 → 阅读课"],
+    ["他改变主意的原因是什么？",["时间更合适","老师给过反馈","学分更高","朋友推荐"],0,"fit my schedule better 是直接原因"]]},
+{t:"第 4 套 · 旅行与住宿", n:"考点：原因、数字",
+ l:[["M","Our flight was delayed three hours, so we missed the last bus."],["W","Did you have to take a taxi to the hotel?"],
+    ["M","Yes, and it cost forty yuan. The hotel kept our room, luckily."],["W","At least that part went well."]],
+ q:[["他们为什么没坐上末班车？",["航班延误","行李丢了","走错机场","堵车"],0,"flight was delayed three hours"],
+    ["打车花了多少钱？",["14 元","30 元","40 元","44 元"],2,"cost forty yuan"]]},
+{t:"第 5 套 · 校园通知（独白）", n:"考点：细节与数字",
+ l:[["M","Attention, please. The school sports meeting will be moved to next Thursday because of the rain."],
+    ["M","Students should gather at the east gate at seven thirty, and bring their own water."],
+    ["M","The opening ceremony starts at eight, twenty minutes before the first event."]],
+ q:[["运动会改到什么时候？",["本周三","本周四","下周四","下周五"],2,"moved to next Thursday"],
+    ["开幕式几点开始？",["7:30","8:00","8:20","8:40"],1,"starts at eight"]]},
+{t:"第 6 套 · 博物馆介绍（独白）", n:"考点：目的、建议",
+ l:[["W","Welcome to the city museum. Photography is allowed, but please turn off the flash."],
+    ["W","The second floor closes at four, so I suggest starting there."],
+    ["W","Free guided tours begin every hour on the hour at the main entrance."]],
+ q:[["讲解员建议先看哪一层？",["一楼","二楼","三楼","室外"],1,"starting there → second floor"],
+    ["参观有什么限制？",["不能拍照","不能用闪光灯","不能带包","不能听讲解"],1,"please turn off the flash"]]},
+{t:"第 7 套 · 态度与观点", n:"考点：说话人的态度",
+ l:[["M","Do you think the new canteen is better?"],["W","The food is cheaper, but the queue is twice as long."],
+    ["M","So you'd rather go back to the old one?"],["W","Not exactly. I just wish they had more windows open."]],
+ q:[["女士对新食堂的整体态度是？",["完全满意","部分肯定，仍有抱怨","完全否定","没有看法"],1,"cheaper 是肯定，queue 是抱怨"],
+    ["她希望改进什么？",["菜价","排队","多开窗口","换厨师"],2,"more windows open"]]},
+{t:"第 8 套 · 天气预报（独白）", n:"考点：数字与建议",
+ l:[["M","Here is the weather for tomorrow. Sunny in the morning, with temperatures around twenty degrees."],
+    ["M","Rain will arrive after four in the afternoon, so take an umbrella if you go out late."],
+    ["M","The wind will pick up at night, and it will drop to twelve degrees."]],
+ q:[["下午几点开始下雨？",["两点后","三点后","四点后","五点后"],2,"after four in the afternoon"],
+    ["晚上气温会降到多少？",["20 度","18 度","15 度","12 度"],3,"drop to twelve degrees"]]}
 ];
 
 /* ================= 写作弹药 ================= */
@@ -1404,6 +1452,26 @@ function renderArsenal(){
   }else if(atab==="write"){
     body.innerHTML = '<h2 class="sec">模板与句库</h2><div class="card">' + WRITE.map(b=>
       '<div class="sent-block"><div class="bk">'+b.k+'</div>'+ b.body.map(x=> '<p>'+x[1]+'</p><span>'+(x[0]==="开头"||x[0]==="主体"||x[0]==="结尾"?"用途：":"")+x[0]+'</span>').join("") +'</div>').join("") + '</div>';
+  }else if(atab==="listen"){
+    body.innerHTML = '<h2 class="sec">8 套听力精练</h2><p class="lead" style="margin:0 0 10px;font-size:13px">点「播放」用系统语音朗读，先盲听一遍做题，再看原文。每套 4 句左右，对应浙江卷前 5 题和长对话的常见套路。</p>' + LIS.map((x,i)=>
+      '<details class="acc"'+(i===0?' open':'')+'><summary><b>'+x.t+'</b><span class="mono">'+x.n+'</span></summary><div class="body">'+
+        '<div class="row" style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap">'+
+          '<button class="btn small primary" data-play="'+i+'">播放</button>'+
+          '<button class="btn small ghost" data-play="'+i+'" data-slow="1">慢速 0.8</button>'+
+          '<button class="btn small ghost" data-script="'+i+'">看原文</button></div>'+
+        '<div class="lqs">'+ x.q.map((q,qi)=>{
+          const key = "L"+i+"-"+qi, ans = (S.lq||{})[key], o = q[1];
+          let opts = o.map((t,oi)=>{
+            let cls="gopt";
+            if(ans!==undefined){ if(oi===q[2]) cls+=" right"; else if(oi===ans) cls+=" wrong"; }
+            return '<button class="'+cls+'" data-l="'+key+'" data-o="'+oi+'"'+(ans!==undefined?" disabled":"")+'>'+String.fromCharCode(65+oi)+'. '+t+'</button>';
+          }).join("");
+          let why = ans!==undefined ? '<div class="gwhy">'+(ans===q[2]?"":"正确答案 "+String.fromCharCode(65+q[2])+"。")+q[3]+'</div>' : "";
+          return '<div class="gq"><div class="qt">'+(qi+1)+'. '+q[0]+'</div><div class="gopts">'+opts+'</div>'+why+'</div>';
+        }).join("")+'</div>'+
+        '<div class="lscript" id="ls'+i+'" style="display:none;margin-top:10px;padding:10px;background:var(--paper2);border-left:2px solid var(--green);font-size:12.5px;line-height:1.9">'+
+          x.l.map(l=> '<div><b style="font-family:var(--mono);font-size:11px;color:var(--green)">'+l[0]+'</b> '+l[1]+'</div>').join("")+'</div>'+
+      '</div></details>').join("");
   }else{
     body.innerHTML = '<h2 class="sec">考场上具体怎么做</h2>' + SKILLS.map(s=>
       '<div class="card" style="margin-bottom:9px"><b style="font-size:14.5px">'+s.t+'</b><ul style="margin:8px 0 0;padding-left:17px;font-size:13.5px;line-height:1.8;color:var(--ink2)">'+ s.body.map(x=> '<li>'+x+'</li>').join("") +'</ul></div>').join("");
@@ -1431,6 +1499,58 @@ document.addEventListener("click", e=>{
   toast(ok ? pickPraise() : COMFORT[Math.floor(Math.random()*COMFORT.length)], ok);
 });
 
+
+function speakSet(i, rate){
+  if(!("speechSynthesis" in window)){ toast("这台设备不支持朗读，先点「看原文」。", false); return; }
+  const sy = window.speechSynthesis;
+  sy.cancel();
+  const lines = LIS[i].l;
+  const voices = sy.getVoices().filter(v=> /en(-|_)?/i.test(v.lang));
+  let n = 0;
+  const next = ()=>{
+    if(n >= lines.length) return;
+    const line = lines[n++];
+    const u = new SpeechSynthesisUtterance(line[1]);
+    u.lang = "en-US"; u.rate = rate || 0.95; u.pitch = 1;
+    if(voices.length) u.voice = voices[line[0] === "M" ? Math.min(1, voices.length-1) : 0];
+    u.onend = ()=> setTimeout(next, 380);
+    sy.speak(u);
+  };
+  next();
+}
+
+document.addEventListener("click", e=>{
+  const p = e.target.closest("[data-play]");
+  if(p){
+    speakSet(+p.dataset.play, p.dataset.slow ? 0.75 : 0.95);
+    return;
+  }
+  const sc = e.target.closest("[data-script]");
+  if(sc){
+    const el = document.getElementById("ls"+sc.dataset.script);
+    if(el) el.style.display = (el.style.display === "none" ? "block" : "none");
+    return;
+  }
+  const b = e.target.closest("[data-l]");
+  if(b){
+    const key = b.dataset.l, ans = +b.dataset.o;
+    S.lq = S.lq || {};
+    if(S.lq[key] !== undefined) return;
+    S.lq[key] = ans; save();
+    const parts = key.slice(1).split("-"), si = +parts[0], qi = +parts[1];
+    const q = LIS[si].q[qi], ok = (ans === q[2]), box = b.closest(".gq");
+    box.querySelectorAll(".gopt").forEach((el,idx)=>{
+      el.disabled = true;
+      if(idx === q[2]) el.classList.add("right");
+      else if(idx === ans) el.classList.add("wrong");
+    });
+    const why = document.createElement("div");
+    why.className = "gwhy";
+    why.textContent = (ok ? "" : "正确答案 "+String.fromCharCode(65+q[2])+"。") + q[3];
+    box.appendChild(why);
+    toast(ok ? pickPraise() : COMFORT[Math.floor(Math.random()*COMFORT.length)], ok);
+  }
+});
 
 /* ================= 战绩 ================= */
 function renderLog(){
