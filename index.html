@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>浙江英语首考 · 40 天作战页</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="preconnect" href="https://sf3-scmcdn-cn.feishucdn.com" crossorigin>
+<link rel="preload" href="https://sf3-scmcdn-cn.feishucdn.com/obj/feishu-static/lark-miaoda-fonts/fonts/anton/f043da41c28a.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Anton&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23FAF7EF'/%3E%3Cpath d='M10 34l12 12 32-38' fill='none' stroke='%23C0392B' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#FAF7EF; --paper2:#F1EDE1; --paper3:#E7E1D1;
+  --ink:#16181A; --ink2:#3C3E3A; --muted:#7E7A6D;
+  --rule:#D8D2C1; --red:#C0392B; --red2:#9E2D22; --redwash:#F6E3DE;
+  --green:#256248; --greenwash:#E4EDE6; --hl:#F2DA55;
+  --shadow:0 1px 0 rgba(22,24,26,.06);
+  --sans:"PingFang SC","HarmonyOS Sans SC","MiSans","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --serif:Georgia,"Times New Roman","Songti SC",serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+ }
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:var(--sans); font-size:15px; line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:calc(66px + env(safe-area-inset-bottom));
+}
+img{max-width:100%}
+a{color:inherit}
+button{font-family:inherit;color:inherit}
+.num,.disp{font-family:'Anton',"Arial Narrow",Impact,sans-serif;letter-spacing:.01em}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.04em}
+.en{font-family:var(--serif)}
+
+/* ---------- 顶栏 ---------- */
+.topbar{
+  position:sticky;top:0;z-index:40;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:10px 18px;
+  background:rgba(250,247,239,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.brand{display:flex;align-items:center;gap:8px;font-family:'Anton',sans-serif;font-size:15px;letter-spacing:.09em}
+.brand i{width:7px;height:7px;border-radius:50%;background:var(--red);display:block}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.dchip{font-family:var(--mono);font-size:12px;letter-spacing:.06em;border:1px solid var(--ink);border-radius:2px;padding:3px 7px;background:var(--paper)}
+.topbar-sub{font-family:var(--mono);font-size:11px;color:var(--muted);display:none}
+
+/* ---------- 通用 ---------- */
+.wrap{padding:0 18px}
+section.view{display:none;animation:fade .34s ease}
+section.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h2.sec{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--ink2);margin:34px 0 12px;display:flex;align-items:center;gap:9px}
+h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:block}
+.card{background:#fff;border:1px solid var(--rule);border-radius:3px;padding:16px;box-shadow:var(--shadow);min-width:0}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:46px;padding:0 18px;border-radius:3px;border:1px solid var(--ink);
+  background:var(--paper);font-size:15px;font-weight:600;cursor:pointer;
+  transition:transform .12s ease,background .15s ease;
+}
+.btn:active{transform:scale(.975)}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.btn.ghost{background:transparent}
+.btn.small{min-height:38px;font-size:14px;padding:0 13px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;overflow:hidden;background:var(--ink);color:#F4F1E7;
+  padding:26px 22px 30px;margin-bottom:0;
+}
+.hero-grid{
+  position:absolute;inset:0;aria-hidden:true;
+  background-image:linear-gradient(rgba(244,241,231,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(244,241,231,.07) 1px,transparent 1px);
+  background-size:26px 26px;
+  mask-image:radial-gradient(120% 80% at 80% 0%,#000 0%,transparent 72%);
+  -webkit-mask-image:radial-gradient(120% 80% at 80% 0%,#000 0%,transparent 72%);
+  pointer-events:none;
+}
+.hero-bub{
+  position:absolute;right:-14px;top:64px;width:150px;opacity:.16;pointer-events:none;
+}
+.hero-top{position:relative;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between}
+.tag{font-size:12px;letter-spacing:.1em;border:1px solid rgba(244,241,231,.45);padding:3px 8px;border-radius:2px}
+.hero-top .mono{color:rgba(244,241,231,.62);font-size:11px}
+.count{position:relative;display:flex;align-items:flex-end;gap:10px;margin:16px 0 2px;line-height:1}
+.count .num{font-size:104px;color:#F7F3E8;display:block}
+.count .unit{font-size:15px;letter-spacing:.28em;padding-bottom:14px;color:rgba(244,241,231,.75)}
+.count small{font-family:var(--mono);font-size:11px;color:rgba(244,241,231,.5);padding-bottom:16px}
+.pen-under{display:block;margin:-6px 0 12px;width:190px;height:14px}
+.hero-line{position:relative;margin:0;font-size:15px;line-height:1.75;color:rgba(244,241,231,.86);max-width:30em}
+.hero-line b{color:var(--hl);font-weight:600}
+.hero-actions{position:relative;display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero-actions .btn{flex:1 1 160px}
+.hero-actions .btn.primary{background:#F4F1E7;color:var(--ink);border-color:#F4F1E7}
+.hero-actions .btn.ghost{color:#F4F1E7;border-color:rgba(244,241,231,.4)}
+.hero-foot{position:relative;display:flex;align-items:center;gap:10px;margin-top:20px;font-family:var(--mono);font-size:12px;color:rgba(244,241,231,.6);flex-wrap:wrap}
+.hero-foot b{color:#F4F1E7;font-weight:500}
+.hero-foot .sep{width:1px;height:11px;background:rgba(244,241,231,.3)}
+.note-pen{
+  position:absolute;right:16px;bottom:104px;transform:rotate(-6deg);
+  font-family:var(--serif);font-style:italic;font-size:13px;color:#E9A79C;
+  border-bottom:1px dashed rgba(233,167,156,.5);padding-bottom:2px;
+}
+
+/* ---------- 首页三判 ---------- */
+.factrow{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--rule)}
+.fact{padding:16px 14px 18px;border-right:1px solid var(--rule);min-width:0}
+.fact:last-child{border-right:0}
+.fact .k{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em}
+.fact .v{font-family:'Anton',sans-serif;font-size:30px;line-height:1.15;margin-top:2px}
+.fact .d{font-size:12px;color:var(--muted);margin-top:2px}
+
+.lead{margin:22px 0 0;font-size:15px;line-height:1.8;color:var(--ink2)}
+.lead em{font-style:normal;background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 92%,transparent 92%)}
+
+.judge{list-style:none;margin:0;padding:0;counter-reset:j}
+.judge li{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:16px 0;border-top:1px solid var(--rule)}
+.judge li:last-child{border-bottom:1px solid var(--rule)}
+.judge li::before{
+  counter-increment:j;content:"0" counter(j);
+  font-family:var(--mono);font-size:11px;color:var(--red);padding-top:3px;letter-spacing:.04em;
+}
+.judge b{display:block;font-size:15px;margin-bottom:3px}
+.judge p{margin:0;font-size:14px;color:var(--muted);line-height:1.7}
+
+.give{display:grid;grid-template-columns:1fr;gap:10px;margin-top:12px}
+.give .card{display:flex;gap:12px;align-items:flex-start;padding:14px}
+.give svg{flex:0 0 22px;margin-top:3px}
+.give b{font-size:14px;display:block}
+.give span{font-size:13px;color:var(--muted)}
+
+/* ---------- 诊断测试 ---------- */
+.testhead{position:sticky;top:49px;z-index:30;background:var(--paper);border-bottom:1px solid var(--rule);padding:12px 18px 11px}
+.testhead .row1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.testhead h1{margin:0;font-size:17px;font-weight:700;letter-spacing:.02em}
+.testhead .cnt{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.pbar{height:3px;background:var(--paper3);margin-top:9px;border-radius:2px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--red);width:0;transition:width .3s ease}
+.secmark{display:flex;justify-content:space-between;align-items:center;margin:16px 0 10px}
+.secmark b{font-size:12px;letter-spacing:.12em;color:var(--red)}
+.secmark span{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.qstem{font-family:var(--serif);font-size:17px;line-height:1.75;margin:0 0 14px}
+.qstem .gap{display:inline-block;min-width:52px;border-bottom:1px solid var(--ink);text-align:center}
+.opts{display:grid;gap:9px}
+.opt{
+  display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;
+  padding:13px 13px;border:1px solid var(--rule);background:#fff;border-radius:3px;
+  font-size:15px;line-height:1.5;cursor:pointer;min-height:48px;
+  transition:border-color .15s,background .15s;
+}
+.opt .key{font-family:'Anton',sans-serif;font-size:14px;color:var(--muted);flex:0 0 auto;width:16px;padding-top:1px}
+.opt .tx{flex:1;min-width:0}
+.opt:hover{border-color:var(--ink2)}
+.opt.correct{border-color:var(--green);background:var(--greenwash)}
+.opt.correct .key{color:var(--green)}
+.opt.wrong{border-color:var(--red);background:var(--redwash)}
+.opt.wrong .key{color:var(--red)}
+.opt.dim{opacity:.55}
+.opt.locked{cursor:default}
+.verdict{margin-top:14px;border-left:3px solid var(--green);padding:2px 0 2px 13px;font-size:14px;line-height:1.75;color:var(--ink2)}
+.verdict.bad{border-left-color:var(--red)}
+.verdict .vt{font-weight:700;font-size:13px;letter-spacing:.06em;color:var(--green);display:block;margin-bottom:3px}
+.verdict.bad .vt{color:var(--red)}
+.verdict .exp{margin-top:5px;color:var(--muted);font-size:13.5px}
+.testfoot{
+  position:fixed;left:0;right:0;z-index:31;
+  bottom:calc(66px + env(safe-area-inset-bottom));background:var(--paper);
+  border-top:1px solid var(--rule);padding:9px 18px;
+  display:flex;align-items:center;gap:12px;
+}
+.bubbles{display:flex;gap:4px;overflow-x:auto;flex:1;padding:2px 0;scrollbar-width:none}
+.bubbles::-webkit-scrollbar{display:none}
+.bub{flex:0 0 22px;height:22px;border:1px solid var(--rule);border-radius:50%;font-family:var(--mono);font-size:10px;color:var(--muted);display:grid;place-items:center;background:#fff;cursor:pointer;padding:0}
+.bub.done{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.bub.bad{background:var(--red);color:#fff;border-color:var(--red)}
+.bub.cur{box-shadow:0 0 0 2px var(--red)}
+.testfoot .btn{flex:0 0 auto}
+
+/* ---------- 结果 ---------- */
+.result-hd{padding:24px 18px 18px;border-bottom:1px solid var(--rule)}
+.result-hd .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--red)}
+.result-hd h1{margin:6px 0 8px;font-size:24px;line-height:1.35}
+.result-hd p{margin:0;color:var(--muted);font-size:14px}
+.dim{margin:16px 0 0}
+.dim .top{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;margin-bottom:5px}
+.dim .top b{font-weight:600}
+.dim .top span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.dim .track{height:6px;background:var(--paper3);border-radius:3px;overflow:hidden}
+.dim .track i{display:block;height:100%;background:var(--ink);width:0;transition:width .8s cubic-bezier(.2,.7,.2,1)}
+.dim.weak .track i{background:var(--red)}
+.dim .hint{font-size:12px;color:var(--muted);margin-top:4px}
+.verdictbox{background:var(--ink);color:#F4F1E7;padding:18px;border-radius:3px;margin-top:16px}
+.verdictbox .k{font-family:var(--mono);font-size:11px;color:rgba(244,241,231,.5);letter-spacing:.12em}
+.verdictbox p{margin:8px 0 0;font-size:14.5px;line-height:1.8}
+.verdictbox .hl{color:var(--hl)}
+
+/* ---------- 60 天计划 ---------- */
+.stages{display:flex;gap:8px;overflow-x:auto;padding:14px 0 4px;scrollbar-width:none}
+.stages::-webkit-scrollbar{display:none}
+.stage{flex:0 0 auto;border:1px solid var(--rule);background:#fff;border-radius:3px;padding:8px 12px;cursor:pointer;text-align:left}
+.stage .sn{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.08em}
+.stage .st{font-size:13.5px;font-weight:600;margin-top:1px;white-space:nowrap}
+.stage.on{background:var(--ink);color:#F4F1E7;border-color:var(--ink)}
+.stage.on .sn{color:rgba(244,241,231,.55)}
+.today{border:1px solid var(--ink);border-radius:3px;background:#fff;overflow:hidden;margin-top:10px}
+.today .hd{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;background:var(--paper2);border-bottom:1px solid var(--rule)}
+.today .hd b{font-size:14px}
+.today .hd .mono{color:var(--muted);font-size:11px}
+.tasklist{list-style:none;margin:0;padding:4px 0}
+.tasklist li{display:flex;align-items:flex-start;gap:11px;padding:11px 14px;border-bottom:1px solid #EFEADD}
+.tasklist li:last-child{border-bottom:0}
+.tick{
+  flex:0 0 22px;width:22px;height:22px;border:1px solid var(--rule);border-radius:2px;background:#fff;
+  display:grid;place-items:center;cursor:pointer;margin-top:2px;
+}
+.tick.on{background:var(--red);border-color:var(--red)}
+.tick.on svg{display:block}
+.tick svg{display:none}
+.tasklist .tx{flex:1;min-width:0}
+.tasklist .tx b{display:block;font-size:14.5px;line-height:1.5}
+.tasklist .tx span{font-size:12.5px;color:var(--muted)}
+.tasklist .mins{font-family:var(--mono);font-size:11px;color:var(--muted);padding-top:4px;flex:0 0 auto}
+.weight{display:inline-block;font-size:10px;font-family:var(--mono);color:var(--red);border:1px solid var(--red);border-radius:2px;padding:0 4px;margin-left:5px;vertical-align:1px}
+
+.daygrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:12px}
+.dcell{
+  position:relative;border:1px solid var(--rule);background:#fff;border-radius:2px;
+  aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:space-between;
+  padding:5px 5px 4px;cursor:pointer;text-align:left;min-width:0;
+}
+.dcell .dn{font-family:'Anton',sans-serif;font-size:15px;line-height:1;color:var(--ink)}
+.dcell .dd{font-family:var(--mono);font-size:9px;color:var(--muted)}
+.dcell.done{background:var(--paper2)}
+.dcell.done .dn{color:var(--muted)}
+.dcell.done::after{
+  content:"";position:absolute;right:3px;top:3px;width:15px;height:15px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 13l6 6 12-15' fill='none' stroke='%23C0392B' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain;
+}
+.dcell.today{border-color:var(--ink);border-width:2px;background:#FFFDF6}
+.dcell.exam{grid-column:1/-1;aspect-ratio:auto;height:46px;flex-direction:row;align-items:center;justify-content:space-between;padding:0 12px;border-color:var(--red)}
+.dcell.exam .dn{color:var(--red);font-size:13px}
+.dcell.exam .dd{color:var(--muted)}
+.dcell.sel{box-shadow:0 0 0 2px var(--hl) inset}
+.daydetail{margin-top:14px;border:1px solid var(--rule);background:#fff;border-radius:3px;padding:14px}
+.daydetail .dh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
+.daydetail .dh b{font-size:15px}
+.daydetail .dh .mono{color:var(--muted);font-size:11px}
+.daydetail ul{margin:0;padding-left:0;list-style:none}
+.daydetail li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-top:1px dashed var(--rule);font-size:14px}
+.daydetail li span:last-child{font-family:var(--mono);font-size:11px;color:var(--muted);flex:0 0 auto}
+
+/* ---------- 词汇 ---------- */
+.packs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 14px}
+.pack{font-family:var(--mono);font-size:11.5px;padding:6px 10px;border:1px solid var(--rule);background:#fff;border-radius:2px;cursor:pointer;letter-spacing:.03em}
+.pack.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pack .pg{opacity:.55;margin-left:3px}
+.wsearch{width:100%;height:44px;font-size:16px;padding:0 12px;border:1px solid var(--rule);border-radius:3px;background:#fff;font-family:var(--sans)}
+.wgrid{display:grid;grid-template-columns:1fr;gap:8px;margin-top:12px}
+.wcard{border:1px solid var(--rule);background:#fff;border-radius:3px;padding:11px 12px;display:flex;align-items:flex-start;gap:10px}
+.wcard .l{flex:1;min-width:0}
+.wcard .w{font-family:var(--serif);font-size:17px;line-height:1.3;word-break:break-word}
+.wcard .w .pos{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:6px}
+.wcard .cn{font-size:13.5px;color:var(--ink2);margin-top:3px}
+.wcard .acts{display:flex;gap:6px;flex:0 0 auto}
+.iconbtn{width:34px;height:34px;border:1px solid var(--rule);background:#fff;border-radius:2px;display:grid;place-items:center;cursor:pointer;padding:0}
+.iconbtn.on{background:var(--red);border-color:var(--red);color:#fff}
+.iconbtn svg{width:16px;height:16px}
+
+/* ---------- 兵器库 ---------- */
+.arsenal-tabs{display:flex;gap:0;border-bottom:1px solid var(--rule);margin-top:8px;position:sticky;top:49px;background:var(--paper);z-index:20}
+.atab{flex:1;background:none;border:0;padding:12px 0 10px;font-size:14px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;color:var(--muted);min-height:44px}
+.atab.on{color:var(--ink);border-bottom-color:var(--red)}
+.acc{border:1px solid var(--rule);background:#fff;border-radius:3px;margin-bottom:8px;overflow:hidden}
+.acc summary{list-style:none;padding:13px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:48px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary b{font-size:14.5px;flex:1}
+.acc summary .mono{color:var(--muted);font-size:10.5px;letter-spacing:.06em}
+.acc[open] summary{border-bottom:1px solid var(--rule);background:var(--paper2)}
+.acc .body{padding:12px 14px 14px;font-size:14px;line-height:1.78}
+.acc .body .rule-line{border-left:3px solid var(--red);padding-left:11px;margin:0 0 10px}
+.acc .body .ex{font-family:var(--serif);font-size:14.5px;background:var(--paper2);padding:9px 11px;border-radius:2px;margin:6px 0}
+.acc .body .warnfont{font-size:13px;color:var(--red2);margin-top:8px}
+.sent-block{border-top:1px solid var(--rule);padding:14px 0}
+.sent-block:first-child{border-top:0}
+.sent-block .bk{font-size:12px;letter-spacing:.1em;color:var(--red);font-family:var(--mono)}
+.sent-block p{font-family:var(--serif);font-size:14.5px;margin:6px 0 2px;line-height:1.7}
+.sent-block span{font-size:12.5px;color:var(--muted)}
+
+/* ---------- 战绩 ---------- */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.stat{border:1px solid var(--rule);background:#fff;border-radius:3px;padding:13px 14px}
+.stat .k{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.08em}
+.stat .v{font-family:'Anton',sans-serif;font-size:28px;line-height:1.2;margin-top:1px}
+.stat .v small{font-family:var(--sans);font-size:12px;color:var(--muted);margin-left:3px}
+.rec{border:1px solid var(--rule);background:#fff;border-radius:3px;padding:13px 14px;margin-bottom:8px}
+.rec .rec-h{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.rec .rec-h b{font-size:13.5px;font-family:var(--serif);font-weight:400}
+.rec .rec-h .mono{font-size:10px;color:var(--muted)}
+.rec p{margin:6px 0 0;font-size:13px;color:var(--muted);line-height:1.7}
+.rec .exp{margin-top:6px;font-size:13px;color:var(--ink2);border-left:2px solid var(--rule);padding-left:9px}
+.empty{border:1px dashed var(--rule);border-radius:3px;padding:26px 16px;text-align:center;color:var(--muted);font-size:13.5px;background:#fff}
+.reset{width:100%;margin-top:18px;border:1px dashed var(--rule);background:none;color:var(--muted);font-size:13px;padding:11px;cursor:pointer;border-radius:3px}
+
+/* ---------- 底部导航 ---------- */
+.tabbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  display:flex;background:rgba(250,247,239,.96);backdrop-filter:blur(12px);
+  border-top:1px solid var(--rule);padding-bottom:env(safe-area-inset-bottom);
+}
+.tab{flex:1;background:none;border:0;padding:7px 0 6px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;color:var(--muted);font-size:11.5px;min-height:56px;position:relative}
+.tab svg{width:20px;height:20px}
+.tab.on{color:var(--ink);font-weight:600}
+.tab.on::after{content:"";position:absolute;top:0;width:22px;height:2px;background:var(--red)}
+.tab span{letter-spacing:.02em}
+
+/* ---------- 夸赞提示 ---------- */
+.toast{
+  position:fixed;left:50%;bottom:calc(130px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(10px);
+  z-index:60;max-width:86vw;width:max-content;pointer-events:none;
+  background:var(--ink);color:#F6F2E6;border-radius:3px;padding:10px 15px;
+  font-size:14px;line-height:1.5;box-shadow:0 8px 24px rgba(22,24,26,.22);
+  opacity:0;transition:opacity .22s ease,transform .22s cubic-bezier(.2,.9,.3,1);
+  display:flex;align-items:center;gap:9px;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast .mk{font-family:'Anton',sans-serif;font-size:13px;color:var(--hl)}
+.toast.good{border-left:3px solid var(--hl)}
+.toast.bad{border-left:3px solid #E4A79C}
+
+/* ---------- 角色切换 / 老师端 ---------- */
+.rolesw{display:flex;border:1px solid var(--rule);border-radius:2px;overflow:hidden;background:#fff}
+.rolesw .rs{border:0;background:none;font-size:12.5px;padding:5px 10px;cursor:pointer;color:var(--muted);min-height:30px;font-weight:600}
+.rolesw .rs.on{background:var(--ink);color:var(--paper)}
+.teahead{position:relative;overflow:hidden;background:var(--green);color:#F3EFE2;padding:24px 20px 26px}
+.teahead .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:rgba(243,239,226,.62)}
+.teahead h1{margin:7px 0 8px;font-size:24px;line-height:1.35;font-weight:700}
+.teahead p{margin:0;font-size:13.5px;line-height:1.75;color:rgba(243,239,226,.85);max-width:26em}
+.teahead .stamp{position:absolute;right:-6px;top:14px;width:78px;height:78px;border:2px solid rgba(243,239,226,.35);border-radius:50%;display:grid;place-items:center;transform:rotate(-10deg);font-family:'Anton',sans-serif;font-size:12px;line-height:1.15;text-align:center;color:rgba(243,239,226,.55)}
+.seg{display:flex;gap:0;border-bottom:1px solid var(--rule);background:var(--paper);position:sticky;top:49px;z-index:20}
+.seg button{flex:1;border:0;background:none;padding:12px 0 10px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;min-height:44px}
+.seg button.on{color:var(--ink);border-bottom-color:var(--green)}
+.codecard{border:1px solid var(--rule);background:#fff;border-radius:3px;padding:14px;margin-top:12px}
+.codecard b{font-size:14px}
+.codecard p{margin:4px 0 10px;font-size:12.5px;color:var(--muted);line-height:1.7}
+.codecard textarea{width:100%;min-height:88px;font-family:var(--mono);font-size:12px;line-height:1.6;padding:9px;border:1px solid var(--rule);border-radius:2px;background:var(--paper);resize:vertical;color:var(--ink)}
+.codecard .row{display:flex;gap:8px;margin-top:9px}
+.codecard .row .btn{flex:1}
+.kpi{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.kpi .c{border:1px solid var(--rule);background:#fff;padding:12px 13px;border-radius:3px}
+.kpi .c .k{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.08em}
+.kpi .c .v{font-family:'Anton',sans-serif;font-size:25px;line-height:1.25}
+.kpi .c .v small{font-family:var(--sans);font-size:11px;color:var(--muted);margin-left:3px}
+.bars{margin-top:6px}
+.bars .b{margin-top:10px}
+.bars .b .t{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px}
+.bars .b .tk{height:5px;background:var(--paper3);border-radius:3px;overflow:hidden}
+.bars .b .tk i{display:block;height:100%;background:var(--green);width:0}
+.bars .b.low .tk i{background:var(--red)}
+.lcard{border:1px solid var(--rule);background:#fff;border-radius:3px;margin-bottom:7px;overflow:hidden}
+.lcard summary{list-style:none;padding:11px 13px;display:flex;gap:10px;align-items:flex-start;cursor:pointer;min-height:48px}
+.lcard summary::-webkit-details-marker{display:none}
+.lcard .no{font-family:'Anton',sans-serif;font-size:16px;color:var(--red);flex:0 0 26px;line-height:1.25}
+.lcard .hd{flex:1;min-width:0}
+.lcard .hd b{display:block;font-size:14px;line-height:1.45}
+.lcard .hd span{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.lcard[open] summary{border-bottom:1px solid var(--rule);background:var(--paper2)}
+.lcard .bd{padding:6px 13px 13px}
+.lcard .bd .fl{list-style:none;margin:0;padding:0}
+.lcard .bd .fl li{display:grid;grid-template-columns:52px 1fr;gap:8px;padding:6px 0;border-bottom:1px dashed var(--rule);font-size:13px}
+.lcard .bd .fl li:last-child{border-bottom:0}
+.lcard .bd .fl li .t{font-family:var(--mono);font-size:10.5px;color:var(--green);padding-top:3px}
+.lcard .bd .rows{font-size:12.5px;color:var(--ink2);line-height:1.7;margin-top:8px}
+.lcard .bd .rows div{padding:5px 0;border-top:1px solid var(--paper3)}
+.lcard .bd .rows .lb{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--red);display:block}
+.finish{border:1px dashed var(--rule);border-radius:3px;padding:12px 14px;background:#fff;margin-top:12px}
+.finish b{font-size:13.5px;color:var(--ink)}
+.finish p{margin:4px 0 0;font-size:12.5px;color:var(--muted);line-height:1.7}
+.tbl{width:100%;border-collapse:collapse;table-layout:fixed;background:#fff;border:1px solid var(--rule);font-size:12.5px;margin-top:10px}
+.tbl th,.tbl td{border-bottom:1px solid var(--paper3);padding:8px 7px;text-align:left;line-height:1.5;vertical-align:top}
+.tbl th{background:var(--paper2);font-size:11px;letter-spacing:.06em;color:var(--ink2)}
+.tbl tr:last-child td{border-bottom:0}
+
+/* ---------- 桌面 ---------- */
+@media (min-width:768px){
+  body{max-width:920px;margin:0 auto;border-left:1px solid var(--rule);border-right:1px solid var(--rule);padding-bottom:78px}
+  .topbar{max-width:920px;margin:0 auto;left:0;right:0}
+  .tabbar{max-width:920px;margin:0 auto;left:50%;transform:translateX(-50%)}
+  .testfoot{max-width:920px;margin:0 auto;left:50%;transform:translateX(-50%)}
+  .wrap{padding:0 32px}
+  .hero{padding:34px 32px 36px}
+  .count .num{font-size:140px}
+  .judge li{grid-template-columns:44px 1fr}
+  .give{grid-template-columns:repeat(2,1fr)}
+  .wgrid{grid-template-columns:repeat(3,1fr)}
+  .daygrid{grid-template-columns:repeat(10,1fr)}
+  .stats{grid-template-columns:repeat(4,1fr)}
+  .fact .v{font-size:38px}
+  .dchip{font-size:12px}
+  .daydetail{margin-top:18px}
+}
+@media (min-width:768px){.topbar-sub{display:inline}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand"><i></i>ENGLISH·首考</div>
+  <div class="topbar-right">
+    <div class="rolesw" id="rolesw">
+      <button class="rs on" data-role="stu">学生</button>
+      <button class="rs" data-role="tea">老师</button>
+    </div>
+    <span class="dchip" id="topD">D-59</span>
+  </div>
+</header>
+
+<main id="app">
+
+<!-- ===== 视图：开局 ===== -->
+<section class="view active" data-view="home">
+  <div class="hero">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <svg class="hero-bub" aria-hidden="true" viewBox="0 0 100 130" fill="none" stroke="#F4F1E7" stroke-width="1.6">
+      <circle cx="24" cy="16" r="9"/><circle cx="54" cy="16" r="9"/><circle cx="84" cy="16" r="9"/>
+      <circle cx="24" cy="40" r="9"/><circle cx="54" cy="40" r="9"/><circle cx="84" cy="40" r="9"/>
+      <circle cx="24" cy="64" r="9"/><circle cx="54" cy="64" r="9"/><circle cx="84" cy="64" r="9"/>
+      <circle cx="24" cy="88" r="9"/><circle cx="54" cy="88" r="9"/><circle cx="84" cy="88" r="9"/>
+      <circle cx="24" cy="112" r="9"/><circle cx="54" cy="112" r="9"/><circle cx="84" cy="112" r="9"/>
+    </svg>
+    <div class="hero-top">
+      <span class="tag">浙江首考 · 英语 / 新课标Ⅰ卷</span>
+      <span class="mono">1 月 8 日 / 09:00—11:00</span>
+    </div>
+    <div class="count">
+      <span class="num" id="daysNum">59</span>
+      <span class="unit">天</span>
+      <small id="countSub">距 1 月 8 日首考</small>
+    </div>
+    <svg class="pen-under" viewBox="0 0 190 14" aria-hidden="true">
+      <path d="M2 9C24 3 48 11 74 8c22-2 40-6 62-4 18 1 34 4 52-1" fill="none" stroke="#C0392B" stroke-width="2.6" stroke-linecap="round" opacity=".85"/>
+    </svg>
+    <p class="hero-line">首考 <b>1 月 8 日</b>，还剩两个多月。<br>前 <b>40 天</b>把该拿的分做实，后面 20 天交给真题和学校。</p>
+    <span class="note-pen" id="notePen">目标 120，够得着</span>
+    <div class="hero-actions">
+      <button class="btn primary" data-go="test">先做 20 分钟诊断</button>
+      <button class="btn ghost" data-go="plan">看 40 天计划</button>
+    </div>
+    <div class="hero-foot">
+      <span>目标 <b id="hTar">120</b></span><i class="sep"></i><span><b>40</b> 天</span><i class="sep"></i><span>上课 90′／自习 40′</span>
+    </div>
+  </div>
+
+  <div class="factrow">
+    <div class="fact"><div class="k">目标</div><div class="v" id="fTar">120</div><div class="d">首考</div></div>
+    <div class="fact"><div class="k">周期</div><div class="v">40<span style="font-size:14px;font-family:var(--sans)">天</span></div><div class="d">18 次课</div></div>
+    <div class="fact"><div class="k">自习</div><div class="v">40<span style="font-size:15px;font-family:var(--sans)">′</span></div><div class="d">21:10 起</div></div>
+  </div>
+
+  <div class="wrap">
+    <div class="card" style="margin-top:14px">
+      <div class="mono" style="color:var(--muted);margin-bottom:8px">只填目标，别的不填</div>
+      <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap">
+        <label style="flex:1;min-width:120px;font-size:12px;color:var(--muted)">目标分数
+          <input id="pTar" type="number" min="0" max="150" value="120" style="width:100%;height:42px;font-size:16px;margin-top:4px;padding:0 10px;border:1px solid var(--rule);border-radius:2px;background:var(--paper);color:var(--ink)">
+        </label>
+        <button class="btn small primary" id="pSave" style="flex:0 0 auto">更新</button>
+      </div>
+      <p id="recovLine" style="margin:9px 0 0;font-size:12.5px;color:var(--muted);line-height:1.7"></p>
+    </div>
+
+    <p class="lead" id="leadP"></p>
+
+    <h2 class="sec">浙江卷怎么算分</h2>
+    <table class="tbl" style="font-size:12px;table-layout:fixed">
+      <tr><th style="width:30%">板块</th><th style="width:16%">满分</th><th style="width:54%">90–100 分段常见的失分</th></tr>
+      <tr><td>听力 20 题</td><td>30</td><td>后两段长对话与独白，细节漏听 3–5 分</td></tr>
+      <tr><td>阅读 A–D 15 题</td><td>37.5</td><td>D 篇推断多推一步，2–3 题</td></tr>
+      <tr><td>七选五 5 题</td><td>12.5</td><td>只看意思不看逻辑词，错 2–3 个</td></tr>
+      <tr><td>完形 15 空</td><td>15</td><td>逐空填、故事线断，错 5–6 个</td></tr>
+      <tr><td>语法填空 10 空</td><td>15</td><td>词性判断不稳，错 4–5 空</td></tr>
+      <tr><td>应用文 80 词</td><td>15</td><td>结构散、要点漏一个</td></tr>
+      <tr><td>读后续写 150 词</td><td>25</td><td>只有叙述，缺动作与情绪细节</td></tr>
+    </table>
+
+    <h2 class="sec">为什么先做诊断</h2>
+    <ol class="judge">
+      <li><div><b>96 分有很多种 96 分</b><p>有人是词汇不够读不懂，有人是读懂了却写不出。方法完全不同，先测再练。</p></div></li>
+      <li><div><b>20 分钟换 40 天的方向</b><p>29 道题，分词汇、语法、完形、阅读、写作五块，测完直接算出你最该补的那块。</p></div></li>
+      <li><div><b>计划会跟着你调</b><p>测完哪块弱，后面 40 天的任务清单就自动给那块加练、标重点。</p></div></li>
+    </ol>
+
+    <h2 class="sec">你会拿到什么</h2>
+    <div class="give">
+      <div class="card">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-linecap="round"><path d="M4 4h11l5 5v11H4z"/><path d="M8 12h8M8 16h5"/></svg>
+        <div><b>五维诊断报告</b><span>哪块能拿分、哪块在漏分，一眼看清</span></div>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-linecap="round"><path d="M5 3v18M5 4h13l-3 4 3 4H5"/></svg>
+        <div><b>60 天逐日任务</b><span>上课日 90 分钟，其余 40 分钟，打开就知道做什么</span></div>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-linecap="round"><path d="M4 5h16v10H4z"/><path d="M8 9h8M8 12h5"/><path d="M9 19h6"/></svg>
+        <div><b>180 个高频词</b><span>12 个词包循环 5 轮，配发音和生词本</span></div>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-linecap="round"><path d="M12 3l2.5 5.5 6 .6-4.5 4 1.3 5.9L12 16l-5.3 3 1.3-5.9-4.5-4 6-.6z"/></svg>
+        <div><b>语法与写作弹药</b><span>10 张急救卡 + 应用文骨架 + 续写句库</span></div>
+      </div>
+    </div>
+
+    <h2 class="sec">这个页面怎么用</h2>
+    <ol class="judge">
+      <li><div><b>学生：先做诊断，再每天打卡</b><p>20 分钟做完 29 题，页面会告诉你最该补哪块。之后每天打开「计划」，3 件事打勾：上课日 90 分钟，其余 40 分钟。</p></div></li>
+      <li><div><b>每周日：生成一次汇报码</b><p>在「战绩」页点生成，复制那串 R1- 开头的码，发给老师和家长。</p></div></li>
+      <li><div><b>老师：粘贴码，看到进度</b><p>右上角切到「老师」，粘贴后能看到打卡、正确率和错题，还能生成 C1- 指令码当作业。</p></div></li>
+      <li><div><b>家长：直接点开学生端</b><p>到「战绩」页最上面就是「家长看这里」：完成天数、最该补的一块、待回炉错题、生词，一眼看完。</p></div></li>
+    </ol>
+
+    <div style="height:26px"></div>
+    <button class="btn primary" style="width:100%" data-go="test">开始诊断 · 约 20 分钟</button>
+    <div style="height:30px"></div>
+  </div>
+</section>
+
+<!-- ===== 视图：诊断 ===== -->
+<section class="view" data-view="test">
+  <div class="testhead">
+    <div class="row1">
+      <h1>入学诊断卷</h1>
+      <span class="cnt" id="qCount">1 / 29</span>
+    </div>
+    <div class="pbar"><i id="pbar"></i></div>
+  </div>
+  <div class="wrap" id="qWrap"></div>
+  <div class="testfoot">
+    <div class="bubbles" id="bubbles"></div>
+    <button class="btn primary small" id="nextQ">下一题</button>
+  </div>
+</section>
+
+<!-- ===== 视图：报告 ===== -->
+<section class="view" data-view="result">
+  <div id="resultWrap"></div>
+</section>
+
+<!-- ===== 视图：计划 ===== -->
+<section class="view" data-view="plan">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:18px">
+      <h2 class="sec" style="margin:0">40 天逐日表</h2>
+      <span class="mono" id="planProg" style="color:var(--muted)">0 / 120</span>
+    </div>
+    <div id="focusBar"></div>
+    <div class="stages" id="stages"></div>
+    <div id="todayCard"></div>
+    <div class="daygrid" id="daygrid"></div>
+    <div id="dayDetail"></div>
+    <p style="font-size:12.5px;color:var(--muted);line-height:1.7;margin:14px 0 0">上课日（周一/周三/周日）上 90 分钟课，其余几天自己学 40 分钟。打勾会保存，换页面也不会丢。周日留 20 分钟做复盘，是整周里最值钱的那 20 分钟。</p>
+    <div class="finish"><b>12 月 19 日之后：收尾期（20 天）</b><p>不再排新任务。每天半套真题 + 错题本，周六整套限时，周日只看错题。这一段的目标是把「会做」变成「考试那天做得出来」。</p></div>
+    <div style="height:30px"></div>
+  </div>
+</section>
+
+<!-- ===== 视图：词汇 ===== -->
+<section class="view" data-view="words">
+  <div class="wrap">
+    <h2 class="sec">高频词包</h2>
+    <div class="packs" id="packs"></div>
+    <input class="wsearch" id="wSearch" type="search" placeholder="搜词或搜中文意思" autocomplete="off">
+    <div class="wgrid" id="wgrid"></div>
+    <div id="myWords"></div>
+    <div style="height:30px"></div>
+  </div>
+</section>
+
+<!-- ===== 视图：兵器库 ===== -->
+<section class="view" data-view="arsenal">
+  <div class="arsenal-tabs" id="atabs">
+    <button class="atab on" data-at="gram">语法急救</button>
+    <button class="atab" data-at="write">写作弹药</button>
+    <button class="atab" data-at="skill">考场动作</button>
+  </div>
+  <div class="wrap" id="arsenalBody"></div>
+</section>
+
+<!-- ===== 视图：战绩 ===== -->
+<section class="view" data-view="log">
+  <div class="wrap">
+    <h2 class="sec">你的战绩</h2>
+    <div class="stats" id="stats"></div>
+    <div id="parCard"></div>
+    <h2 class="sec">错题本</h2>
+    <div id="wrongBox"></div>
+    <h2 class="sec">生词本</h2>
+    <div id="wordBox"></div>
+    <div id="reportBox"></div>
+    <button class="reset" id="resetAll">清空本机记录（重新开始）</button>
+    <div style="height:30px"></div>
+  </div>
+</section>
+
+<!-- ===== 视图：老师端 ===== -->
+<section class="view" data-view="teacher">
+  <div class="teahead">
+    <div class="stamp">TEACH<br>40D</div>
+    <div class="k">TEACHER CONSOLE</div>
+    <h1>老师端 · 学生进展看板</h1>
+    <p>让他做完当天任务后，在战绩页生成「汇报码」发给你；粘贴到这里，你就能看到他的打卡、正确率和错题，上课前 1 分钟对齐进度。</p>
+  </div>
+  <div class="seg" id="tseg">
+    <button class="on" data-tseg="board">看板</button>
+    <button data-tseg="plan">排课</button>
+    <button data-tseg="talk">讲评</button>
+  </div>
+  <div class="wrap" id="teacherBody"></div>
+</section>
+
+</main>
+
+<nav class="tabbar" id="tabbar">
+  <button class="tab on" data-go="home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg><span>开局</span>
+  </button>
+  <button class="tab" data-go="plan">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 9h16M8 3v4M16 3v4M8 13h8M8 16h5"/></svg><span>计划</span>
+  </button>
+  <button class="tab" data-go="words">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 5h7v14H4z"/><path d="M13 5h7v14h-7z"/><path d="M6.5 9h2M6.5 12h2M15.5 9h2"/></svg><span>词汇</span>
+  </button>
+  <button class="tab" data-go="arsenal">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7z"/><path d="M9 12l2 2 4-4"/></svg><span>兵器库</span>
+  </button>
+  <button class="tab" data-go="log">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="16" height="17" rx="1"/><path d="M8 8h8M8 12h8M8 16h4"/></svg><span>战绩</span>
+  </button>
+</nav>
+
+<div class="toast" id="toast"><span class="mk" id="toastMk">✓</span><span id="toastTx"></span></div>
+
+<!-- @@DATA@@ -->
+<script>
+/* ================= 诊断题 ================= */
+const QS = [
+/* --- 词汇 1-8 --- */
+{sec:"词汇", stem:"The new policy is expected to ___ the pressure on small businesses.", opts:["ease","raise","accuse","abandon"], ans:0,
+ exp:"ease the pressure 是固定搭配「缓解压力」。raise 是「提高」，accuse 只用于 accuse sb of sth，abandon 是「放弃」。pressure 只和 ease / reduce / relieve 这类词搭。"},
+{sec:"词汇", stem:"Her explanation was so ___ that everyone understood it at once.", opts:["vague","ambiguous","explicit","temporary"], ans:2,
+ exp:"后半句 everyone understood it at once 说明「讲得清楚」，explicit 明确的。vague 含糊、ambiguous 有歧义，正好和句意相反。"},
+{sec:"词汇", stem:"He ___ his success to hard work rather than luck.", opts:["contributed","attributed","distributed","devoted"], ans:1,
+ exp:"attribute A to B 「把 A 归因于 B」，是固定搭配。contribute to 是「促成」，distribute 是「分发」，devote to 是「献身于」。"},
+{sec:"词汇", stem:"The company decided to ___ the outdated equipment with a more efficient system.", opts:["replace","remove","reject","reserve"], ans:0,
+ exp:"replace A with B 「用 B 取代 A」，介词 with 是关键信号。remove 后面不加 with，reject 是「拒绝」，reserve 是「预订」。"},
+{sec:"词汇", stem:"Despite the heavy rain, the volunteers ___ with the cleanup work.", opts:["persisted","insisted","resisted","consisted"], ans:0,
+ exp:"persist with / in sth 「坚持做某事」，强调持续。insist 要接 on doing，resist 是「抵抗」，consist of 是「由…组成」。"},
+{sec:"词汇", stem:"The report offers a ___ analysis of the market rather than a shallow one.", opts:["superficial","thorough","random","temporary"], ans:1,
+ exp:"rather than a shallow one 提示前后反义，thorough 深入的。superficial 恰好等于 shallow，是陷阱项。"},
+{sec:"词汇", stem:"She felt a strong ___ to help the stranger who had fallen.", opts:["impulse","impact","input","income"], ans:0,
+ exp:"feel an impulse to do 「有一股冲动去做」。impact 是「影响」，input「投入」，income「收入」，语义都不通。"},
+{sec:"词汇", stem:"The teacher's words ___ him to work harder than ever.", opts:["inspired","expired","inquired","acquired"], ans:0,
+ exp:"inspire sb to do 「激励某人做某事」。expire 是「到期」，inquire 是「询问」，acquire 是「获得」，形近但意思差很远。"},
+
+/* --- 语法 9-16 --- */
+{sec:"语法", stem:"By the time he graduates, he ___ in Hangzhou for four years.", opts:["lives","will have lived","has lived","lived"], ans:1,
+ exp:"By the time + 将来时间，主句用将来完成时 will have lived。for four years 是完成时的标志，两个条件一起指向 will have done。"},
+{sec:"语法", stem:"___ from the top of the hill, the town looks like a green carpet.", opts:["Seen","Seeing","To see","Having seen"], ans:0,
+ exp:"看的主语是 the town，小镇是被看见的，所以用过去分词 Seen 作状语。判断非谓语第一步永远是看逻辑主语。"},
+{sec:"语法", stem:"It was in the small library ___ he first read the novel.", opts:["that","where","which","what"], ans:0,
+ exp:"去掉 It was 和空格后，句子仍然完整，是强调句，只能用 that。若是定语从句，library 后可用 where，但前面不能有 It was。"},
+{sec:"语法", stem:"The reason ___ he was late was that his bike broke down.", opts:["why","that","which","what"], ans:0,
+ exp:"reason 后面的定语从句用 why 引导（= for which）。表语从句才是 that，别和前面混。"},
+{sec:"语法", stem:"Not until midnight ___ the last problem.", opts:["he solved","did he solve","he did solve","solved he"], ans:1,
+ exp:"Not until 位于句首，主句部分倒装：助动词提前，did he solve。倒装只倒主句，不倒从句。"},
+{sec:"语法", stem:"If I ___ your address, I would have written to you.", opts:["knew","had known","know","would know"], ans:1,
+ exp:"主句是 would have written，说明是与过去事实相反，从句用 had done。"},
+{sec:"语法", stem:"The number of students who choose English as their major ___ rising these years.", opts:["are","is","were","have been"], ans:1,
+ exp:"the number of + 复数名词，中心词是 number，谓语用单数 is。a number of 才是「许多」，谓语用复数。"},
+{sec:"语法", stem:"She spoke ___ slowly ___ everyone could follow her.", opts:["so … that","such … that","too … to","as … as"], ans:0,
+ exp:"so + 形容词/副词 + that 从句。slowly 是副词，所以用 so；such 修饰名词。"},
+
+/* --- 完形 17-21 --- */
+{sec:"完形", pass:"On my first morning at the animal shelter, I was given the job of walking the dogs. One of them, a thin brown dog, refused to move. I tried everything — treats, toys, a gentle voice — but he just (17) there, shaking. A volunteer told me he had been (18) twice before and had lost trust in people. So I sat down on the floor beside him instead of pulling the leash. After about ten minutes he (19) forward and rested his head on my knee. By the end of the week he followed me everywhere. What I learned that winter was simple: trust cannot be (20), only earned — and it usually begins with someone who is willing to (21).",
+ stem:"第 17 空", opts:["remained","returned","recovered","resisted"], ans:0,
+ exp:"前文 refused to move，所以他只是「待在那儿」remained there, shaking。resisted 会和 refused 重复，且后面不能直接接 there。"},
+{sec:"完形", stem:"第 18 空", opts:["adopted","trained","abandoned","examined"], ans:2,
+ exp:"「被遗弃过两次，所以不再信任人」——下文 lost trust in people 是线索。adopted 是被领养，反而不会失去信任。"},
+{sec:"完形", stem:"第 19 空", opts:["stepped","turned","ran","jumped"], ans:0,
+ exp:"step forward 「向前迈一步」，配合 rested his head on my knee 的动作。ran / jumped 会破坏安静的语境。"},
+{sec:"完形", stem:"第 20 空", opts:["bought","demanded","explained","replaced"], ans:1,
+ exp:"trust cannot be demanded, only earned 「信任要不来，只能挣来」，与 earned 形成对照。"},
+{sec:"完形", stem:"第 21 空", opts:["wait","leave","talk","win"], ans:0,
+ exp:"全文讲的是「坐在旁边等它靠近」，所以是 willing to wait。呼应前面 sat down 和 ten minutes。"},
+
+/* --- 阅读 22-25 --- */
+{sec:"阅读", pass:"In the past two years, small “study rooms” have quietly appeared in Chinese cities. For a few yuan an hour, customers get a desk, a lamp, a chair and, most importantly, silence. Most of them are students preparing for exams, or office workers who cannot concentrate at home.\n\nThe idea is simple, but it answers a real problem. A library closes at five; a café plays music and fills up at noon; a bedroom is full of things that are not study. The study room removes all of these distractions and, in doing so, changes what people expect of themselves. “When everyone around you is writing, you feel embarrassed to pick up your phone,” one regular customer said.\n\nCritics point out that paying for silence is a strange solution to a problem we created. Yet the rooms keep filling up. Perhaps what they sell is not desks but a promise: for the next two hours, you will be the kind of person who works.",
+ stem:"What is the main purpose of the passage?", opts:["To advertise a new kind of business.","To describe a trend and explain why it works.","To criticize students who waste money.","To compare libraries with cafés."], ans:1,
+ exp:"全文先描述现象（自习室变多），再解释原因（去掉干扰、改变自我期待），最后给一句评价。B 覆盖了这两层。"},
+{sec:"阅读", stem:"Why does the author mention the library and the café?", opts:["To show where students usually study.","To suggest better places for study.","To explain what the study room removes.","To prove study rooms are cheaper."], ans:2,
+ exp:"这三个场所各自都有「不 study 的东西」（闭馆、音乐、杂物），是为下文 removes all of these distractions 举例。"},
+{sec:"阅读", stem:"What can be inferred from the customer's words?", opts:["He dislikes writing.","Social pressure helps him focus.","He goes there mainly to meet people.","He prefers music to silence."], ans:1,
+ exp:"feel embarrassed to pick up your phone 说明周围的人在学习会给他压力，这种压力转化成专注，所以是 social pressure。"},
+{sec:"阅读", stem:"What does “a promise” in the last paragraph refer to?", opts:["A discount for regular customers.","The expectation of being focused for a while.","A rule that phones are not allowed.","The owner's promise to keep the room quiet."], ans:1,
+ exp:"后面冒号解释的就是这个 promise：接下来两小时你会是那个在工作的人。是对自己的许诺，不是商家的承诺。"},
+
+/* --- 写作自评 26-29 --- */
+{sec:"写作", self:true, stem:"应用文（80 词左右的书信 / 通知）：你现在能在 25 分钟内写完吗？",
+ opts:["基本写不出，要看着模板才敢动笔","能写，但要 35 分钟以上，常卡在中间","能按时写完，不过句子很平、句式单一","25 分钟内写完，结构清楚、有分层"], ans:2, score:[18,45,70,92]},
+{sec:"写作", self:true, stem:"读后续写（两段约 150 词）：你的情况最接近哪一种？",
+ opts:["不知道写什么，靠凑字数","有想法，但只会叙述，写不出细节","情节能推进，缺情绪和动作描写","情节和细节都有，语言基本准确"], ans:2, score:[15,45,72,92]},
+{sec:"写作", self:true, stem:"手上能直接用出来的高级句式 / 描写句大概有多少？",
+ opts:["少于 5 句","5–10 句","10–20 句","20 句以上，能挑着用"], ans:1, score:[20,52,78,95]},
+{sec:"写作", self:true, stem:"你的英文书写和卷面？",
+ opts:["比较潦草，常有涂改","一般，能看清","工整，但写得慢","工整，速度也够"], ans:2, score:[25,58,80,92]},
+];
+
+/* ================= 词库：12 包 × 15 词 ================= */
+const PACKS = [
+{n:"01", t:"核心动词", w:[
+["abandon","v.","放弃；抛弃"],["achieve","v.","实现；达到"],["adapt","v.","适应；改编"],["admit","v.","承认；准许进入"],["apply","v.","申请；应用"],
+["approach","v./n.","接近；方法"],["argue","v.","争论；主张"],["assess","v.","评估"],["assume","v.","假定；承担"],["attempt","v./n.","尝试"],
+["avoid","v.","避免"],["benefit","v./n.","受益；好处"],["cause","v./n.","导致；原因"],["claim","v./n.","声称；索赔"],["compare","v.","比较"]]},
+{n:"02", t:"动词 · 进阶", w:[
+["compete","v.","竞争"],["complain","v.","抱怨"],["concentrate","v.","集中（注意力）"],["confirm","v.","确认"],["consider","v.","考虑；认为"],
+["contribute","v.","贡献；促成"],["convince","v.","使确信"],["create","v.","创造"],["decline","v./n.","下降；婉拒"],["demand","v./n.","要求；需求"],
+["demonstrate","v.","证明；演示"],["deny","v.","否认"],["depend","v.","依靠"],["deserve","v.","应得"],["determine","v.","决定；查明"]]},
+{n:"03", t:"动词 · 进阶", w:[
+["develop","v.","发展；开发"],["distinguish","v.","区分"],["encourage","v.","鼓励"],["establish","v.","建立"],["expand","v.","扩大"],
+["expect","v.","期待；预料"],["explain","v.","解释"],["express","v.","表达"],["fail","v.","失败；未能"],["forgive","v.","原谅"],
+["gain","v./n.","获得"],["guarantee","v./n.","保证"],["identify","v.","识别；确认"],["ignore","v.","忽视"],["improve","v.","改善"]]},
+{n:"04", t:"动词 · 进阶", w:[
+["include","v.","包括"],["increase","v./n.","增加"],["influence","v./n.","影响"],["inform","v.","通知"],["insist","v.","坚持（主张）"],
+["inspire","v.","激励；启发"],["intend","v.","打算"],["introduce","v.","介绍；引进"],["judge","v./n.","判断；评委"],["maintain","v.","维持；主张"],
+["manage","v.","管理；设法做到"],["measure","v./n.","测量；措施"],["mention","v.","提到"],["observe","v.","观察；遵守"],["offer","v./n.","提供"]]},
+{n:"05", t:"动词 · 进阶", w:[
+["organize","v.","组织"],["overcome","v.","克服"],["participate","v.","参与"],["perform","v.","表演；表现"],["persuade","v.","说服"],
+["prepare","v.","准备"],["prevent","v.","阻止"],["produce","v.","生产"],["promise","v./n.","承诺"],["protect","v.","保护"],
+["provide","v.","提供"],["realize","v.","意识到；实现"],["receive","v.","收到"],["recognize","v.","认出；认可"],["recommend","v.","推荐"]]},
+{n:"06", t:"动词 · 进阶", w:[
+["reduce","v.","减少"],["refuse","v.","拒绝"],["regret","v./n.","后悔"],["remain","v.","仍然是；保持"],["remind","v.","提醒"],
+["replace","v.","取代"],["represent","v.","代表"],["require","v.","需要；要求"],["resist","v.","抵抗"],["respect","v./n.","尊重"],
+["respond","v.","回应"],["reveal","v.","揭示"],["satisfy","v.","使满意"],["suggest","v.","建议；表明"],["support","v./n.","支持"]]},
+{n:"07", t:"高频名词", w:[
+["advantage","n.","优势"],["ability","n.","能力"],["access","n.","通道；使用权"],["account","n.","账户；描述"],["achievement","n.","成就"],
+["adventure","n.","冒险"],["attitude","n.","态度"],["balance","n./v.","平衡"],["challenge","n./v.","挑战"],["chance","n.","机会；可能性"],
+["choice","n.","选择"],["community","n.","社区"],["competition","n.","竞争；比赛"],["confidence","n.","自信"],["consequence","n.","结果；后果"]]},
+{n:"08", t:"高频名词", w:[
+["courage","n.","勇气"],["culture","n.","文化"],["decision","n.","决定"],["detail","n.","细节"],["effort","n.","努力"],
+["environment","n.","环境"],["experience","n./v.","经验；经历"],["failure","n.","失败"],["freedom","n.","自由"],["habit","n.","习惯"],
+["health","n.","健康"],["impression","n.","印象"],["income","n.","收入"],["industry","n.","工业；行业"],["influence","n.","影响"]]},
+{n:"09", t:"高频名词", w:[
+["knowledge","n.","知识"],["memory","n.","记忆"],["method","n.","方法"],["opportunity","n.","机会"],["patience","n.","耐心"],
+["performance","n.","表现；演出"],["pressure","n.","压力"],["progress","n.","进步"],["purpose","n.","目的"],["quality","n.","质量；品质"],
+["reason","n.","原因；理性"],["relationship","n.","关系"],["responsibility","n.","责任"],["result","n.","结果"],["safety","n.","安全"]]},
+{n:"10", t:"形容词", w:[
+["absent","adj.","缺席的"],["accurate","adj.","准确的"],["active","adj.","积极的"],["afraid","adj.","害怕的"],["anxious","adj.","焦虑的"],
+["available","adj.","可获得的；有空的"],["aware","adj.","意识到的"],["basic","adj.","基本的"],["brief","adj.","简短的"],["careful","adj.","仔细的"],
+["common","adj.","常见的；共同的"],["complex","adj.","复杂的"],["confident","adj.","自信的"],["convenient","adj.","方便的"],["curious","adj.","好奇的"]]},
+{n:"11", t:"形容词", w:[
+["different","adj.","不同的"],["difficult","adj.","困难的"],["eager","adj.","渴望的"],["effective","adj.","有效的"],["enough","adj.","足够的"],
+["essential","adj.","必要的；本质的"],["exact","adj.","确切的"],["familiar","adj.","熟悉的"],["frequent","adj.","频繁的"],["generous","adj.","慷慨的"],
+["gradual","adj.","逐渐的"],["grateful","adj.","感激的"],["independent","adj.","独立的"],["individual","adj./n.","个人的；个体"],["necessary","adj.","必要的"]]},
+{n:"12", t:"形容词 / 副词", w:[
+["nervous","adj.","紧张的"],["obvious","adj.","明显的"],["ordinary","adj.","普通的"],["patient","adj./n.","耐心的；病人"],["personal","adj.","个人的"],
+["polite","adj.","有礼貌的"],["positive","adj.","积极的；确定的"],["possible","adj.","可能的"],["powerful","adj.","强大的"],["practical","adj.","实用的"],
+["precious","adj.","珍贵的"],["private","adj.","私人的"],["proper","adj.","恰当的"],["proud","adj.","自豪的"],["quiet","adj.","安静的"]]}
+];
+
+/* ================= 语法急救卡 ================= */
+const GRAM = [
+{t:"01 · 非谓语", s:"doing / done / to do", body:"第一步永远不是背规则，是找逻辑主语。主语自己主动做 → doing；主语被做 → done；表目的、或将要做 → to do。",
+ ex:"Seen from the hill, the town looks like a carpet.（town 被看 → Seen）", warn:"主语和分词之间是「被动关系」却写了 Seeing，是最常见的失分。"},
+{t:"02 · 定语从句", s:"that / which / where / whose", body:"先判断从句里缺什么成分。缺主语或宾语 → that / which；句子完整只缺地点状语 → where = in which；缺「谁的」 → whose。",
+ ex:"This is the village where I grew up.（grew up 后不缺成分）", warn:"先行词是地点不等于用 where，从句缺宾语照样用 that / which。"},
+{t:"03 · 名词性从句", s:"that / what / whether / if", body:"从句意思完整用 that；从句缺主语或宾语，用 what；表示「是否」，主语从句、介词后、句首一律用 whether。",
+ ex:"What surprised us was his calmness.（从句缺主语）", warn:"that 在名词性从句里不作成分，别写成 That he said was true 之外的错位结构。"},
+{t:"04 · 状语从句", s:"连词 + 主将从现", body:"时间、条件状语从句里，主句用将来时，从句用一般现在时。before / when / unless / as long as 都是信号词。",
+ ex:"I will call you as soon as I arrive.", warn:"从句里写 will arrive 就错了，这是语法填空的高频考点。"},
+{t:"05 · 时态", s:"现在完成 vs 一般过去", body:"有具体过去时间点（last year / in 2019）只能一般过去；没有时间点、强调对现在的影响，用现在完成；by the time + 将来 → 将来完成。",
+ ex:"He has lived here since 2015. / He moved here in 2015.", warn:"since 后面接时间点，主句必须现在完成，两个要成对出现。"},
+{t:"06 · 虚拟语气", s:"三种时间 + 一个 should", body:"与现在相反：did / were；与过去相反：had done，主句 would have done；与将来相反：were to do / should do。建议、要求类动词后的从句用 (should) do。",
+ ex:"If I had known, I would have told you.", warn:"主句和从句的时间可以不一致，看清各自的时间标志再定形式。"},
+{t:"07 · 倒装", s:"否定词提前 / Only + 状语", body:"Not until / Never / Hardly / Little 放句首，主句部分倒装；Only + 状语放句首，同样倒装。",
+ ex:"Not until he left did I realize the truth.", warn:"倒装只倒主句，Not until 引导的从句本身保持陈述语序。"},
+{t:"08 · 主谓一致", s:"看中心词，不看修饰语", body:"the number of 谓语用单数，a number of 用复数；each / every / neither 用单数；there be 就近一致。",
+ ex:"The number of applicants is rising.", warn:"分数、百分数作主语，谓语跟着 of 后面的名词走。"},
+{t:"09 · 情态动词", s:"must / may / can + have done", body:"must have done 肯定的推测；can't have done 否定的推测；may have done 不确定；should have done 本该做却没做。",
+ ex:"You should have told me earlier.", warn:"情态动词后一律接动词原形，语法填空里常把 have 写成 has。"},
+{t:"10 · 介词与搭配", s:"高频 12 组", body:"be responsible for / be addicted to / be aware of / be curious about / be familiar with / be similar to / depend on / result in / result from / consist of / insist on / object to。",
+ ex:"The noise resulted in a complaint. / The complaint resulted from the noise.", warn:"result in 后接结果，result from 后接原因，方向别写反。"}
+];
+
+/* ================= 写作弹药 ================= */
+const WRITE = [
+{k:"应用文 · 建议信", body:[
+ ["开头","I am writing to share a few suggestions about …, which I hope will be of some help."],
+ ["主体","First of all, it would be better if … Besides, I strongly suggest that … (should) …"],
+ ["结尾","I would appreciate it if you could take my suggestions into consideration."]]},
+{k:"应用文 · 邀请信", body:[
+ ["开头","I am writing on behalf of … to invite you to …, which will be held on … in …"],
+ ["主体","The activity will include …, where you can … It would be a great pleasure to have you with us."],
+ ["结尾","I would be grateful if you could confirm your attendance before … Looking forward to your reply."]]},
+{k:"应用文 · 通知", body:[
+ ["开头","In order to …, we are going to hold … on … at …"],
+ ["主体","Everyone who is interested is welcome to take part. Please sign up at … before …"],
+ ["结尾","For more information, please contact … Don't miss it."]]},
+{k:"续写 · 情绪（4 句）", body:[
+ ["紧张","Her heart pounded so hard that she could hear it in her ears."],
+ ["害怕","A cold hand seemed to grip his chest, and his legs refused to move."],
+ ["释然","All the tension left her body at once, as if a heavy door had finally opened."],
+ ["惊喜","He stared at it for a long moment, unable to believe what his eyes were telling him."]]},
+{k:"续写 · 动作（4 句）", body:[
+ ["小动作","She bit her lip, fingers twisting the corner of her sleeve."],
+ ["起身","He pushed himself up, one hand still pressed against the cold wall."],
+ ["递东西","She held it out with both hands, as if it were something fragile."],
+ ["回头","He turned back once at the door, then walked on without a word."]]},
+{k:"续写 · 环境（4 句）", body:[
+ ["夜","The street was empty except for a lamp that flickered now and then."],
+ ["雨","Rain drummed on the roof, drowning out every other sound."],
+ ["晨","The first light crept in through the window and touched the edge of the desk."],
+ ["冷","The wind cut through his coat, sharp and patient."]]},
+{k:"续写 · 收尾升华（4 句）", body:[
+ ["成长","It was then that he understood: some things are learned only by losing them first."],
+ ["温暖","Nothing had changed in that small room, yet everything felt different."],
+ ["勇气","Fear did not disappear. He simply decided that it would not decide for him."],
+ ["时间","Years later, he would still remember the weight of that afternoon."]]},
+{k:"高级替换 · 10 组", body:[
+ ["very important → vital / essential"],["very big → enormous"],["think → hold the view that"],
+ ["many → a large number of"],["help → be of great help to"],["happy → delighted / thrilled"],
+ ["good → remarkable"],["say → point out / add"],["because → for the reason that"],["I think → To my mind"]]}
+];
+
+const SKILLS = [
+{t:"听力 · 4 个动作", body:[
+ "开考先扫题干，把问句里的 who / when / why 划出来，听的时候只等这一个答案。",
+ "数字、时间、地点听到就读音写下，不要在心里翻译成中文。",
+ "第一遍没抓住就放，第二遍靠上下文补；追着上一句想会连丢三题。",
+ "转折词 but / actually / instead 后面通常就是答案。"]},
+{t:"阅读 · 3 个动作", body:[
+ "先读题干再读文章，题干里的专有名词是最好的定位器。",
+ "每段只找一句主旨句，通常在段首；例子一律跳过。",
+ "推断题只在原文有依据的范围内推一步，多推一步就是错项。"]},
+{t:"完形 · 3 个动作", body:[
+ "先通读全文不看选项，把故事线和情感方向定下来。",
+ "每个空先判断词性，再看搭配，最后看复现（同一个词前后出现过）。",
+ "四个选项都「说得通」时，选和全文情感一致的，不是选最难的。"]},
+{t:"语法填空 · 3 个动作", body:[
+ "有提示词：先定词性，再想该词性的变化清单（名词单复、动词时态语态非谓语、形容词副词比较级）。",
+ "无提示词：只可能是冠词、介词、连词、代词四类，逐个试。",
+ "写完通读一遍，检查主谓一致和句子是否还完整。"]},
+{t:"写作 · 3 个动作", body:[
+ "应用文 3 段：交代来意、说明要点、礼貌收尾。每段第一句必须是完整句。",
+ "续写先写两句「动作 + 情绪」，再补一句环境，最后一句收在人物感受上。",
+ "留 3 分钟检查：时态是否统一、第三人称单数、冠词、拼写。"]},
+{t:"时间分配 · 120 分钟", body:[
+ "听力 20 分钟（含转涂）→ 阅读 35 分钟 → 语言运用 25 分钟 → 写作 35 分钟 → 检查 5 分钟。",
+ "任何一题超过 2 分钟没思路，先标记跳过，最后统一回看。",
+ "作文永远先写应用文，它结构固定、得分稳。"]}
+];
+
+/* ================= 夸赞与鼓励（不重复、不敷衍） ================= */
+const PRAISE = [
+"这题抓得准。","稳，读懂了。","漂亮，关键词被你逮住了。","判断干净利落。","这一步没白练。","不错，语感在线。","对了，节奏感很好。","看得很细。","排除得很果断。","就是这种手感，继续保持。","这题不难，但你没错，说明基础在。","答得安静又准确。"
+];
+const PRAISE_STREAK = {
+ 3:["连对 3 题，状态起来了。","三连，说明不是运气。","连对 3 个，把这种感觉记住。"],
+ 5:["连对 5 题。这个读法是对的，别改。","五连。今晚这套题你已经赢了一半。","连对 5 题，手感回来了。"],
+ 8:["连对 8 题。你现在做题的样子，和 100 分档的人一样。","八连。别停，继续这个节奏。","连对 8 题，这不是运气，是方法对上了。"],
+ 12:["连对 12 题。这已经是稳定输出了。","十二连。把今天的状态写进记忆里。","连对 12，今天的你比昨天强。"]
+};
+const COMFORT = [
+"错在这儿其实是好事——这个坑今天就补上了。","没关系，这题本来就有陷阱，看清解析比答对更值。","别急，错一次记一次，考场就不会再错。","这一题错得很典型，正好收进错题本。","错了不亏，你现在知道它考什么了。","不慌，这种题错一次就够，下次你会认出来。","先把解析读完，30 秒后你就多会一个点。","这一分丢得明明白白，比蒙对强。"
+];
+</script>
+<!-- @@APP@@ -->
+<script>
+/* ================= 基础 ================= */
+const START = new Date(2026,10,9,12,0,0);
+const EXAM  = new Date(2027,0,8,9,0,0);
+const TOTAL = 40;
+const KEY = "sk60_v1";
+const now = new Date();
+const todayIdx = Math.min(TOTAL, Math.max(1, Math.floor((new Date(now.getFullYear(),now.getMonth(),now.getDate(),12) - START)/86400000) + 1));
+const daysLeft = Math.max(0, Math.ceil((EXAM - now)/86400000));
+
+let S = {
+  answers:{}, done:{}, learned:[], star:[], result:null
+};
+try{ const raw = localStorage.getItem(KEY); if(raw) S = Object.assign(S, JSON.parse(raw)); }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+function fmt(d){ return (d.getMonth()+1) + "月" + d.getDate() + "日"; }
+function dateOf(day){ const d = new Date(START); d.setDate(d.getDate() + day - 1); return d; }
+const WD = ["周一","周二","周三","周四","周五","周六","周日"];
+function wdOf(day){ return WD[(day-1)%7]; }
+
+document.getElementById("daysNum").textContent = daysLeft;
+document.getElementById("topD").textContent = "D-" + daysLeft;
+document.getElementById("countSub").textContent = daysLeft>0 ? "距 1 月 8 日首考" : "今天开考";
+
+/* ================= 提示 ================= */
+let toastT = null, lastP = -1;
+function toast(text, good){
+  const box = document.getElementById("toast");
+  document.getElementById("toastMk").textContent = good ? "✓" : "·";
+  document.getElementById("toastTx").textContent = text;
+  box.classList.toggle("good", good);
+  box.classList.toggle("bad", !good);
+  box.classList.add("show");
+  clearTimeout(toastT);
+  toastT = setTimeout(()=> box.classList.remove("show"), 2600);
+}
+function pickPraise(){
+  let i = Math.floor(Math.random()*PRAISE.length);
+  if(i === lastP) i = (i+1)%PRAISE.length;
+  lastP = i; return PRAISE[i];
+}
+
+/* ================= 视图切换 ================= */
+function go(name){
+  document.querySelectorAll("section.view").forEach(v=> v.classList.toggle("active", v.dataset.view===name));
+  document.querySelectorAll(".tab").forEach(t=> t.classList.toggle("on", t.dataset.go===name));
+  if(name==="test") renderQ();
+  if(name==="plan") renderPlan();
+  if(name==="words") renderWords();
+  if(name==="arsenal") renderArsenal();
+  if(name==="log") renderLog();
+  window.scrollTo({top:0,behavior:"instant"});
+}
+document.addEventListener("click", e=>{
+  const el = e.target.closest("[data-go]");
+  if(el){ go(el.dataset.go); }
+});
+
+/* ================= 诊断 ================= */
+let qi = 0;
+const grouped = [];
+(function(){
+  const names = [...new Set(QS.map(q=>q.sec))];
+  names.forEach(n=> grouped.push({name:n, items:QS.filter(q=>q.sec===n)}));
+})();
+
+const SECCOUNT = QS.length;
+
+function renderQ(){
+  qi = Math.min(qi, QS.length-1);
+  const q = QS[qi];
+  const wrap = document.getElementById("qWrap");
+  const answered = S.answers[qi] !== undefined;
+  const picked = S.answers[qi];
+  document.getElementById("qCount").textContent = (qi+1) + " / " + QS.length;
+  document.getElementById("pbar").style.width = ((qi+1)/QS.length*100) + "%";
+
+  let head = '<div class="secmark"><b>' + q.sec + '</b><span>第 ' + (qi+1) + ' 题</span></div>';
+  let pass = "";
+  if(q.pass){
+    pass = '<div class="card" style="margin-bottom:14px;background:var(--paper2);border-style:dashed"><div class="mono" style="color:var(--muted);margin-bottom:6px">PASSAGE</div><div class="en" style="font-size:15px;line-height:1.85;white-space:pre-line">' + q.pass + '</div></div>';
+  }
+  const stem = q.self ? '<p class="qstem" style="font-family:var(--sans);font-size:16px">' + q.stem + '</p>'
+                      : '<p class="qstem">' + q.stem + '</p>';
+  let opts = '<div class="opts">';
+  q.opts.forEach((o,i)=>{
+    let cls = "opt";
+    if(answered){
+      cls += " locked";
+      if(!q.self){
+        if(i===q.ans) cls += " correct";
+        else if(i===picked) cls += " wrong";
+        else cls += " dim";
+      }else if(i===picked) cls += " correct";
+    }
+    opts += '<button class="'+cls+'" data-opt="'+i+'"'+(answered?' disabled':'')+'><span class="key">ABCD'[i]+'</span><span class="tx">'+o+'</span></button>';
+  });
+  opts += '</div>';
+
+  let verdict = "";
+  if(answered && !q.self){
+    const ok = picked === q.ans;
+    verdict = '<div class="verdict'+(ok?'':' bad')+'"><span class="vt">'+(ok?"正确":"正确答案是 "+"ABCD"[q.ans])+'</span>' +
+              (ok?pickPraise():COMFORT[Math.floor(Math.random()*COMFORT.length)]) +
+              '<div class="exp">' + q.exp + '</div></div>';
+  }
+
+  wrap.innerHTML = head + pass + stem + opts + verdict +
+    '<div style="height:96px"></div>';
+
+  document.getElementById("nextQ").textContent = (qi===QS.length-1) ? "提交诊断" : (answered?"下一题":"先选一个答案");
+
+  renderBubbles();
+}
+
+function renderBubbles(){
+  let html = "";
+  QS.forEach((q,i)=>{
+    let cls = "bub";
+    if(S.answers[i]!==undefined){
+      cls += (S.answers[i]===q.ans && !q.self) ? " done" : (q.self?" done":" bad");
+    }
+    if(i===qi) cls += " cur";
+    html += '<button class="'+cls+'" data-jump="'+i+'">'+(i+1)+'</button>';
+  });
+  document.getElementById("bubbles").innerHTML = html;
+  const cur = document.querySelector('.bub.cur');
+  if(cur && cur.scrollIntoView) cur.scrollIntoView({inline:"center",block:"nearest"});
+}
+
+document.addEventListener("click", e=>{
+  const opt = e.target.closest("[data-opt]");
+  if(opt && document.querySelector('section[data-view="test"].active')){
+    const idx = +opt.dataset.opt;
+    if(S.answers[qi]!==undefined) return;
+    S.answers[qi] = idx; save();
+    const q = QS[qi];
+    if(!q.self){
+      if(idx===q.ans){
+        const n = 1 + Object.keys(S.answers).filter(k=>{
+          const qq = QS[+k]; return qq && !qq.self && S.answers[k]===qq.ans;
+        }).length;
+        if(PRAISE_STREAK[n]) toast(PRAISE_STREAK[n][Math.floor(Math.random()*PRAISE_STREAK[n].length)], true);
+        else toast(pickPraise(), true);
+      }else{
+        toast(COMFORT[Math.floor(Math.random()*COMFORT.length)], false);
+      }
+    }else{
+      toast("记下了，这一项会算进你的写作评估。", true);
+    }
+    renderQ();
+    return;
+  }
+  const jump = e.target.closest("[data-jump]");
+  if(jump){ qi = +jump.dataset.jump; renderQ(); }
+});
+
+document.getElementById("nextQ").addEventListener("click", ()=>{
+  if(S.answers[qi]===undefined){ toast("先选一个答案，再往下走。", false); return; }
+  if(qi < QS.length-1){ qi++; renderQ(); }
+  else finishTest();
+});
+
+/* ================= 结果计算 ================= */
+function calc(){
+  let dims = {vocab:{ok:0,n:0}, gram:{ok:0,n:0}, cloze:{ok:0,n:0}, read:{ok:0,n:0}, write:{v:0,n:0}};
+  const map = {"词汇":"vocab","语法":"gram","完形":"cloze","阅读":"read","写作":"write"};
+  QS.forEach((q,i)=>{
+    const k = map[q.sec];
+    if(q.self){
+      const pick = S.answers[i];
+      dims.write.v += (pick!==undefined) ? q.score[pick] : 0;
+      dims.write.n++;
+    }else{
+      dims[k].n++;
+      if(S.answers[i]===q.ans) dims[k].ok++;
+    }
+  });
+  return {
+    vocab: Math.round(dims.vocab.ok/dims.vocab.n*100),
+    gram: Math.round(dims.gram.ok/dims.gram.n*100),
+    cloze: Math.round(dims.cloze.ok/dims.cloze.n*100),
+    read: Math.round(dims.read.ok/dims.read.n*100),
+    write: Math.round(dims.write.v/dims.write.n)
+  };
+}
+
+const DIMNAME = {vocab:"词汇辨识", gram:"语法填空", cloze:"完形填空", read:"阅读理解", write:"写作输出"};
+const DIMADV = {
+  vocab:"词包每天 15 个，按 12 包循环 5 轮；只记「词 + 一个搭配」，不背例句。",
+  gram:"先背 10 张急救卡，每次做题只问一句：这个空该填什么词性。",
+  cloze:"先通读再填，每篇画一条故事线；四个选项都通时，选和全文情感一致的那个。",
+  read:"题干先读，回原文找同义替换；每段只找一句主旨句。",
+  write:"背 3 个应用文骨架和 8 句续写描写句，每周各写一篇，写完必须重写一遍。"
+};
+
+function finishTest(){
+  const d = calc();
+  S.result = {d, date: now.toISOString()};
+  save();
+  renderResult();
+  go("result");
+}
+
+function renderResult(){
+  const d = S.result ? S.result.d : calc();
+  const keys = ["vocab","gram","cloze","read","write"];
+  const avg = Math.round(keys.reduce((a,k)=> a+d[k],0)/5);
+  const low = keys.slice().sort((a,b)=> d[a]-d[b]).slice(0,2);
+  const strongest = keys.slice().sort((a,b)=> d[b]-d[a])[0];
+
+  let dimHTML = "";
+  keys.forEach(k=>{
+    const weak = d[k] < 70;
+    dimHTML += '<div class="dim'+(weak?' weak':'')+'"><div class="top"><b>'+DIMNAME[k]+'</b><span>'+d[k]+' / 100</span></div>'+
+      '<div class="track"><i style="width:'+d[k]+'%"></i></div>'+
+      '<div class="hint">'+(weak?DIMADV[k]:'这块已经够用了，维持每周一次的频率即可。')+'</div></div>';
+  });
+
+  const title = '你的提分点，主要在「' + DIMNAME[low[0]] + '」';
+  const box = '<div class="verdictbox"><div class="k">DIAGNOSIS</div><p>综合诊断 ' + avg + ' / 100。你目前最弱的是 <span class="hl">' +
+    DIMNAME[low[0]] + '</span> 和 ' + DIMNAME[low[1]] + '，最强的是 ' + DIMNAME[strongest] +
+    '。<br>从 90 到 120，不需要全面开花：先补最弱的两块，再稳住最好的那一块。</p></div>';
+
+  document.getElementById("resultWrap").innerHTML =
+    '<div class="result-hd"><div class="kicker">DIAGNOSTIC REPORT · ' + fmt(now) + '</div>'+
+    '<h1>'+title+'</h1><p>29 道题，五项能力。这不是分数，是接下来 60 天的施工图。</p></div>'+
+    '<div class="wrap">' + dimHTML + box +
+    '<h2 class="sec">接下来这样做</h2>'+
+    '<ol class="judge">'+
+      '<li><div><b>前 15 天：只补 '+DIMNAME[low[0]]+' 和 '+DIMNAME[low[1]]+'</b><p>每天的词包和主任务会优先安排这两块，其他项保持手感就好。</p></div></li>'+
+      '<li><div><b>第 30 天：重做一次诊断</b><p>同样的 29 道题，看两个数：总分涨了多少，最弱那块涨了多少。</p></div></li>'+
+      '<li><div><b>最后 15 天：开始按 120 分钟限时</b><p>套卷+复盘，把「会做」变成「考试时做得出来」。</p></div></li>'+
+    '</ol>'+
+    '<div style="height:18px"></div><button class="btn primary" style="width:100%" data-go="plan">查看我的 60 天计划</button>'+
+    '<div style="height:30px"></div></div>';
+}
+
+/* ================= 60 天计划 ================= */
+function stageOf(day){
+  if(day<=10) return 1;
+  if(day<=24) return 2;
+  return 3;
+}
+const STAGE_INFO = [
+ {n:"01", t:"补地基", range:"11.9 – 11.18", desc:"词汇 + 语法。这一段不追求做对难题，只求把「该拿的分」拿稳。"},
+ {n:"02", t:"上量", range:"11.19 – 12.3", desc:"七选五、阅读、完形成篇练，速度从「读懂」提到「限时读懂」。"},
+ {n:"03", t:"定型", range:"12.4 – 12.18", desc:"写作定型 + 限时套练：三个应用文骨架、续写描写句，写一篇改一篇。"}
+];
+
+function tasksOf(day){
+  const st = stageOf(day), wd = (day-1)%7, pack = ((day-1)%12)+1;
+  const t = [];
+  t.push({dim:"vocab", label:"词包 "+String(pack).padStart(2,"0")+" · 15 词", note:"先遮中文回忆，再遮英文拼写", min:12});
+
+  let main;
+  if(st===1){
+    main = [
+      {label:"语法专项 15 题", note:"只练非谓语、从句、时态三块", min:15, dim:"gram"},
+      {label:"语法填空 1 篇", note:"限时 12 分钟，做完标词性", min:14, dim:"gram"},
+      {label:"语法填空 1 篇 + 错题重做", note:"同一个考点连着错就回看急救卡", min:16, dim:"gram"},
+      {label:"长难句拆 3 句", note:"划主谓宾，再翻译成中文", min:12, dim:"gram"},
+      {label:"写作微练：5 个完整句", note:"用当天词包里的词造句", min:12, dim:"write"},
+      {label:"半套限时：阅读 2 篇", note:"18 分钟，先题干后原文", min:20, dim:"read"},
+      {label:"本周复盘 20 分钟", note:"错题重做 + 词包回顾", min:20, dim:"review"}
+    ][wd];
+  }else if(st===2){
+    main = [
+      {label:"精读 1 篇", note:"划主旨句 + 摘 5 个生词", min:16, dim:"read"},
+      {label:"完形 1 篇", note:"先通读不看选项，再填", min:15, dim:"cloze"},
+      {label:"语法填空 1 篇", note:"限时 12 分钟", min:14, dim:"gram"},
+      {label:"限时阅读 2 篇", note:"18 分钟做完，对答案只标错因", min:20, dim:"read"},
+      {label:"写作微练：1 段续写", note:"只写 60 词，必须有动作 + 情绪", min:15, dim:"write"},
+      {label:"半套限时：阅读 + 语言运用", note:"40 分钟，中间不停", min:40, dim:"read"},
+      {label:"本周复盘 20 分钟", note:"错题重做 + 词包回顾", min:20, dim:"review"}
+    ][wd];
+  }else if(st===3){
+    main = [
+      {label:"精读 1 篇 + 长难句 2 句", note:"只看错题所在的段落", min:16, dim:"read"},
+      {label:"完形 1 篇（限时 12 分钟）", note:"做完立刻复盘情感线", min:14, dim:"cloze"},
+      {label:"应用文 1 篇（25 分钟）", note:"用骨架写，不临时想结构", min:25, dim:"write"},
+      {label:"限时阅读 2 篇", note:"18 分钟", min:20, dim:"read"},
+      {label:"读后续写 1 段", note:"80 词，动作 + 情绪 + 环境各一句", min:18, dim:"write"},
+      {label:"半套限时 + 作文重写", note:"先限时，再把上周那篇改一遍", min:45, dim:"write"},
+      {label:"本周复盘 + 作文互查", note:"挑 1 篇重写稿，比第一版好在哪里", min:20, dim:"review"}
+    ][wd];
+  }else{
+    main = [
+      {label:"套卷：阅读 + 语言运用（限时 60 分钟）", note:"按考试顺序，不中途查词", min:60, dim:"read"},
+      {label:"套卷讲评 + 错题回炉", note:"错的题当天重做一遍", min:45, dim:"review"},
+      {label:"写作限时：应用文 + 续写", note:"35 分钟两篇，练手速", min:35, dim:"write"},
+      {label:"真题阅读 2 篇 + 生词清零", note:"只做近三年真题", min:25, dim:"read"},
+      {label:"高频词总复盘 1–6 包", note:"只过不认识的", min:18, dim:"vocab"},
+      {label:"整套限时模考（120 分钟）", note:"含听力与作文，一次做完", min:120, dim:"read"},
+      {label:"模考讲评 + 本周错题本清空", note:"错题本清零，别再攒", min:30, dim:"review"}
+    ][wd];
+  }
+  t.push(main);
+
+  if(st<3){
+    t.push({dim:"gram", label: wd%2===0 ? "语法急救卡 1 张 + 例句抄写" : "听力 1 段精听（跟读 3 遍）", note: wd%2===0 ? "只记规则和那个易错点" : "先听大意，再逐句跟", min:10});
+  }else{
+    t.push({dim:"review", label:"错题本速览 10 题", note:"只看题干和正确项", min:10});
+  }
+  return t;
+}
+
+function weighted(t){
+  if(S.focus && S.focus.f) return t.dim === S.focus.f;
+  if(!S.result) return false;
+  const d = S.result.d;
+  const low = Object.keys(d).sort((a,b)=> d[a]-d[b])[0];
+  return t.dim === low;
+}
+
+let planStage = 0;
+function renderPlan(){
+  const dg = document.getElementById("daygrid");
+  const st = document.getElementById("stages");
+  let sh = "";
+  STAGE_INFO.forEach((s,i)=>{
+    sh += '<button class="stage'+(planStage===i?' on':'')+'" data-stage="'+i+'"><div class="sn">STAGE '+s.n+'</div><div class="st">'+s.t+'</div></button>';
+  });
+  st.innerHTML = sh;
+
+  const doneCount = Object.keys(S.done).length;
+  document.getElementById("planProg").textContent = doneCount + " / " + (TOTAL*3);
+
+  let cells = "";
+  for(let d=1; d<=TOTAL; d++){
+    const allDone = tasksOf(d).every((t,i)=> S.done["d"+d+"-"+i]);
+    cells += '<button class="dcell'+(allDone?' done':'')+(d===todayIdx?' today':'')+'" data-day="'+d+'">'+
+      '<span class="dn">'+d+'</span><span class="dd">'+dateOf(d).getDate()+'日</span></button>';
+  }
+  cells += '<button class="dcell exam" data-day="61"><span class="dn">首考</span><span class="dd">1.8</span></button>';
+  dg.innerHTML = cells;
+
+  const tasks = tasksOf(todayIdx);
+  const total = tasks.reduce((a,t)=> a+t.min, 0);
+  document.getElementById("todayCard").innerHTML =
+    '<div class="today"><div class="hd"><b>今天 · Day '+todayIdx+'</b><span class="mono">'+fmt(dateOf(todayIdx))+' '+wdOf(todayIdx)+' · 约 '+total+' 分钟</span></div>'+
+    '<ul class="tasklist">'+ tasks.map((t,i)=>
+      '<li><button class="tick'+(S.done["d"+todayIdx+"-"+i]?' on':'')+'" data-task="d'+todayIdx+'-'+i+'"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M4 13l5 5 11-13"/></svg></button>'+
+      '<div class="tx"><b>'+t.label+(weighted(t)?'<span class="weight">重点</span>':'')+'</b><span>'+t.note+'</span></div>'+
+      '<div class="mins">'+t.min+'′</div></li>').join("")+'</ul></div>';
+
+  const selDay = (planStage===0) ? todayIdx : [1,11,25][planStage];
+  showDay(selDay);
+}
+
+function showDay(d){
+  document.querySelectorAll(".dcell").forEach(c=> c.classList.toggle("sel", +c.dataset.day===d));
+  const box = document.getElementById("dayDetail");
+  if(d===61){
+    box.innerHTML = '<div class="dh"><b>1 月 8 日 · 首考</b><span class="mono">09:00—11:00</span></div><p style="font-size:14px;color:var(--muted);margin:6px 0 0">这一天不做新题。前一晚只看错题本和词包，早上提前 40 分钟到考场，听力开始前把耳机试音做完。</p>';
+    return;
+  }
+  const tasks = tasksOf(d);
+  box.innerHTML = '<div class="dh"><b>Day '+d+' · '+fmt(dateOf(d))+' '+wdOf(d)+'</b><span class="mono">'+STAGE_INFO[stageOf(d)-1].t+'</span></div>'+
+    '<ul>'+ tasks.map(t=> '<li><span>'+t.label+'</span><span>'+t.min+'′</span></li>').join("") + '</ul>'+
+    '<p style="font-size:12.5px;color:var(--muted);margin:9px 0 0">'+STAGE_INFO[stageOf(d)-1].desc+'</p>';
+}
+
+document.addEventListener("click", e=>{
+  const st = e.target.closest("[data-stage]");
+  if(st){ planStage = +st.dataset.stage; renderPlan(); return; }
+  const dc = e.target.closest("[data-day]");
+  if(dc){ showDay(+dc.dataset.day); return; }
+  const tk = e.target.closest("[data-task]");
+  if(tk){
+    const id = tk.dataset.task;
+    if(S.done[id]) delete S.done[id]; else S.done[id] = 1;
+    save(); renderPlan();
+    const doneCount = tasksOf(todayIdx).every((t,i)=> S.done["d"+todayIdx+"-"+i]);
+    if(doneCount) toast("今天的 3 件事全部完成。这才是 60 天的正确过法。", true);
+    return;
+  }
+});
+
+/* ================= 词汇 ================= */
+let curPack = 0;
+function allWords(){ return PACKS.flatMap((p,pi)=> p.w.map(w=> ({pi, w:w[0], pos:w[1], cn:w[2]}))); }
+
+function renderWords(){
+  const packs = document.getElementById("packs");
+  packs.innerHTML = PACKS.map((p,i)=> '<button class="pack'+(i===curPack?' on':'')+'" data-pack="'+i+'">P'+p.n+'<span class="pg">'+p.t+'</span></button>').join("");
+  const q = (document.getElementById("wSearch").value||"").trim().toLowerCase();
+  let list = q ? allWords().filter(x=> x.w.toLowerCase().includes(q) || x.cn.includes(q)) : PACKS[curPack].w.map(w=> ({w:w[0],pos:w[1],cn:w[2],pi:curPack}));
+  const grid = document.getElementById("wgrid");
+  if(!list.length){ grid.innerHTML = '<div class="empty">这个词库里没有，换一个试试。</div>'; }
+  else{
+    grid.innerHTML = list.map(x=>{
+      const key = x.w;
+      const learned = S.learned.includes(key);
+      const starred = S.star.includes(key);
+      return '<div class="wcard"><div class="l"><div class="w">'+x.w+'<span class="pos">'+x.pos+'</span></div><div class="cn">'+x.cn+'</div></div>'+
+        '<div class="acts">'+
+        '<button class="iconbtn" data-say="'+x.w+'" title="发音"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8c2 2 2 6 0 8"/></svg></button>'+
+        '<button class="iconbtn'+(starred?' on':'')+'" data-star="'+x.w+'" title="加生词本"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4l2.4 5 5.6.6-4.2 3.8 1.2 5.5L12 16.5 7 18.9l1.2-5.5L4 9.6 9.6 9z"/></svg></button>'+
+        '<button class="iconbtn'+(learned?' on':'')+'" data-learn="'+x.w+'" title="已掌握"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 13l5 5 11-13"/></svg></button>'+
+        '</div></div>';
+    }).join("");
+  }
+  const p = PACKS[curPack];
+  const got = p.w.filter(w=> S.learned.includes(w[0])).length;
+  document.getElementById("myWords").innerHTML =
+    '<h2 class="sec">本包进度 · P'+p.n+'</h2><div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:12px"><div><b style="font-size:15px">'+got+' / '+p.w.length+' 已掌握</b><div style="font-size:12.5px;color:var(--muted);margin-top:2px">'+p.t+'</div></div><button class="btn small" data-go="log">看生词本</button></div>';
+}
+
+document.addEventListener("click", e=>{
+  const pk = e.target.closest("[data-pack]");
+  if(pk){ curPack = +pk.dataset.pack; document.getElementById("wSearch").value=""; renderWords(); return; }
+  const say = e.target.closest("[data-say]");
+  if(say){
+    const w = say.dataset.say;
+    if(window.speechSynthesis){
+      const u = new SpeechSynthesisUtterance(w); u.lang="en-US"; u.rate=.9;
+      speechSynthesis.cancel(); speechSynthesis.speak(u);
+    }else{ toast("这台设备不支持发音。", false); }
+    return;
+  }
+  const st = e.target.closest("[data-star]");
+  if(st){
+    const w = st.dataset.star;
+    const i = S.star.indexOf(w);
+    if(i>=0) S.star.splice(i,1); else S.star.push(w);
+    save(); renderWords(); renderLog();
+    if(i<0) toast("已放进生词本。", true);
+    return;
+  }
+  const lr = e.target.closest("[data-learn]");
+  if(lr){
+    const w = lr.dataset.learn;
+    const i = S.learned.indexOf(w);
+    if(i>=0) S.learned.splice(i,1); else S.learned.push(w);
+    save(); renderWords();
+    if(i<0){
+      const p = PACKS[curPack];
+      const got = p.w.filter(x=> S.learned.includes(x[0])).length;
+      toast(got===p.w.length ? "整包拿下。这个词包可以放掉了。" : "记住了。本包 "+got+"/15。", true);
+    }
+    return;
+  }
+});
+document.getElementById("wSearch").addEventListener("input", ()=> renderWords());
+
+/* ================= 兵器库 ================= */
+let atab = "gram";
+function renderArsenal(){
+  document.querySelectorAll(".atab").forEach(t=> t.classList.toggle("on", t.dataset.at===atab));
+  const body = document.getElementById("arsenalBody");
+  if(atab==="gram"){
+    body.innerHTML = '<h2 class="sec">10 张急救卡</h2>' + GRAM.map((g,i)=>
+      '<details class="acc"'+(i===0?' open':'')+'><summary><b>'+g.t+'</b><span class="mono">'+g.s+'</span></summary><div class="body"><p class="rule-line">'+g.body+'</p><div class="ex">'+g.ex+'</div><div class="warnfont">易错：'+g.warn+'</div></div></details>').join("");
+  }else if(atab==="write"){
+    body.innerHTML = '<h2 class="sec">模板与句库</h2><div class="card">' + WRITE.map(b=>
+      '<div class="sent-block"><div class="bk">'+b.k+'</div>'+ b.body.map(x=> '<p>'+x[1]+'</p><span>'+(x[0]==="开头"||x[0]==="主体"||x[0]==="结尾"?"用途：":"")+x[0]+'</span>').join("") +'</div>').join("") + '</div>';
+  }else{
+    body.innerHTML = '<h2 class="sec">考场上具体怎么做</h2>' + SKILLS.map(s=>
+      '<div class="card" style="margin-bottom:9px"><b style="font-size:14.5px">'+s.t+'</b><ul style="margin:8px 0 0;padding-left:17px;font-size:13.5px;line-height:1.8;color:var(--ink2)">'+ s.body.map(x=> '<li>'+x+'</li>').join("") +'</ul></div>').join("");
+  }
+  document.querySelectorAll(".atab").forEach(t=> t.onclick = ()=>{ atab = t.dataset.at; renderArsenal(); });
+}
+
+/* ================= 战绩 ================= */
+function renderLog(){
+  const doneCount = Object.keys(S.done).length;
+  const daysDone = {};
+  Object.keys(S.done).forEach(k=> { daysDone[k.split("-")[0]] = 1; });
+  const dayNum = Object.keys(daysDone).length;
+  const wrongN = QS.filter((q,i)=> !q.self && S.answers[i]!==undefined && S.answers[i]!==q.ans).length;
+  document.getElementById("stats").innerHTML =
+    '<div class="stat"><div class="k">DAYS</div><div class="v">'+dayNum+'<small>天有打卡</small></div></div>'+
+    '<div class="stat"><div class="k">TASKS</div><div class="v">'+doneCount+'<small>项完成</small></div></div>'+
+    '<div class="stat"><div class="k">WORDS</div><div class="v">'+S.star.length+'<small>个生词</small></div></div>'+
+    '<div class="stat"><div class="k">WRONG</div><div class="v">'+wrongN+'<small>道待回炉</small></div></div>';
+
+  const wb = document.getElementById("wrongBox");
+  const wrongs = QS.map((q,i)=> ({q,i})).filter(x=> !x.q.self && S.answers[x.i]!==undefined && S.answers[x.i]!==x.q.ans);
+  wb.innerHTML = wrongs.length ? wrongs.map(x=>
+      '<div class="rec"><div class="rec-h"><b>'+x.q.stem+'</b><span class="mono">'+x.q.sec+' · 第 '+(x.i+1)+' 题</span></div>'+
+      '<p>正确答案：'+x.q.opts[x.q.ans]+'</p><div class="exp">'+x.q.exp+'</div></div>').join("")
+    : '<div class="empty">还没有错题。做完诊断后，错的题会自动收在这里。</div>';
+
+  const allW = allWords();
+  document.getElementById("wordBox").innerHTML = S.star.length ? S.star.map(w=>{
+    const m = allW.find(x=> x.w===w);
+    return '<div class="rec"><div class="rec-h"><b>'+w+'</b><span class="mono">'+(m?m.pos:'')+'</span></div><p>'+(m?m.cn:'')+'</p></div>';
+  }).join("") : '<div class="empty">还没有生词。去词库点一下星号就会出现在这里。</div>';
+}
+
+document.getElementById("resetAll").addEventListener("click", ()=>{
+  if(!confirm("清空打卡、答题和生词记录？这一步不能撤回。")) return;
+  S = {answers:{}, done:{}, learned:[], star:[], result:null, profile:S.profile, focus:null};
+  save(); qi=0; renderPlan(); renderWords(); renderLog();
+  toast("已清空，从 Day 1 重新开始。", true);
+});
+
+/* ================= 初始化 ================= */
+/* ---- 目标分数设置 ---- */
+function renderProfile(){
+  S.profile = S.profile || {target:120};
+  const p = S.profile;
+  const gap = Math.max(0, p.target - 96);
+  document.getElementById("hTar").textContent = p.target;
+  document.getElementById("fTar").textContent = p.target;
+  const note = document.getElementById("notePen");
+  if(note) note.textContent = "目标 " + p.target + "，够得着";
+  const pTar = document.getElementById("pTar");
+  if(pTar) pTar.value = p.target;
+  const lead = document.getElementById("leadP");
+  if(lead) lead.innerHTML = "96 分这个位置，在浙江卷里通常意味着：<em>听力和阅读的基本盘在，失分集中在七选五、完形、语法填空和写作输出</em>。这四块恰好都是「有方法就能涨」的部分，40 天够把其中大半收回来。";
+  const line = document.getElementById("recovLine");
+  if(line) line.textContent = "从现在到 " + p.target + " 分，差 " + gap +
+    " 分左右。按经验估算：七选五 +3、完形 +3、语法填空 +4、阅读 +5、写作 +6，这 20 分先拿稳，剩下的靠听力和卷面。";
+}
+document.addEventListener("click", function(e){
+  if(e.target.closest("#pSave")){
+    const t = Math.min(150, Math.max(0, parseInt(document.getElementById("pTar").value)||0));
+    S.profile = {target:t}; save(); renderProfile();
+    toast("目标已设为 " + t + " 分。", true);
+  }
+});
+renderProfile();
+
+renderPlan();
+</script>
+<script>
+/* ================= 老师端 / 数据互通 ================= */
+function b64e(o){ return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/=+/g,""); }
+function b64d(s){ try{ return JSON.parse(decodeURIComponent(escape(atob(s)))); }catch(e){ return null; } }
+
+function packReport(){
+  let mask = "", doneDays = 0, doneTasks = 0;
+  for(let d=1; d<=TOTAL; d++){
+    const all = tasksOf(d).every((t,i)=> S.done["d"+d+"-"+i]);
+    mask += all ? "1" : "0";
+    if(all) doneDays++;
+    tasksOf(d).forEach((t,i)=>{ if(S.done["d"+d+"-"+i]) doneTasks++; });
+  }
+  const wrong = QS.map((q,i)=> ({q,i})).filter(x=> !x.q.self && S.answers[x.i]!==undefined && S.answers[x.i]!==x.q.ans).map(x=> x.i);
+  const r = S.result ? S.result.d : calc();
+  return "R1-" + b64e({t:(new Date()).toISOString().slice(0,10), m:mask, k:doneTasks, w:wrong, l:S.learned.length, s:S.star.length, r:[r.vocab,r.gram,r.cloze,r.read,r.write], f:S.focus||null});
+}
+
+function renderReportBox(){
+  const box = document.getElementById("reportBox");
+  if(!box) return;
+  box.innerHTML = '<h2 class="sec">交给老师</h2>'+
+    '<div class="codecard"><b>生成汇报码</b><p>点一下生成一串码，发给你老师。他粘贴到「老师端」就能看到你的打卡、正确率和错题，不用你一句句讲。</p>'+
+    '<div class="row"><button class="btn small primary" id="genRep">生成汇报码</button><button class="btn small ghost" id="copyRep">复制</button></div>'+
+    '<textarea id="repOut" readonly placeholder="点「生成汇报码」后，这串码会出现在这里"></textarea></div>';
+  const old = window.__renderLog; if(old) old();
+}
+const _renderLog = renderLog;
+renderLog = function(){ _renderLog(); const box = document.getElementById("reportBox"); if(box && !box.innerHTML) renderReportBox();
+  try{ renderParCard(); }catch(e){}
+};
+try{ renderParCard(); }catch(e){}
+document.addEventListener("click", e=>{
+  if(e.target.closest("#genRep")){
+    const t = document.getElementById("repOut"); if(!t) return;
+    t.value = packReport(); t.select();
+    toast("汇报码已生成，复制发给老师就行。", true);
+    return;
+  }
+  if(e.target.closest("#copyRep")){
+    const t = document.getElementById("repOut");
+    if(!t || !t.value) return;
+    t.select(); try{ document.execCommand("copy"); toast("已复制。", true); }catch(err){ toast("长按文本框也能复制。", false); }
+  }
+});
+
+/* 角色切换 */
+let role = "stu";
+function setRole(r){
+  role = r;
+  document.querySelectorAll(".rolesw .rs").forEach(b=> b.classList.toggle("on", b.dataset.role===r));
+  const hideTab = (r==="tea");
+  document.getElementById("tabbar").style.display = hideTab ? "none" : "flex";
+  document.body.style.paddingBottom = hideTab ? "20px" : "";
+  if(r==="tea"){ go("teacher"); renderTeacher(); }
+  else go("home");
+}
+document.addEventListener("click", e=>{
+  const rb = e.target.closest("[data-role]");
+  if(rb) setRole(rb.dataset.role);
+});
+
+/* 老师端 */
+let tseg = "board", report = null, segData = null;
+function renderTeacher(){
+  document.querySelectorAll("#tseg button").forEach(b=> b.classList.toggle("on", b.dataset.tseg===tseg));
+  const body = document.getElementById("teacherBody");
+  if(tseg==="board") body.innerHTML = boardHTML();
+  if(tseg==="plan") body.innerHTML = planHTML();
+  if(tseg==="talk") body.innerHTML = talkHTML();
+  document.querySelectorAll("#tseg button").forEach(b=> b.onclick = ()=>{ tseg = b.dataset.tseg; renderTeacher(); });
+}
+document.addEventListener("click", e=>{
+  if(e.target.closest("[data-import]")){
+    const v = (document.getElementById("impCode").value||"").trim();
+    const o = b64d(v.replace(/^R1-/,""));
+    if(!o || !o.m){ toast("这串码不完整，让他重新生成一次。", false); return; }
+    report = o; renderTeacher(); toast("已导入，他的进度在下面。", true);
+  }
+  if(e.target.closest("[data-gen]")){
+    const dim = document.getElementById("fDim").value;
+    const mins = document.getElementById("fMin").value;
+    const out = document.getElementById("cmdOut");
+    if(out){ out.value = "C1-" + b64e({f:dim, m:mins}); out.select(); toast("指令码已生成，发给他粘贴到计划页。", true); }
+  }
+});
+
+function boardHTML(){
+  const dims = ["vocab","gram","cloze","read","write"];
+  let head = "";
+  if(!report){
+    head = '<div class="codecard"><b>导入学生的汇报码</b><p>他在战绩页点「生成汇报码」，把那串 R1- 开头的码发给你。粘贴后点导入。</p>'+
+      '<textarea id="impCode" placeholder="R1-xxxxxxxx"></textarea><div class="row"><button class="btn small primary" data-import>导入</button></div></div>';
+    return head + '<div class="empty" style="margin-top:12px">还没有数据。导入后这里会显示：打卡天数、各板块正确率、错题清单、这节课该讲什么。</div>';
+  }
+  const dd = (report.m.match(/1/g)||[]).length;
+  const avg = Math.round(report.r.reduce((a,b)=> a+b,0)/5);
+  let bars = "";
+  dims.forEach((k,i)=>{
+    const v = report.r[i];
+    bars += '<div class="b'+(v<70?' low':'')+'"><div class="t"><span>'+DIMNAME[k]+'</span><span class="mono">'+v+'</span></div><div class="tk"><i style="width:'+v+'%"></i></div></div>';
+  });
+  const lowIdx = report.r.indexOf(Math.min.apply(null,report.r));
+  const lowName = DIMNAME[dims[lowIdx]];
+  const wrongs = (report.w||[]).map(i=> ({q:QS[i], i}));
+
+  return '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:16px"><h2 class="sec" style="margin:0">本周看板</h2><span class="mono" style="color:var(--muted)">数据日期 '+report.t+'</span></div>'+
+    '<div class="kpi">'+
+      '<div class="c"><div class="k">打卡天数</div><div class="v">'+dd+'<small>/ '+TOTAL+'</small></div></div>'+
+      '<div class="c"><div class="k">完成任务</div><div class="v">'+report.k+'<small>/ '+(TOTAL*3)+'</small></div></div>'+
+      '<div class="c"><div class="k">生词</div><div class="v">'+report.s+'<small>个</small></div></div>'+
+      '<div class="c"><div class="k">错题</div><div class="v">'+report.w.length+'<small>道</small></div></div>'+
+    '</div>'+
+    '<div class="card" style="margin-top:12px"><b>五维正确率</b><div class="bars">'+bars+'</div><p style="margin-top:8px">综合 '+avg+' / 100。最弱是 '+lowName+'。</p></div>'+
+    '<div class="card"><b>这节课先讲这里</b><p>'+DIMADV[dims[lowIdx]]+'</p></div>'+
+    (wrongs.length ? '<h2 class="sec">他的错题</h2>'+ wrongs.map(x=> '<div class="rec"><div class="rec-h"><b>'+x.q.stem+'</b><span class="mono">'+x.q.sec+' · 第 '+(x.i+1)+' 题</span></div><p>正确答案：'+x.q.opts[x.q.ans]+'</p><div class="exp">'+x.q.exp+'</div></div>').join("") : '')+
+    '<h2 class="sec">给他下一条指令</h2>'+
+    '<div class="codecard"><b>生成指令码</b><p>选一个重点板块和每日时长，生成 C1- 开头的码发给他。他粘贴到计划页后，计划里这一块会被标成重点。</p>'+
+      '<div style="display:flex;gap:8px;margin-bottom:9px"><select id="fDim" style="flex:1;height:42px;font-size:15px;border:1px solid var(--rule);border-radius:2px;background:#fff;padding:0 8px;color:var(--ink)">'+
+      dims.map((k,i)=> '<option value="'+k+'"'+(i===lowIdx?' selected':'')+'>'+DIMNAME[k]+'</option>').join("")+'</select>'+
+      '<select id="fMin" style="width:120px;height:42px;font-size:15px;border:1px solid var(--rule);border-radius:2px;background:#fff;padding:0 8px;color:var(--ink)"><option value="30">30 分钟</option><option value="40">40 分钟</option><option value="50" selected>50 分钟</option><option value="60">60 分钟</option></select></div>'+
+      '<div class="row"><button class="btn small primary" data-gen>生成指令码</button></div>'+
+      '<textarea id="cmdOut" readonly placeholder="C1-xxxxxx"></textarea></div>'+
+    '<div style="height:20px"></div>';
+}
+
+const LESSONS = [
+{n:"01", d:"11.11 周三", t:"诊断讲评 + 语法填空三个动作", f:[["00—10","看诊断的五个数，只挑最弱一项"],["10—25","三动作：定词性 → 变化清单 → 通读检查"],["25—65","当堂 10 空两组，计时"],["65—82","逐空讲错，错因只写四个字"],["82—90","让他复述三动作，布置每天 1 篇"]], hw:"语法填空 3 篇（每篇标词性）", ck:"能不看笔记说出「先定词性」"},
+{n:"02", d:"11.16 周一", t:"非谓语：先找逻辑主语", f:[["00—10","抽查上次 3 篇，抽 2 空问理由"],["10—25","主语的主动 / 被动决定 doing 还是 done"],["25—65","15 题专项，每题先标主语"],["65—82","讲「主语找错」这一类错"],["82—90","让他画一张判断流程图"]], hw:"非谓语 15 题", ck:"15 题对 ≥ 11"},
+{n:"03", d:"11.15 周日", t:"定语从句 + 名词性从句", f:[["00—10","复述非谓语流程图"],["10—25","从句缺什么成分，决定用哪个引导词"],["25—65","20 题混合，先判断缺成分"],["65—82","讲 that / what / whether 三个高频错"],["82—90","作业：每天 10 题"]], hw:"从句 20 题 + 语法填空 1 篇", ck:"能区分缺成分与不缺成分"},
+{n:"04", d:"11.18 周三", t:"时态语态 + 主谓一致", f:[["00—10","错题重做 3 题"],["10—25","标志词表：since / by the time / last year"],["25—65","语法填空 2 篇限时"],["65—82","主谓一致 5 个高频结构"],["82—90","布置每日 1 篇 + 错题抄题干"]], hw:"语法填空 4 篇", ck:"时态题正确率 ≥ 70%"},
+{n:"05", d:"11.23 周一", t:"状语从句 + 无提示空（冠介连代）", f:[["00—10","无提示空先做一遍，看他怎么试"],["10—25","无提示只考四类：冠词、介词、连词、代词"],["25—65","语法填空 3 篇，专门盯 3 个无提示空"],["65—82","讲「通读一遍再定」的顺序"],["82—90","本周语法小结，标出最生的两张卡"]], hw:"语法填空 4 篇（圈出无提示空）", ck:"无提示空 10 个对 7 个以上"},
+{n:"06", d:"11.22 周日", t:"听力专项：30 分怎么稳住", f:[["00—10","放一段长对话，让他边听边记关键词"],["10—25","前 5 题只播一遍：进考场先看题干，把人名地名圈出来"],["25—65","3 段精听：先做题，再逐句跟读一遍"],["65—82","讲转折词 but / actually / instead 后的答案"],["82—90","作业：每天 1 段精听 + 跟读 3 遍"]], hw:"精听 5 段（跟读）", ck:"长对话 4 题对 3 以上"},
+{n:"07", d:"11.25 周三", t:"七选五：先逻辑，再主语", f:[["00—10","先做一篇，看他现在怎么选"],["10—25","两把钥匙：逻辑词 + 空格前后主语"],["25—65","3 篇限时，每篇标出依据句"],["65—82","讲错项：为什么「意思对但接不上」"],["82—90","作业：每天 1 篇七选五"]], hw:"七选五 4 篇", ck:"每空能说出依据词"},
+{n:"08", d:"11.30 周一", t:"阅读 A/B：信息检索型拿满", f:[["00—10","限时 2 篇 12 分钟"],["10—25","先看题干，再扫标题与小标题"],["25—65","3 篇精练，标定位句"],["65—82","同义替换的 6 种常见形式"],["82—90","布置每天 2 篇限时"]], hw:"阅读 A/B 10 篇", ck:"2 篇 12 分钟内完成"},
+{n:"09", d:"11.29 周日", t:"阅读 C/D：推断只推一步", f:[["00—10","抽查定位句标注"],["10—25","推断三问：谁说的、凭什么、推到哪"],["25—65","4 篇专项（推断 + 态度 + 猜词）"],["65—82","演示「多推一步」的错误"],["82—90","布置半套限时"]], hw:"半套（阅读 + 语言运用）", ck:"推断题正确 ≥ 3/4"},
+{n:"10", d:"12.02 周三", t:"完形：先通读，画故事线", f:[["00—10","不填，通读一篇，画情感转折"],["10—25","完形的答案一半藏在上下文"],["25—65","2 篇，第一篇不限时通读"],["65—82","对照故事线讲错空"],["82—90","作业：每天 1 篇，先通读再填"]], hw:"完形 3 篇（每篇一句故事线）", ck:"故事线能一句话说清"},
+{n:"11", d:"12.06 周日", t:"完形：复现与情感一致", f:[["00—10","检查故事线质量"],["10—25","复现：同词、同义、同情感反复出现"],["25—65","2 篇限时 24 分钟"],["65—82","四项都通时怎么选"],["82—90","周复盘：错题重做 5 道"]], hw:"完形 2 篇 + 错题重做", ck:"20 空错 ≤ 5"},
+{n:"12", d:"12.07 周一", t:"阅读限时套练 + 讲评", f:[["00—05","规则：45 分钟 4 篇，不查词"],["05—50","限时 4 篇"],["50—70","只统计错因类型，不讲逐题"],["70—82","挑 2 道最典型讲"],["82—90","定下周写作目标"]], hw:"阅读 4 篇限时", ck:"4 篇 45 分钟内完成"},
+{n:"13", d:"12.09 周三", t:"应用文：80 词三段 + 三个骨架", f:[["00—10","看旧作文，只数结构"],["10—25","来意 / 要点 / 收尾，每段首句必须完整"],["25—60","当堂写 1 篇，限时 25 分钟"],["60—82","当场改结构与错句，不动他的词"],["82—90","周末再写 1 篇同类"]], hw:"应用文 2 篇", ck:"25 分钟内写完 80 词"},
+{n:"14", d:"12.14 周一", t:"应用文批改 + 重写 + 卷面", f:[["00—10","两篇对比，找同一个毛病"],["10—25","三个提分点：连接词、非谓语、礼貌收尾"],["25—55","重写上周那篇，20 分钟"],["55—82","两版对比，让他自己说哪句变好"],["82—90","定稿誊抄，练不涂改"]], hw:"誊抄 + 新题 1 篇", ck:"重写稿低级错误 ≤ 2 处"},
+{n:"15", d:"12.13 周日", t:"读后续写：动作 + 情绪两句", f:[["00—10","讲评分：情节合理 > 语言华丽"],["10—25","示范 4 组动作 + 情绪句，只记 2 组"],["25—60","给开头，写 80 词，含动作与情绪各一句"],["60—82","把「he was happy」改成动作"],["82—90","作业：每天 1 段 60 词"]], hw:"续写段落 4 段", ck:"每段都有具体动作"},
+{n:"16", d:"12.16 周三", t:"续写完整篇 + 与原文衔接", f:[["00—10","挑他 4 段里最好的一段"],["10—25","两段功能：解决问题 / 感受变化"],["25—60","完整写 150 词，35 分钟"],["60—82","结尾升华的 3 个句式"],["82—90","作业：整篇 1 篇"]], hw:"完整续写 1 篇", ck:"两段各有明确功能"},
+{n:"17", d:"12.17 周四", t:"半套限时 + 讲评", f:[["00—05","规则：60 分钟，不查词不停顿"],["05—65","半套（阅读 + 语言运用）"],["65—82","对答案，只统计错因类型"],["82—90","定 12.19 后的收尾计划"]], hw:"半套 1 份 + 错题重做", ck:"半套用时 ≤ 60 分钟"},
+{n:"18", d:"12.20 周日", t:"整卷限时 120 分钟 + 定型", f:[["00—05","考前：时间分配再看一遍"],["05—125","整卷含听力与写作"],["125—135","当场对答案，记分数"],["135—150","只讲 3 道最影响分数的题"]], hw:"整卷错题全部重做", ck:"能在 120 分钟内做完"}
+];
+
+function planHTML(){
+  return '<div style="margin-top:16px"><h2 class="sec" style="margin-top:0">18 次课排期</h2>'+
+    '<p class="lead" style="margin:0 0 10px;font-size:13.5px">每周 3 次、每次 90 分钟（周一 / 周三 / 周日 21:10—22:40），按浙江卷板块顺序推进。每节课只讲一个点，剩下时间压着他练。</p>'+
+    '<div class="bones" style="display:grid;gap:6px;margin-bottom:10px">'+
+      ['00—10 复盘上次｜只问错题本 2 道','10—25 只讲一个点｜多讲一个他就记不住','25—65 压着他练｜计时，不查词','65—82 逐题讲错｜先问他思路','82—90 复述 + 作业｜让他用一句话说出动作']
+      .map(x=> '<div style="border-left:2px solid var(--green);padding:4px 0 4px 9px;font-size:12.5px;color:var(--ink2)">'+x+'</div>').join("")+
+    '</div>'+
+    LESSONS.map((l,i)=> '<details class="lcard"'+(i===0?' open':'')+'><summary><span class="no">'+l.n+'</span><span class="hd"><b>'+l.t+'</b><span>'+l.d+' · 90′</span></span></summary>'+
+      '<div class="bd"><ul class="fl">'+l.f.map(x=> '<li><span class="t">'+x[0]+'</span><span>'+x[1]+'</span></li>').join("")+'</ul>'+
+      '<div class="rows"><div><span class="lb">作业</span>'+l.hw+'</div><div><span class="lb">验收</span>'+l.ck+'</div></div></div></details>').join("")+
+    '<div class="finish"><b>12 月 19 日 – 1 月 7 日：收尾期</b><p>不再上新课。每周一次线上督查（12.27、1.4）：看汇报码、点 3 道错题、定下一周两套真题。1 月 6 日最后一课只做三件事：时间分配、作文骨架默写、考场突发处理。</p></div>'+
+    '<div style="height:20px"></div></div>';
+}
+
+function talkHTML(){
+  return '<div style="margin-top:16px">'+
+    '<div class="card"><b>夸：三条规则</b><p>① 夸动作不夸人：「你先划题干再回原文，这个顺序对了」比「你真聪明」有用十倍。<br>② 同一句夸奖一周别用第二次，他会听出敷衍。<br>③ 答对后加一句「理由呢」，让他复述——能说出理由才是真会。</p></div>'+
+    '<div class="card"><b>纠错：三步</b><p>① 先问「你当时怎么想的」，八成错在第一步。<br>② 只指出断点，不重讲整道题。<br>③ 立刻给一道同类题，当堂做对才算补上。</p></div>'+
+    '<div class="card"><b>禁语</b><p>「这题很简单」——他会觉得自己笨，然后不问了。<br>「你怎么又错」——下次他会瞒着错题。<br>「我讲过了」——讲过不等于他学会，重讲 30 秒就够。</p></div>'+
+    '<div class="card"><b>每周检查点（周日 10 分钟）</b><p>打卡 ≥ 5 天；错题本 ≤ 10 道；词包推进 ≥ 2 包；限时阅读 2 篇 ≤ 18 分钟；作文重写稿比第一版少 3 处低级错误。</p></div>'+
+    '<div class="card"><b>家长汇报（每周一条）</b><p>「本周打卡 5 天，语法填空从 6/10 到 8/10；下周重点在七选五，作业已发到他的练习页，麻烦提醒他 21:10 开始，上课日 90 分钟、其余 40 分钟。」</p></div>'+
+    '<div class="card"><b>浙江卷的 5 个得分常识</b><p>① 听力前 5 题只播一遍的地方最容易丢，进考场先看题干。<br>② 七选五 5 题 12.5 分，是单位时间性价比最高的板块。<br>③ 完形 15 空每题 1 分，错 6 个就是 6 分，先通读再填。<br>④ 语法填空有提示 7 空、无提示 3 空，无提示只考冠词、介词、连词、代词。<br>⑤ 应用文 15 分、续写 25 分，写作 40 分里 25 分靠情节，不靠难词。</p></div>'+
+    '<div style="height:20px"></div></div>';
+}
+
+/* 学生端：接收老师指令 */
+const _plan = renderPlan;
+renderPlan = function(){
+  _plan();
+  const bar = document.getElementById("focusBar");
+  if(!bar) return;
+  if(S.focus && S.focus.f){
+    bar.innerHTML = '<div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;border-color:var(--green)">'+
+      '<div><b style="font-size:13.5px">老师指令：重点练 '+DIMNAME[S.focus.f]+'</b><div style="font-size:12px;color:var(--muted);margin-top:2px">每天约 '+S.focus.m+' 分钟 · 计划里这一块已标为「重点」</div></div>'+
+      '<button class="btn small ghost" id="clrFocus">清除</button></div>';
+  }else{
+    bar.innerHTML = '<div class="codecard" style="margin-top:10px"><b>老师给了指令码？</b><p>粘贴到这里，计划会自动把重点板块标出来。</p>'+
+      '<textarea id="cmdIn" placeholder="C1-xxxxxx" style="min-height:64px"></textarea>'+
+      '<div class="row"><button class="btn small" id="applyCmd">应用指令</button></div></div>';
+  }
+};
+document.addEventListener("click", e=>{
+  if(e.target.closest("#applyCmd")){
+    const v = (document.getElementById("cmdIn").value||"").trim();
+    const o = b64d(v.replace(/^C1-/,""));
+    if(!o || !o.f){ toast("这串码不对，让老师重新发一次。", false); return; }
+    S.focus = {f:o.f, m:o.m}; save(); renderPlan();
+    toast("收到。接下来重点练 "+DIMNAME[o.f]+"。", true);
+  }
+  if(e.target.closest("#clrFocus")){
+    S.focus = null; save(); renderPlan(); toast("已清除老师指令。", true);
+  }
+});
+/* 家长视图：并入学生端战绩页 */
+function renderParCard(){
+  const box = document.getElementById("parCard");
+  if(!box) return;
+  const o = b64d(packReport().slice(3));
+  const dims = ["vocab","gram","cloze","read","write"];
+  const dd = (o.m.match(/1/g)||[]).length;
+  const lowIdx = o.r.indexOf(Math.min.apply(null,o.r));
+  box.innerHTML = '<h2 class="sec">家长看这里</h2>'+
+    '<div class="card" style="border-color:var(--green)">'+
+      '<div style="display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--ink2)">'+
+        '<div><div class="mono" style="color:var(--muted);font-size:11px">完成天数</div><b style="font-family:'+"'Anton'"+',sans-serif;font-size:23px">'+dd+'</b><span style="font-size:12px;color:var(--muted)"> / '+TOTAL+'</span></div>'+
+        '<div><div class="mono" style="color:var(--muted);font-size:11px">最该补</div><b style="font-size:15px">'+DIMNAME[dims[lowIdx]]+'</b></div>'+
+        '<div><div class="mono" style="color:var(--muted);font-size:11px">待回炉错题</div><b style="font-family:'+"'Anton'"+',sans-serif;font-size:23px">'+o.w.length+'</b></div>'+
+        '<div><div class="mono" style="color:var(--muted);font-size:11px">生词</div><b style="font-family:'+"'Anton'"+',sans-serif;font-size:23px">'+o.s+'</b></div>'+
+      '</div>'+
+      '<hr style="border:0;border-top:1px dashed var(--rule);margin:12px 0">'+
+      '<p style="margin:0;font-size:12.5px;line-height:1.8;color:var(--ink2)">家长只管三件事：<b>21:10 叫他开始</b>、<b>把手机拿到客厅</b>、<b>22:40 提醒收工</b>。上课日是周一、周三、周日，各 90 分钟；其余四天自习 40 分钟。练什么、对几道，都不必问。</p>'+
+      '<p style="margin:8px 0 0;font-size:12px;color:var(--muted)">以上数字在你每次打卡后自动更新，家长直接点开这个页面就能看到，不需要另外收汇报码。</p>'+
+    '</div>';
+}
+</script>
+</body>
+</html>
