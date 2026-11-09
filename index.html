@@ -456,14 +456,14 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
       <button class="btn ghost" data-go="plan">看 40 天计划</button>
     </div>
     <div class="hero-foot">
-      <span>目标 <b id="hTar">120</b></span><i class="sep"></i><span><b>40</b> 天</span><i class="sep"></i><span>上课 90′／自习 40′</span>
+      <span>目标 <b id="hTar">120</b></span><i class="sep"></i><span><b>40</b> 天</span><i class="sep"></i><span>上课 90′／自习 50′</span>
     </div>
   </div>
 
   <div class="factrow">
     <div class="fact"><div class="k">目标</div><div class="v" id="fTar">120</div><div class="d">首考</div></div>
     <div class="fact"><div class="k">周期</div><div class="v">40<span style="font-size:14px;font-family:var(--sans)">天</span></div><div class="d">18 次课</div></div>
-    <div class="fact"><div class="k">自习</div><div class="v">40<span style="font-size:15px;font-family:var(--sans)">′</span></div><div class="d">21:10 起</div></div>
+    <div class="fact"><div class="k">自习</div><div class="v">50<span style="font-size:15px;font-family:var(--sans)">′</span></div><div class="d">21:10 起</div></div>
   </div>
 
   <div class="wrap">
@@ -507,11 +507,11 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
       </div>
       <div class="card">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-linecap="round"><path d="M5 3v18M5 4h13l-3 4 3 4H5"/></svg>
-        <div><b>60 天逐日任务</b><span>上课日 90 分钟，其余 40 分钟，打开就知道做什么</span></div>
+        <div><b>60 天逐日任务</b><span>上课日 90 分钟，其余 50 分钟，打开就知道做什么</span></div>
       </div>
       <div class="card">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-linecap="round"><path d="M4 5h16v10H4z"/><path d="M8 9h8M8 12h5"/><path d="M9 19h6"/></svg>
-        <div><b>180 个高频词</b><span>12 个词包循环 5 轮，配发音和生词本</span></div>
+        <div><b>180 个高频词</b><span>每天两个词包（30 词），6 天一循环，40 天过 6 遍</span></div>
       </div>
       <div class="card">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-linecap="round"><path d="M12 3l2.5 5.5 6 .6-4.5 4 1.3 5.9L12 16l-5.3 3 1.3-5.9-4.5-4 6-.6z"/></svg>
@@ -521,7 +521,7 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
 
     <h2 class="sec">这个页面怎么用</h2>
     <ol class="judge">
-      <li><div><b>学生：先做诊断，再每天打卡</b><p>20 分钟做完 29 题，页面会告诉你最该补哪块。之后每天打开「计划」，3 件事打勾：上课日 90 分钟，其余 40 分钟。</p></div></li>
+      <li><div><b>学生：先做诊断，再每天打卡</b><p>20 分钟做完 29 题，页面会告诉你最该补哪块。之后每天打开「计划」，3 件事打勾：上课日 90 分钟，其余 50 分钟（含 30 词）。</p></div></li>
       <li><div><b>每周日：生成一次汇报码</b><p>在「战绩」页点生成，复制那串 R1- 开头的码，发给老师和家长。</p></div></li>
       <li><div><b>老师：粘贴码，看到进度</b><p>右上角切到「老师」，粘贴后能看到打卡、正确率和错题，还能生成 C1- 指令码当作业。</p></div></li>
       <li><div><b>家长：直接点开学生端</b><p>到「战绩」页最上面就是「家长看这里」：完成天数、最该补的一块、待回炉错题、生词，一眼看完。</p></div></li>
@@ -566,7 +566,7 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
     <div id="todayCard"></div>
     <div class="daygrid" id="daygrid"></div>
     <div id="dayDetail"></div>
-    <p style="font-size:12.5px;color:var(--muted);line-height:1.7;margin:14px 0 0">上课日（周一/周三/周日）上 90 分钟课，其余几天自己学 40 分钟。打勾会保存，换页面也不会丢。周日留 20 分钟做复盘，是整周里最值钱的那 20 分钟。</p>
+    <p style="font-size:12.5px;color:var(--muted);line-height:1.7;margin:14px 0 0">上课日（周一/周三/周日）上 90 分钟课，其余几天自己学 50 分钟。打勾会保存，换页面也不会丢。周日留 20 分钟做复盘，是整周里最值钱的那 20 分钟。</p>
     <div class="finish"><b>12 月 19 日之后：收尾期（20 天）</b><p>不再排新任务。每天半套真题 + 错题本，周六整套限时，周日只看错题。这一段的目标是把「会做」变成「考试那天做得出来」。</p></div>
     <div style="height:30px"></div>
   </div>
@@ -1072,7 +1072,7 @@ function calc(){
 
 const DIMNAME = {vocab:"词汇辨识", gram:"语法填空", cloze:"完形填空", read:"阅读理解", write:"写作输出"};
 const DIMADV = {
-  vocab:"词包每天 15 个，按 12 包循环 5 轮；只记「词 + 一个搭配」，不背例句。",
+  vocab:"每天两个词包、30 个词，12 包 6 天走完一轮，40 天能过 6 遍；只记「词 + 一个搭配」，不背例句。",
   gram:"先背 10 张急救卡，每次做题只问一句：这个空该填什么词性。",
   cloze:"先通读再填，每篇画一条故事线；四个选项都通时，选和全文情感一致的那个。",
   read:"题干先读，回原文找同义替换；每段只找一句主旨句。",
@@ -1134,9 +1134,9 @@ const STAGE_INFO = [
 ];
 
 function tasksOf(day){
-  const st = stageOf(day), wd = (day-1)%7, pack = ((day-1)%12)+1;
+  const st = stageOf(day), wd = (day-1)%7, pack = ((day-1)*2)%12+1, pack2 = (pack%12)+1;
   const t = [];
-  t.push({dim:"vocab", label:"词包 "+String(pack).padStart(2,"0")+" · 15 词", note:"先遮中文回忆，再遮英文拼写", min:12});
+  t.push({dim:"vocab", label:"词包 "+String(pack).padStart(2,"0")+" + "+String(pack2).padStart(2,"0")+" · 30 词", note:"先遮中文回忆，再遮英文拼写；只记「词 + 一个搭配」", min:18});
 
   let main;
   if(st===1){
@@ -1576,8 +1576,8 @@ function talkHTML(){
     '<div class="card"><b>夸：三条规则</b><p>① 夸动作不夸人：「你先划题干再回原文，这个顺序对了」比「你真聪明」有用十倍。<br>② 同一句夸奖一周别用第二次，他会听出敷衍。<br>③ 答对后加一句「理由呢」，让他复述——能说出理由才是真会。</p></div>'+
     '<div class="card"><b>纠错：三步</b><p>① 先问「你当时怎么想的」，八成错在第一步。<br>② 只指出断点，不重讲整道题。<br>③ 立刻给一道同类题，当堂做对才算补上。</p></div>'+
     '<div class="card"><b>禁语</b><p>「这题很简单」——他会觉得自己笨，然后不问了。<br>「你怎么又错」——下次他会瞒着错题。<br>「我讲过了」——讲过不等于他学会，重讲 30 秒就够。</p></div>'+
-    '<div class="card"><b>每周检查点（周日 10 分钟）</b><p>打卡 ≥ 5 天；错题本 ≤ 10 道；词包推进 ≥ 2 包；限时阅读 2 篇 ≤ 18 分钟；作文重写稿比第一版少 3 处低级错误。</p></div>'+
-    '<div class="card"><b>家长汇报（每周一条）</b><p>「本周打卡 5 天，语法填空从 6/10 到 8/10；下周重点在七选五，作业已发到他的练习页，麻烦提醒他 21:10 开始，上课日 90 分钟、其余 40 分钟。」</p></div>'+
+    '<div class="card"><b>每周检查点（周日 10 分钟）</b><p>打卡 ≥ 5 天；错题本 ≤ 10 道；词包推进 ≥ 10 包（每天两包）；限时阅读 2 篇 ≤ 18 分钟；作文重写稿比第一版少 3 处低级错误。</p></div>'+
+    '<div class="card"><b>家长汇报（每周一条）</b><p>「本周打卡 5 天，语法填空从 6/10 到 8/10；下周重点在七选五，作业已发到他的练习页，麻烦提醒他 21:10 开始，上课日 90 分钟、其余 50 分钟。」</p></div>'+
     '<div class="card"><b>浙江卷的 5 个得分常识</b><p>① 听力前 5 题只播一遍的地方最容易丢，进考场先看题干。<br>② 七选五 5 题 12.5 分，是单位时间性价比最高的板块。<br>③ 完形 15 空每题 1 分，错 6 个就是 6 分，先通读再填。<br>④ 语法填空有提示 7 空、无提示 3 空，无提示只考冠词、介词、连词、代词。<br>⑤ 应用文 15 分、续写 25 分，写作 40 分里 25 分靠情节，不靠难词。</p></div>'+
     '<div style="height:20px"></div></div>';
 }
@@ -1627,7 +1627,7 @@ function renderParCard(){
         '<div><div class="mono" style="color:var(--muted);font-size:11px">生词</div><b style="font-family:'+"'Anton'"+',sans-serif;font-size:23px">'+o.s+'</b></div>'+
       '</div>'+
       '<hr style="border:0;border-top:1px dashed var(--rule);margin:12px 0">'+
-      '<p style="margin:0;font-size:12.5px;line-height:1.8;color:var(--ink2)">家长只管三件事：<b>21:10 叫他开始</b>、<b>把手机拿到客厅</b>、<b>22:40 提醒收工</b>。上课日是周一、周三、周日，各 90 分钟；其余四天自习 40 分钟。练什么、对几道，都不必问。</p>'+
+      '<p style="margin:0;font-size:12.5px;line-height:1.8;color:var(--ink2)">家长只管三件事：<b>21:10 叫他开始</b>、<b>把手机拿到客厅</b>、<b>22:40 提醒收工</b>。上课日是周一、周三、周日，各 90 分钟；其余四天自习 50 分钟（含 30 个词）。练什么、对几道，都不必问。</p>'+
       '<p style="margin:8px 0 0;font-size:12px;color:var(--muted)">以上数字在你每次打卡后自动更新，家长直接点开这个页面就能看到，不需要另外收汇报码。</p>'+
     '</div>';
 }
