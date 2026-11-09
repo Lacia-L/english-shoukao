@@ -470,51 +470,39 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
       <path d="M2 9C24 3 48 11 74 8c22-2 40-6 62-4 18 1 34 4 52-1" fill="none" stroke="#C0392B" stroke-width="2.6" stroke-linecap="round" opacity=".85"/>
     </svg>
     <p class="hero-line">首考 <b>1 月 8 日</b>，还剩两个多月。<br>前 <b>40 天</b>把该拿的分做实，后面 20 天交给真题和学校。</p>
-    <span class="note-pen" id="notePen">目标 120，够得着</span>
+    <span class="note-pen" id="notePen">40 天，一份能执行完的计划</span>
     <div class="hero-actions">
       <button class="btn primary" data-go="test">先做 20 分钟诊断</button>
       <button class="btn ghost" data-go="plan">看 40 天计划</button>
     </div>
     <div class="hero-foot">
-      <span>目标 <b id="hTar">120</b></span><i class="sep"></i><span><b>40</b> 天</span><i class="sep"></i><span>上课 90′／自习 70′</span>
+      <span><b>40</b> 天</span><i class="sep"></i><span>上课 90′／自习 70′</span>
     </div>
   </div>
 
   <div class="factrow">
-    <div class="fact"><div class="k">目标</div><div class="v" id="fTar">120</div><div class="d">首考</div></div>
+    <div class="fact"><div class="k">诊断</div><div class="v">29<span style="font-size:14px;font-family:var(--sans)">题</span></div><div class="d">20 分钟</div></div>
     <div class="fact"><div class="k">周期</div><div class="v">40<span style="font-size:14px;font-family:var(--sans)">天</span></div><div class="d">18 次课</div></div>
-    <div class="fact"><div class="k">自习</div><div class="v">50<span style="font-size:15px;font-family:var(--sans)">′</span></div><div class="d">21:10 起</div></div>
+    <div class="fact"><div class="k">自习</div><div class="v">70<span style="font-size:15px;font-family:var(--sans)">′</span></div><div class="d">21:10 起</div></div>
   </div>
 
   <div class="wrap">
-    <div class="card" style="margin-top:14px">
-      <div class="mono" style="color:var(--muted);margin-bottom:8px">只填目标，别的不填</div>
-      <div style="display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap">
-        <label style="flex:1;min-width:120px;font-size:12px;color:var(--muted)">目标分数
-          <input id="pTar" type="number" min="0" max="150" value="120" style="width:100%;height:42px;font-size:16px;margin-top:4px;padding:0 10px;border:1px solid var(--rule);border-radius:2px;background:var(--paper);color:var(--ink)">
-        </label>
-        <button class="btn small primary" id="pSave" style="flex:0 0 auto">更新</button>
-      </div>
-      <p id="recovLine" style="margin:9px 0 0;font-size:12.5px;color:var(--muted);line-height:1.7"></p>
-    </div>
-
-    <p class="lead" id="leadP"></p>
 
     <h2 class="sec">浙江卷怎么算分</h2>
     <table class="tbl" style="font-size:12px;table-layout:fixed">
-      <tr><th style="width:30%">板块</th><th style="width:16%">满分</th><th style="width:54%">90–100 分段常见的失分</th></tr>
-      <tr><td>听力 20 题</td><td>30</td><td>后两段长对话与独白，细节漏听 3–5 分</td></tr>
-      <tr><td>阅读 A–D 15 题</td><td>37.5</td><td>D 篇推断多推一步，2–3 题</td></tr>
-      <tr><td>七选五 5 题</td><td>12.5</td><td>只看意思不看逻辑词，错 2–3 个</td></tr>
-      <tr><td>完形 15 空</td><td>15</td><td>逐空填、故事线断，错 5–6 个</td></tr>
-      <tr><td>语法填空 10 空</td><td>15</td><td>词性判断不稳，错 4–5 空</td></tr>
-      <tr><td>应用文 80 词</td><td>15</td><td>结构散、要点漏一个</td></tr>
-      <tr><td>读后续写 150 词</td><td>25</td><td>只有叙述，缺动作与情绪细节</td></tr>
+      <tr><th style="width:30%">板块</th><th style="width:16%">满分</th><th style="width:54%">拿分要点（不是你的分数）</th></tr>
+      <tr><td>听力 20 题</td><td>30</td><td>后两段长对话与独白最容易漏细节，听到数字、转折词立刻落笔</td></tr>
+      <tr><td>阅读 A–D 15 题</td><td>37.5</td><td>推断题只推一步，答案必须有原文依据，不靠常识补</td></tr>
+      <tr><td>七选五 5 题</td><td>12.5</td><td>先看逻辑词和空格前后主语，再看意思</td></tr>
+      <tr><td>完形 15 空</td><td>15</td><td>先通读画故事线，再回头填；答案一半藏在上下文</td></tr>
+      <tr><td>语法填空 10 空</td><td>15</td><td>每个空先定词性，再变形；无提示空只有冠介连代四类</td></tr>
+      <tr><td>应用文 80 词</td><td>15</td><td>三段：来意 / 要点 / 收尾，每段首句写全</td></tr>
+      <tr><td>读后续写 150 词</td><td>25</td><td>每段至少一句具体动作 + 一句情绪，别只写情节</td></tr>
     </table>
 
     <h2 class="sec">为什么先做诊断</h2>
     <ol class="judge">
-      <li><div><b>96 分有很多种 96 分</b><p>有人是词汇不够读不懂，有人是读懂了却写不出。方法完全不同，先测再练。</p></div></li>
+      <li><div><b>同样的分，原因可能完全不同</b><p>有人是词汇不够读不懂，有人是读懂了却写不出。方法完全不同，先测再练。</p></div></li>
       <li><div><b>20 分钟换 40 天的方向</b><p>29 道题，分词汇、语法、完形、阅读、写作五块，测完直接算出你最该补的那块。</p></div></li>
       <li><div><b>计划会跟着你调</b><p>测完哪块弱，后面 40 天的任务清单就自动给那块加练、标重点。</p></div></li>
     </ol>
@@ -1124,7 +1112,7 @@ function renderResult(){
 
   document.getElementById("resultWrap").innerHTML =
     '<div class="result-hd"><div class="kicker">DIAGNOSTIC REPORT · ' + fmt(now) + '</div>'+
-    '<h1>'+title+'</h1><p>29 道题，五项能力。这不是分数，是接下来 60 天的施工图。</p></div>'+
+    '<h1>'+title+'</h1><p>29 道题，五项能力。这不是分数，是接下来 40 天的施工图。</p></div>'+
     '<div class="wrap">' + dimHTML + box +
     '<h2 class="sec">接下来这样做</h2>'+
     '<ol class="judge">'+
@@ -1545,32 +1533,6 @@ document.getElementById("resetAll").addEventListener("click", ()=>{
 });
 
 /* ================= 初始化 ================= */
-/* ---- 目标分数设置 ---- */
-function renderProfile(){
-  S.profile = S.profile || {target:120};
-  const p = S.profile;
-  const gap = Math.max(0, p.target - 96);
-  document.getElementById("hTar").textContent = p.target;
-  document.getElementById("fTar").textContent = p.target;
-  const note = document.getElementById("notePen");
-  if(note) note.textContent = "目标 " + p.target + "，够得着";
-  const pTar = document.getElementById("pTar");
-  if(pTar) pTar.value = p.target;
-  const lead = document.getElementById("leadP");
-  if(lead) lead.innerHTML = "96 分这个位置，在浙江卷里通常意味着：<em>听力和阅读的基本盘在，失分集中在七选五、完形、语法填空和写作输出</em>。这四块恰好都是「有方法就能涨」的部分，40 天够把其中大半收回来。";
-  const line = document.getElementById("recovLine");
-  if(line) line.textContent = "从现在到 " + p.target + " 分，差 " + gap +
-    " 分左右。按经验估算：七选五 +3、完形 +3、语法填空 +4、阅读 +5、写作 +6，这 20 分先拿稳，剩下的靠听力和卷面。";
-}
-document.addEventListener("click", function(e){
-  if(e.target.closest("#pSave")){
-    const t = Math.min(150, Math.max(0, parseInt(document.getElementById("pTar").value)||0));
-    S.profile = {target:t}; save(); renderProfile();
-    toast("目标已设为 " + t + " 分。", true);
-  }
-});
-renderProfile();
-
 renderPlan();
 </script>
 <script>
