@@ -586,12 +586,16 @@ h2.sec::before{content:"";width:16px;height:2px;background:var(--red);display:bl
   <div class="wrap">
     <div id="wList">
       <h2 class="sec">选词包</h2>
-      <p class="lead" style="margin:0 0 12px;font-size:13px">考纲 3874 个词按意思分成 40 包，一天一包（约 97 词）。点任意一包进去，里面就是这一包的全部词；会了的点勾，不会的点星。</p>
+      <p class="lead" style="margin:0 0 12px;font-size:13px">考纲 3874 个词按意思分成 40 包，一天一包（约 97 词）。点任意一包进去，里面就是这一包的全部词；会了的点勾，不会的点星。学完点「自测这一包」，10 道题当场验。</p>
       <div id="packs"></div>
     </div>
     <div id="wDetail" style="display:none">
       <button class="btn small ghost" id="wBack" style="margin-bottom:10px">← 返回词包列表</button>
-      <h2 class="sec" id="wTitle">词包</h2>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+        <h2 class="sec" id="wTitle" style="margin:0">词包</h2>
+        <button class="btn small primary" id="vqStart">自测这一包 · 10 题</button>
+      </div>
+      <div id="vqBox"></div>
       <div class="wgrid" id="wgrid"></div>
       <div id="myWords"></div>
     </div>
@@ -1274,6 +1278,61 @@ let curPack = 0;
 function allWords(){ return PACKS.flatMap((p,pi)=> p.w.map(w=> ({pi, w:w[0], pos:w[1], cn:w[2]}))); }
 
 let packOpen = false;
+let vq = null;   /* {pi, items:[{w,dir,opts,a}], ans:{}, }
+
+/* ---- 词包自测：10 题，中英互译各半 ---- */
+function vqBuild(pi){
+  const pack = PACKS[pi];
+  const pool = pack.w.slice().sort(()=> Math.random()-0.5).slice(0,10);
+  const all = allWords();
+  const items = pool.map((w,idx)=>{
+    const dir = idx%2===0 ? "e2c" : "c2e";
+    let correct, opts;
+    if(dir==="e2c"){ correct = w[2].split("；")[0].split("，")[0].slice(0,22); }
+    else{ correct = w[0]; }
+    const cand = [];
+    while(cand.length<3){
+      const x = all[Math.floor(Math.random()*all.length)];
+      const v = dir==="e2c" ? x.cn.split("；")[0].split("，")[0].slice(0,22) : x.w;
+      if(v!==correct && !cand.includes(v) && x.w!==w[0]) cand.push(v);
+    }
+    opts = [correct, ...cand].sort(()=> Math.random()-0.5);
+    return {w:w[0], cn:w[2], dir, opts, a:opts.indexOf(correct)};
+  });
+  return {pi, items, ans:{}};
+}
+
+function vqRender(){
+  const box = document.getElementById("vqBox");
+  if(!box) return;
+  if(!vq){ box.innerHTML=""; return; }
+  const q = vq;
+  let right=0, answered=0;
+  q.items.forEach(x=>{ if(q.ans[x.w+"|"+x.dir]!==undefined){answered++; if(q.ans[x.w+"|"+x.dir]===x.a) right++; } });
+  let head = '<div class="card" style="margin:12px 0"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">'+
+    '<b style="font-size:14.5px">自测 · P'+PACKS[q.pi].n+'</b>'+
+    '<span class="mono" style="font-size:11.5px;color:var(--muted)">已答 '+answered+'/10 · 对 '+right+'</span></div>'+
+    '<p style="margin:6px 0 0;font-size:12.5px;color:var(--muted)">英→中 5 题、中→英 5 题。答对自动记为已掌握，答错自动进生词本。</p></div>';
+  const body = q.items.map((x,i)=>{
+    const key=x.w+"|"+x.dir, ans=q.ans[key];
+    const opts = x.opts.map((o,oi)=>{
+      let cls="gopt";
+      if(ans!==undefined){ if(oi===x.a) cls+=" right"; else if(oi===ans) cls+=" wrong"; }
+      return '<button class="'+cls+'" data-vqi="'+i+'" data-vo="'+oi+'"'+(ans!==undefined?" disabled":"")+'>'+String.fromCharCode(65+oi)+'. '+o+'</button>';
+    }).join("");
+    let why = ans!==undefined ? '<div class="gwhy">'+(ans===x.a?"":"正确答案 "+String.fromCharCode(65+x.a)+"。")+
+      (x.dir==="e2c" ? x.w+"： "+x.cn : x.w+" "+x.cn.split("；")[0])+'</div>' : "";
+    return '<div class="gq"><div class="qt">'+(i+1)+'. '+(x.dir==="e2c"? x.w : x.cn.split("；")[0].split("，")[0])+'</div><div class="gopts">'+opts+'</div>'+why+'</div>';
+  }).join("");
+  let tail = answered===10
+    ? '<div class="card" style="border-color:var(--green);margin-bottom:12px"><b style="font-size:15px">'+right+' / 10 对了</b><p style="margin:6px 0 0;font-size:12.5px;line-height:1.8">'+
+      (right>=9?"这一包算是过手了，明天上来先扫一眼，别回头又忘。":right>=7?"大体是稳定的，错的几个已经进生词本，睡前回看一遍。":"这一包还不算会。错的那几个先去生词本过两遍，明天再测一次同一包。")+
+      '</p><div class="row" style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn small ghost" id="vqAgain">再测这一包</button><button class="btn small primary" data-go="log">去生词本</button></div></div>'
+    : '';
+  box.innerHTML = head + body + tail;
+}
+
+
 
 function renderWords(){
   const q = (document.getElementById("wSearch").value||"").trim().toLowerCase();
@@ -1327,6 +1386,17 @@ function renderWords(){
     }).join("");
   }
 
+  vqRender();
+  if(vq && vq.pi===curPack){
+    document.getElementById("wgrid").style.display="none";
+    document.getElementById("myWords").style.display="none";
+    document.getElementById("vqStart").style.display="none";
+  }else{
+    document.getElementById("wgrid").style.display="";
+    document.getElementById("myWords").style.display="";
+    document.getElementById("vqStart").style.display="";
+  }
+
   const got = p.w.filter(w=> S.learned.includes(w[0])).length;
   document.getElementById("myWords").innerHTML = q ? '' :
     '<div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px"><div><b style="font-size:15px">'+got+' / '+p.w.length+' 已掌握</b><div style="font-size:12.5px;color:var(--muted);margin-top:2px">不会的已经进生词本，去「战绩」能查</div></div><button class="btn small" data-go="log">看生词本</button></div>';
@@ -1335,7 +1405,21 @@ function renderWords(){
 document.addEventListener("click", e=>{
   const pk = e.target.closest("[data-pack]");
   if(pk){ curPack = +pk.dataset.pack; packOpen = true; document.getElementById("wSearch").value=""; renderWords(); return; }
-  if(e.target.closest("#wBack")){ packOpen = false; document.getElementById("wSearch").value=""; renderWords(); return; }
+  if(e.target.closest("#wBack")){ packOpen = false; vq=null; document.getElementById("wSearch").value=""; renderWords(); return; }
+  if(e.target.closest("#vqStart") || e.target.closest("#vqAgain")){ vq = vqBuild(curPack); renderWords(); return; }
+  const vqb = e.target.closest("[data-vqi]");
+  if(vqb && vq){
+    const i = +vqb.dataset.vqi, x = vq.items[i], key = x.w+"|"+x.dir;
+    if(vq.ans[key]!==undefined) return;
+    const pick = +vqb.dataset.vo, ok = pick===x.a;
+    vq.ans[key] = pick;
+    if(ok){ if(!S.learned.includes(x.w)) S.learned.push(x.w); }
+    else{ if(!S.star.includes(x.w)) S.star.push(x.w); if(S.learned.includes(x.w)) S.learned = S.learned.filter(v=> v!==x.w); }
+    save();
+    toast(ok ? pickPraise() : COMFORT[Math.floor(Math.random()*COMFORT.length)], ok);
+    renderWords(); renderLog();
+    return;
+  }
   const say = e.target.closest("[data-say]");
   if(say){
     const w = say.dataset.say;
