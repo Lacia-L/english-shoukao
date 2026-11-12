@@ -1300,5 +1300,38 @@ stw.textContent=[
 document.head.appendChild(stw);
 </script>
 
+<script>
+/* ===== 翻译由使用者自己决定看不看（默认收起，随时可开关）===== */
+var baseCard=window.renderHsCard;
+window.renderHsCard=function(){
+  baseCard();
+  var it=HSE.items[HSE.idx]; if(!it) return;
+  var zh=hsPassageZh(it.kind,it);
+  if(zh){
+    $('#exCard').insertAdjacentHTML('beforeend',
+      '<details class="psg-d trans-user"><summary>中文翻译 · 想看再点开</summary><p class="zh">'+hsP(zh)+'</p></details>');
+  }
+};
+
+window.bindChoice=function(card, ans, explain, key){
+  var box=card.querySelector('.exe');
+  card.querySelectorAll('.xo').forEach(function(btn){
+    btn.onclick=function(){
+      if(HSE.answered) return;
+      HSE.answered=true;
+      var pick=+btn.dataset.i;
+      card.querySelectorAll('.xo').forEach(function(b,k){ if(k===ans) b.classList.add('ok'); });
+      if(pick===ans){ btn.classList.add('ok'); box.textContent='对。'+explain; }
+      else { btn.classList.add('no'); S.qerr[key]=1; saveS(); box.textContent='错。'+explain; }
+      box.style.display='block';
+    };
+  });
+};
+
+var stT=document.createElement('style');
+stT.textContent='.trans-user{margin-top:10px;background:#FBFAF6}\n.trans-user summary{color:#6B6862}';
+document.head.appendChild(stT);
+</script>
+
 </body>
 </html>
