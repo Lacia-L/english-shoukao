@@ -345,7 +345,7 @@ function renderHome(){
   var plb=$('#btnPlay'); if(plb) plb.onclick=function(){ go('play'); };
 
   var doneN=Object.keys(S.done[day]||{}).filter(function(k){ return S.done[day][k]; }).length;
-  $('#homeNote').innerHTML=(T.class
+  $('#homeNote').innerHTML=(T.cls
       ? '上课日：21:10—22:40 共 90 分钟课，加上面三件事；课上听完，作业当天结算。'
       : '自习日：70 分钟左右。三件事做完就收工，别加码。')+
     '<br>今天完成 <b style="color:#1E2124">'+doneN+' / 3</b> 件。错题会自动进「复习」。';
@@ -370,7 +370,7 @@ function renderPlan(day){
   $('#planProg').textContent=done+' / '+TOTAL+' 天有记录';
 
   var T=tasksFor(day), d2=dateOf(day);
-  $('#planDetail').innerHTML='<div class="hd"><b>Day '+day+'</b>　'+(d2.getMonth()+1)+' 月 '+d2.getDate()+' 日 '+WD[d2.getDay()]+(T.class?' · 上课日 21:10—22:40':' · 自习日')+'</div>'+
+  $('#planDetail').innerHTML='<div class="hd"><b>Day '+day+'</b>　'+(d2.getMonth()+1)+' 月 '+d2.getDate()+' 日 '+WD[d2.getDay()]+(T.cls?' · 上课日 21:10—22:40':' · 自习日')+'</div>'+
     T.items.map(function(it){ return '<div class="row"><span>'+esc(it.t)+'</span><span>'+it.min+'′</span></div>'; }).join('')+
     '<div class="row"><span>当天词包</span><span>'+esc(T.pack.t)+' · '+T.pack.w.length+' 词</span></div>';
   $('#planDetail').onclick=function(){ if(day===today) go('home'); };
@@ -1271,5 +1271,34 @@ window.bindChoice=function(card, ans, explain, key, zh){
 };
 
 </script>
+<script>
+/* ===== 计划页：每周节奏 + 强度说明 ===== */
+var basePlan=renderPlan;
+renderPlan=function(day){
+  basePlan(day);
+  var pane=$('#p-plan');
+  if(!$('#weekCard')){
+    pane.insertAdjacentHTML('afterbegin','<div id="weekCard" class="weekcard"></div>');
+  }
+  $('#weekCard').innerHTML='<div class="wh">每周节奏 · 每天多少算够</div>'+
+    '<div class="wr"><b>周日 / 周一 / 周三</b><span>21:10 上课 90 分钟，课后作业 25 分钟</span></div>'+
+    '<div class="wr"><b>周二 / 周四 / 周五</b><span>词包 15′ + 阅读 1 篇限时 8′ + 完形或七选五 1 篇 15′ + 复盘 10′</span></div>'+
+    '<div class="wr"><b>周六</b><span>整套限时：阅读 4 篇 + 语言运用 60 分钟，不查词</span></div>'+
+    '<div class="wnote">强度标准：一周 5 天有专项训练、1 次整套限时、1 次订正；错题当天进本子，周日集中回炉。低于这个量，40 天不够把速度练出来。</div>';
+};
+
+var stw=document.createElement('style');
+stw.textContent=[
+'.weekcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:14px}',
+'.weekcard .wh{font-size:13px;color:#8B8880;margin-bottom:10px}',
+'.weekcard .wr{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:13px;line-height:1.55}',
+'.weekcard .wr:first-of-type{border-top:none}',
+'.weekcard .wr b{flex:none;width:104px;color:var(--ink);font-weight:600}',
+'.weekcard .wr span{color:var(--ink2)}',
+'.weekcard .wnote{margin-top:10px;font-size:12.5px;line-height:1.65;color:#8B8880}'
+].join('\n');
+document.head.appendChild(stw);
+</script>
+
 </body>
 </html>
