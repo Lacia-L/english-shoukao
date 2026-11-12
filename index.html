@@ -245,13 +245,13 @@ function daysLeft(){ var now=new Date(); return Math.max(0,Math.ceil((EXAM-now)/
 
 /* ================= 每日任务 ================= */
 var FOCUS=[
-  ['语法专项','只练非谓语、从句、时态三块，做完立刻对答案'],
-  ['阅读两篇 · 限时 12 分钟','先看题干，再回原文找定位句'],
-  ['完形一篇','先通读画故事线，再回头填'],
+  ['阅读两篇','限时 12 分钟：先题干，再回原文找定位句'],
+  ['七选五一篇','先看空位在段首/段中/段尾，再找逻辑词'],
+  ['完形填空一篇','先通读画故事线，再回头填'],
+  ['语法填空一篇','先判断词性，再定形式（时态/非谓语/主谓一致）'],
+  ['应用文 80 词','三段：来意 / 要点 / 收尾，首句写全'],
+  ['读后续写一段','至少一句具体动作 + 一句人物情绪'],
   ['听力一段精听','先做题，再逐句跟读三遍'],
-  ['七选五一篇','先找逻辑词，再看空格前后主语'],
-  ['应用文 80 词','三段：来意 / 要点 / 收尾，每段首句写全'],
-  ['读后续写一段','至少一句具体动作 + 一句情绪'],
   ['半套限时练','阅读 + 语言运用，60 分钟不查词']
 ];
 function tasksFor(day){
@@ -714,11 +714,9 @@ tasksFor=function(day){
   return {
     pack:pack, cls:cls,
     items:[
-      {k:'pack', t:'词包 '+pad2(pack.n)+' · '+pack.t, m:'先遮中文回忆，再遮英文拼写', min:30},
-      {k:'phrase', t:'短语 8 条', m:'读三遍，遮中文说意思，再遮英文复述', min:15},
-      {k:'sent', t:'造句 3 句', m:'用今天的三个词各写一句，写完念一遍', min:10},
-      {k:'focus', t:f[0]+'（做题）', m:f[1], min:cls?45:20},
-      {k:'rev', t:'复习错题 5 个', m:'错题本里最生的五个，重做一遍', min:10}
+      {k:'pack', t:'词包 '+pad2(pack.n)+' · '+pack.t, m:'30 分钟：先遮中文回忆，再遮英文拼写；顺手过 8 条短语、写 3 句', min:30},
+      {k:'focus', t:f[0], m:f[1], min:cls?45:20},
+      {k:'rev', t:'复习错题', m:'错题本里最生的五个，重做一遍', min:10}
     ]
   };
 };
@@ -762,8 +760,8 @@ renderHome=function(){
   });
 
   var doneN=Object.keys(S.done[day]||{}).filter(function(k){ return S.done[day][k]; }).length;
-  $('#homeNote').innerHTML=(T.cls?'上课日：21:10—22:40 共 90 分钟课，加上面五件事。':'自习日：约 85 分钟，五件事做完就收工。')+
-    '<br>今天完成 <b style="color:#1E2124">'+doneN+' / 5</b> 件。做错的题和词都会自动进「复习」。';
+  $('#homeNote').innerHTML=(T.cls?'上课日：21:10—22:40 共 90 分钟课，加上面三件事。':'自习日：约 60 分钟，三件事做完就收工。')+
+    '<br>今天完成 <b style="color:#1E2124">'+doneN+' / 3</b> 件。做错的题和词都会自动进「复习」。';
 };
 
 /* ---------- 练习页 ---------- */
@@ -865,6 +863,10 @@ renderReview=function(){
 };
 
 /* ---------- 追加样式 ---------- */
+var stH=document.createElement('style');
+stH.textContent=['.exbar2{display:flex;align-items:center;gap:8px;margin:8px 0 10px}','.exbar2 .pg{font-size:12.5px;color:#8B8880;margin-right:auto}','.exbar2 .b{font-size:12.5px;padding:7px 13px;border:1px solid var(--line);border-radius:9px;background:#fff}','.exbar2 .b.on{background:var(--ink);color:#fff;border-color:var(--ink)}','.grow{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}','.gn{font-size:12.5px;color:#8B8880;margin-bottom:6px}','.gin{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;font-size:15px;outline:none;background:#fff}','.gin:focus{border-color:var(--ink)}','.gex{font-size:12.5px;line-height:1.65;color:#4A4E52;margin-top:7px}','.model{white-space:pre-wrap;font-family:inherit;font-size:13.5px;line-height:1.75;background:#F7F5EF;border-radius:8px;padding:12px;margin-top:10px}','.psg summary{font-size:13.5px}'].join('\n');
+document.head.appendChild(stH);
+
 var st=document.createElement('style');
 st.textContent=[
 '.sent{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:12px 14px;margin-top:10px}',
@@ -974,6 +976,194 @@ st2.textContent=[
 document.head.appendChild(st2);
 
 buildItems();
+</script>
+
+<script>
+/* ================= 高中题型（浙江首考卷式）================= */
+var HS={
+ read:[
+ {t:"青少年睡不够，问题不在懒",en:"Most teenagers would happily stay up until midnight and sleep until ten. School schedules rarely allow it. For years, scientists have argued that early start times are not just inconvenient but unhealthy.\n\nDuring puberty, the body clock shifts later by about two hours. This is biology, not laziness. A fifteen-year-old who cannot fall asleep before eleven is not choosing to stay awake; her brain is simply not ready. Waking at six means she loses sleep every school night, and the loss adds up.\n\nThe effects are easy to see. Sleepy students forget instructions, struggle with maths and get angry over small things. Some schools that moved their first bell from 7:30 to 8:45 reported better attendance and higher grades, especially among poorer students, who often have no quiet place to sleep in the afternoon.\n\nNot everyone agrees, of course. Later starts push sports and after-school jobs into the evening, and parents who leave for work at seven must arrange new transport. Still, the evidence has persuaded hundreds of American schools to change, and the number keeps rising.",
+  zh:"多数青少年乐意熬到半夜、睡到十点，可学校的作息很少允许。多年来科学家一直认为，过早的上学时间不只是不方便，而是有害健康。\n\n进入青春期后，生物钟会后移约两小时。这是生理，不是懒惰。一个十五岁的孩子十一点前睡不着，不是她选择清醒，而是大脑还没准备好。六点起床意味着每个上学日都缺觉，而缺的觉会累积。\n\n后果很直观：困倦的学生记不住指令、算不动数学、为小事发火。一些把第一节课从 7:30 推到 8:45 的学校报告出勤率更高、成绩更好，对家境较差的学生尤其明显——他们下午往往没有安静的地方补觉。\n\n当然也有人反对。推迟上课会把运动队和兼职挤到晚上，七点就要出门上班的家长得重新安排接送。尽管如此，证据已经说服了数百所美国学校做出改变，而且还在增加。",
+  qs:[
+   {q:"According to the text, teenagers' late bedtime is mainly caused by ______.",o:["laziness","biology","homework","phones"],a:1,e:"第二段 This is biology, not laziness，生物钟后移约两小时。"},
+   {q:"Schools with later start times reported ______.",o:["fewer sports teams","better attendance and higher grades","more part-time jobs","shorter lessons"],a:1,e:"第三段 reported better attendance and higher grades。"},
+   {q:"What does “the loss adds up” in paragraph 2 mean?",o:["Students lose their books.","Missing sleep day after day has a growing effect.","Schools lose money.","The clock keeps moving later."],a:1,e:"缺觉每个上学日累积，影响越来越大。"},
+   {q:"What is the author's attitude towards later start times?",o:["Supportive.","Doubtful.","Uninterested.","Strongly against."],a:0,e:"虽有反对意见，但末句 evidence has persuaded hundreds of schools，作者倾向支持。"}
+  ]},
+ {t:"图书馆里的种子",en:"At the back of a small library in Maine, there is a wooden box full of envelopes. Each holds seeds: tomato, bean, marigold. Readers borrow them the way they borrow novels, and at the end of the season they are asked to return seeds saved from their own plants.\n\nThe idea started in 1999, when a librarian noticed that many gardeners around her had saved seeds but no place to share them. The first seed library held 200 packets. Today there are more than 600 such libraries across the country, and the number keeps growing.\n\nSupporters say the point is not free vegetables. “A seed is a story you can hold,” one librarian explains. When a family grows a bean that their neighbour grew before them, the garden becomes a record of the people who lived there.\n\nCritics warn that borrowed seeds may carry disease, and that beginners often fail and lose interest. Librarians answer that failure is part of the lesson: the packet comes with instructions, and every returned envelope adds to the collection's memory.",zh:"缅因州一家小图书馆的深处，有一只装满信封的木盒。每个信封里都是种子：番茄、豆子、金盏花。读者像借小说一样借走它们，季末则被请把自家植株留的种子还回来。\n\n这个想法始于 1999 年：一位馆员发现周围许多园艺爱好者留了种子却无处分享。第一间种子图书馆只有 200 包。如今全美已有六百多间，还在增加。\n\n支持者说重点不是免费蔬菜。“一粒种子是一段你能捧在手里的故事，”一位馆员说。当一家人种出邻居从前种过的豆子，菜园就成了住在这里的人的记录。\n\n批评者提醒，借来的种子可能带病，新手常失败而失去兴趣。馆员的回答是：失败也是课程的一部分——每包种子附说明，每个还回来的信封都在为这座馆的记忆添一页。",
+  qs:[
+   {q:"What are readers asked to do at the end of the season?",o:["Buy new seeds.","Return seeds from their own plants.","Write a book review.","Donate vegetables."],a:1,e:"第一段 return seeds saved from their own plants。"},
+   {q:"Why was the first seed library started?",o:["To sell seeds.","To give gardeners a place to share seeds.","To teach biology.","To save old books."],a:1,e:"第二段：had saved seeds but no place to share them。"},
+   {q:"What does the librarian mean by “A seed is a story you can hold”?",o:["Seeds are expensive.","Seeds carry the memory of the people who grew them.","Seeds grow fast.","Seeds are easy to borrow."],a:1,e:"后句 the garden becomes a record of the people who lived there。"},
+   {q:"What is the best title for the text?",o:["A Library That Lends Seeds","How to Grow Tomatoes","The History of Maine","Why Gardening Fails"],a:0,e:"全文围绕 seed library 的起源、做法与意义。"}
+  ]}
+ ],
+ cloze:{
+  t:"修好一只旧表",en:"Last spring, my grandfather handed me an old watch and asked me to fix it. I had never opened a watch before, so I spent three evenings at his desk, (1)____ the tiny screws into a box.\n\nOn the fourth night I finally saw the reason: a bent spring. I (2)____ it straight, put everything back, and the hands began to move. Grandfather smiled but said nothing.\n\nOnly years later did I understand (3)____ he had given me the watch. He was not teaching me to repair things; he was teaching me to (4)____. A watch is a small machine, and a small machine can be understood. Most of what frightens us is like that: it looks (5)____ only because nobody has opened it.\n\nNow I keep the watch on my desk. It runs a few minutes fast, and I have never (6)____ it. Each time I look at it, I remember those evenings — the lamp, the screws, my grandfather's (7)____ silence. He never told me to be patient. He simply gave me something (8)____ that required patience.\n\nThat is how most good lessons arrive: not as advice, but as (9)____. Years later, you turn it over in your hands and (10)____ what it was for.",
+  blanks:[
+   {o:["putting","throwing","kicking","pushing"],a:0,e:"put sth into a box 放进盒子。"},
+   {o:["bent","pulled","cut","bought"],a:1,e:"bend 的过去式 bent；前文已出现 a bent spring。"},
+   {o:["why","when","where","who"],a:0,e:"后文解释他给表的用意，用 why。"},
+   {o:["wait","think","work","rest"],a:1,e:"不是教修理，而是教思考：a small machine can be understood。"},
+   {o:["simple","broken","heavy","impossible"],a:3,e:"后接 only because nobody has opened it，说明看起来「不可能」。"},
+   {o:["replaced","sold","cleaned","wound"],a:0,e:"runs a few minutes fast 也不换，never replaced it。"},
+   {o:["angry","comfortable","loud","strange"],a:1,e:"外祖父沉默而自在：comfortable silence。"},
+   {o:["cheap","small","new","useless"],a:1,e:"a watch is a small machine，给的是「小」东西却需要耐心。"},
+   {o:["objects","presents","advice","stories"],a:1,e:"not as advice, but as 礼物（实物）。"},
+   {o:["forget","repeat","understand","refuse"],a:2,e:"多年后回头看才明白它的用意。"}
+  ]},
+ seven:{
+  t:"让阅读真正变成习惯",en:"Reading is easy to start and easy to drop. (1)____ Most people fail because they aim too high: thirty minutes a day for a week, then nothing.\n\nStart smaller than feels serious. (2)____ A page before bed is a real habit; an hour that never happens is not.\n\nAttach reading to something you already do. (3)____ The bus ride, the queue at the canteen, the five minutes before class — these are free pockets of time most of us waste on our phones.\n\nKeep the book where your hand falls. (4)____ A book on the table gets read; a book on a shelf gets admired.\n\nFinally, allow yourself to stop. (5)____ The habit survives on repetition, not on heroics.",
+  opts:["A. Two minutes is enough to begin.","B. Reading in bed with a phone nearby rarely works.","C. Put it on your pillow, not in your bag.","D. The reason is rarely a lack of time.","E. A chapter finished badly still counts as a chapter.","F. Reading aloud improves pronunciation.","G. Link it to an existing routine, such as breakfast."],
+  ans:[
+   {n:1,a:"D",e:"前句说容易放弃，后句讲目标定太高，中间应是「原因不是没时间」。"},
+   {n:2,a:"A",e:"Start smaller 后举例：两分钟就够开始。"},
+   {n:3,a:"G",e:"Attach reading to something you already do，接着举例早餐等既有习惯。"},
+   {n:4,a:"C",e:"Keep the book where your hand falls，枕头边而不是包里。"},
+   {n:5,a:"E",e:"allow yourself to stop，读完一章（哪怕读得粗糙）也算数。"}
+  ]},
+ gram:{
+  t:"西湖边的一堂课",en:"Last October I went to Hangzhou for the first time. (1)____ (walk) along the West Lake at six in the morning, I found hundreds of people already there: some (2)____ (exercise), some singing, some simply sitting and looking at the water.\n\nAn old man told me that the lake (3)____ (be) the same for a thousand years, but the people around it keep changing. “Every generation (4)____ (bring) its own way of enjoying it,” he said.\n\nWhat impressed me most was not the lake itself but the (5)____ (patient) of the people. Nobody hurried. A woman (6)____ was teaching her daughter to fish explained that they came every Sunday, rain or shine.\n\nI had expected a famous view; I found a habit. Perhaps that is (7)____ the lake has survived so long: it belongs to ordinary mornings rather than to photographs.\n\nBy the time I left, I (8)____ (decide) to come back. Next spring I (9)____ (bring) my parents, and I hope they will understand (10)____ I meant when I said the lake was not the best part.",
+  blanks:[
+   {a:"Walking",e:"逻辑主语 I 与 walk 主动，用现在分词作状语。"},
+   {a:"exercising",e:"some…some…并列，现在分词作伴随状语。"},
+   {a:"has been",e:"for a thousand years 用现在完成时。"},
+   {a:"brings",e:"Every generation 作主语，一般现在时单数。"},
+   {a:"patience",e:"形容词位置前有 the，用名词 patience。"},
+   {a:"who",e:"先行词 a woman，从句缺主语，用 who。"},
+   {a:"why",e:"表语从句，解释「为什么」湖能留存。"},
+   {a:"had decided",e:"By the time I left 为过去时间点，决定在先，用过去完成时。"},
+   {a:"will bring",e:"Next spring 将来时间。"},
+   {a:"what",e:"understand 后接宾语从句，从句缺 meant 的宾语，用 what。"}
+  ]},
+ write:{
+  t:"应用文 · 邀请外教参加书法活动",
+  req:"假定你是李华，你校书法社将举办一次面向留学生的书法体验活动。请给外教 Mr. Smith 写一封邮件：1) 说明活动时间地点；2) 介绍活动内容（讲座 + 体验）；3) 邀请他参加并请他帮忙通知留学生。词数 80 左右。",
+  model:"Dear Mr. Smith,\n\nI am writing to invite you to a calligraphy activity our club has organised for international students. It will be held in the school library from 3 to 5 p.m. on Friday, 20 November.\n\nWe will begin with a short talk on the history of Chinese calligraphy, and then everyone will try writing a few characters with brush and ink. No experience is needed; we will prepare all the materials.\n\nWe would be honoured if you could join us, and we would also be grateful if you could pass the invitation on to your students.\n\nYours,\nLi Hua",
+  notes:"开头一句讲目的；中间两段：时间地点 + 内容；结尾提请求。写信人固定 Li Hua，署名用 Yours,。"
+ }
+};
+
+/* ================= 练习页渲染（高中题型）================= */
+var HSE={mode:'read', idx:0, items:[], answered:false};
+
+function hsP(t){ return esc(t).replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>'); }
+function hsBuild(mode){
+  var out=[];
+  if(mode==='read'){
+    HS.read.forEach(function(p,pi){ p.qs.forEach(function(q,qi){ out.push({kind:'read',pass:pi,qi:qi,q:q}); }); });
+  } else if(mode==='cloze'){
+    HS.cloze.blanks.forEach(function(b,i){ out.push({kind:'cloze',i:i,b:b}); });
+  } else if(mode==='seven'){
+    HS.seven.ans.forEach(function(a,i){ out.push({kind:'seven',i:i,a:a}); });
+  }
+  return out;
+}
+
+function hsPassage(kind){
+  if(kind==='read') return HS.read[HSE.passIdx||0];
+  if(kind==='cloze') return HS.cloze;
+  if(kind==='seven') return HS.seven;
+  return null;
+}
+
+window.renderEx=function(){
+  var modes=[['read','阅读'],['cloze','完形'],['seven','七选五'],['gram','语法填空'],['write','应用文']];
+  var h='<div class="exbar">'+modes.map(function(m){
+    return '<button class="b'+(HSE.mode===m[0]?' on':'')+'" data-m="'+m[0]+'">'+m[1]+'</button>';
+  }).join('')+'</div>';
+
+  if(HSE.mode==='gram'||HSE.mode==='write'){ $('#exWrap').innerHTML=h+'<div id="exSpecial"></div>'; if(HSE.mode==='gram') renderGram(); else renderWrite(); }
+  else {
+    HSE.items=hsBuild(HSE.mode);
+    if(HSE.idx>=HSE.items.length) HSE.idx=0;
+    h+='<div class="exbar2"><span class="pg">'+(HSE.idx+1)+' / '+HSE.items.length+'</span>'+
+       '<button class="b" id="exPrev">上一题</button><button class="b on" id="exNext">下一题</button></div>'+
+       '<div id="exCard"></div>';
+    $('#exWrap').innerHTML=h;
+    $('#exPrev').onclick=function(){ if(HSE.idx>0){ HSE.idx--; HSE.answered=false; renderEx(); scrollTo(0,0);} };
+    $('#exNext').onclick=function(){ if(HSE.idx<HSE.items.length-1){ HSE.idx++; HSE.answered=false; renderEx(); scrollTo(0,0);} };
+    renderHsCard();
+  }
+  $('#exWrap').querySelectorAll('.exbar .b').forEach(function(b){
+    b.onclick=function(){ HSE.mode=b.dataset.m; HSE.idx=0; HSE.answered=false; renderEx(); scrollTo(0,0); };
+  });
+  $('#exTop').textContent='错 '+Object.keys(S.qerr).length+' 道';
+};
+
+function renderHsCard(){
+  var it=HSE.items[HSE.idx], card=$('#exCard'), q, src='';
+  if(it.kind==='read'){
+    var p=HS.read[it.pass];
+    q={c:'阅读 '+(it.pass+1)+' · 第 '+(it.qi+1)+' 题', q:it.q.q, o:it.q.o, a:it.q.a, e:it.q.e};
+    src='<details class="psg-d" style="margin-top:10px"><summary>'+esc(p.t)+' · 点开看原文和译文</summary><p>'+hsP(p.en)+'</p><p class="zh">'+hsP(p.zh)+'</p></details>';
+  } else if(it.kind==='cloze'){
+    var c=HS.cloze, seg='';
+    c.en.split('\n\n').forEach(function(x){ if(x.indexOf('('+(it.i+1)+')')>=0) seg=x; });
+    q={c:'完形 · 第 '+(it.i+1)+' 空', q:'（第 '+(it.i+1)+' 空）'+seg, o:it.b.o, a:it.b.a, e:it.b.e};
+    src='<details class="psg-d" style="margin-top:10px"><summary>'+esc(c.t)+' · 点开看全文</summary><p>'+hsP(c.en)+'</p></details>';
+  } else if(it.kind==='seven'){
+    var v=HS.seven, A=it.a, ai=v.opts.findIndex(function(o){ return o.trim().charAt(0)===A.a; });
+    q={c:'七选五 · 第 '+A.n+' 空', q:'（第 '+A.n+' 空）从 A–G 中选出一句填回原文', o:v.opts, a:ai, e:A.e};
+    src='<details class="psg-d" style="margin-top:10px"><summary>'+esc(v.t)+' · 点开看原文</summary><p>'+hsP(v.en)+'</p></details>';
+  }
+  var optsHtml = (it.kind==='seven')
+    ? q.o.map(function(o,i){ return '<button class="xo" data-i="'+i+'">'+esc(o)+'</button>'; }).join('')
+    : q.o.map(function(o,i){ return '<button class="xo" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+esc(o)+'</button>'; }).join('');
+  card.innerHTML='<div class="exq"><div class="tag">'+esc(q.c)+'</div><div class="qs">'+esc(q.q)+'</div>'+optsHtml+
+    '<div class="exe" style="display:none"></div></div>'+src;
+  bindChoice(card, q.a, q.e, it.kind+HSE.idx);
+}
+
+function bindChoice(card, ans, explain, key){
+  var box=card.querySelector('.exe');
+  card.querySelectorAll('.xo').forEach(function(btn){
+    btn.onclick=function(){
+      if(HSE.answered) return;
+      HSE.answered=true;
+      var pick=+btn.dataset.i;
+      card.querySelectorAll('.xo').forEach(function(b,k){ if(k===ans) b.classList.add('ok'); });
+      if(pick===ans){ btn.classList.add('ok'); box.textContent='对。'+explain; }
+      else { btn.classList.add('no'); S.qerr[key]=1; saveS(); box.textContent='错。'+explain; }
+      box.style.display='block';
+    };
+  });
+}
+
+/* 语法填空 */
+function renderGram(){
+  var p=HS.gram;
+  $('#exSpecial').innerHTML='<details class="psg-d" open><summary>'+esc(p.t)+' · 10 空</summary><p>'+hsP(p.en)+'</p></details>'+
+    p.blanks.map(function(b,i){
+      return '<div class="grow"><div class="gn">第 '+(i+1)+' 空</div>'+
+        '<input class="gin" data-i="'+i+'" placeholder="填一个词"><div class="gex" style="display:none"></div></div>';
+    }).join('')+
+    '<div class="big" style="margin-top:12px"><button class="p" id="gCheck">检查答案</button></div>';
+  $('#gCheck').onclick=function(){
+    var ok=0;
+    $('#exSpecial').querySelectorAll('.gin').forEach(function(inp){
+      var i=+inp.dataset.i, b=p.blanks[i];
+      var v=inp.value.trim().toLowerCase();
+      var right=(v===b.a.toLowerCase());
+      inp.style.borderColor=right?'#256248':'#C0392B';
+      inp.style.background=right?'#EDF4EF':'#FBEDEA';
+      if(right){ ok++; inp.value=b.a; } else { inp.value=b.a; S.qerr['gram'+i]=1; saveS(); }
+      var ex=inp.parentElement.querySelector('.gex');
+      if(ex){ ex.style.display='block'; ex.textContent='答案：「'+b.a+'」 '+b.e; }
+    });
+    $('#gCheck').textContent='得分 '+ok+' / 10（已给出答案与解释）';
+    $('#exTop').textContent='错 '+Object.keys(S.qerr).length+' 道';
+  };
+}
+
+/* 应用文 */
+function renderWrite(){
+  var w=HS.write;
+  $('#exSpecial').innerHTML='<div class="psg"><div class="tag">应用文 · 15 分</div><b>'+esc(w.t)+'</b>'+
+    '<p>'+esc(w.req)+'</p>'+
+    '<details><summary>看参考范文（80 词）</summary><pre class="model">'+esc(w.model)+'</pre></details>'+
+    '<details><summary>写作要点</summary><p class="zh">'+esc(w.notes)+'</p></details></div>';
+}
 </script>
 
 </body>
